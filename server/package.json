@@ -6,7 +6,7 @@
   "scripts": {
     "seedDb" : "node ./db/seed.js",
     "reset": "node ./db/reset.js",
-    "createDb" : "Jack add create command",
+    "createDb" : "dropdb --if-exists -e recycle_project_db && createdb -e recycle_project_db",
     "start" : "nodemon server.js"
   },
   "dependencies": {
