@@ -1,4 +1,6 @@
 const { Sequelize } = require('sequelize');
+const bcrypt = require('bcrypt')
+
 
 const db = new Sequelize({
     database: 'recycle_project_db',
