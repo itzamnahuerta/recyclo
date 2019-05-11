@@ -1,12 +1,16 @@
 const express = require('express');
+require('dotenv').config();
 const logger = require('morgan');
 const cors = require('cors');
-
+const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+
 app.use(cors());
 app.use(logger('dev'));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 app.get('/', async(req,res) =>  {
     try {
@@ -14,7 +18,7 @@ app.get('/', async(req,res) =>  {
     } catch (error) {
         throw error
     }
-})
+});
 
 
 app.listen(PORT, () => {
