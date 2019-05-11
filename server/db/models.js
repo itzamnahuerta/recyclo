@@ -43,7 +43,19 @@ const User = db.define('user', {
   user.password = hashedPassword
 });
 
+/* I think these relationships make sense, but of course feel free to counter! The onDelete is in place so that if a user deletes a location from their 'favorites' list*/
+
 User.hasMany(Material)
+Material.belongsTo(Material)
+
+Material.hasMany(Location)
+Location.hasMany(Material)
+
+User.hasMany(Location, {
+    onDelete: 'cascade'
+});
+
+Location.belongsTo(User)
 
 module.exports = {
     Location, 
