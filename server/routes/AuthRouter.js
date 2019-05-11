@@ -1,7 +1,7 @@
 const express = require('express');
-const authRouter = express.Router();
+const AuthRouter = express.Router();
 const { passport, jwtSign  } = require('../auth/Auth');
 
 
 
-module.exports = authRouter;
+module.exports = AuthRouter;
