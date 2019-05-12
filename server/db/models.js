@@ -50,8 +50,8 @@ const User = db.define('user', {
 User.hasMany(Material)
 Material.belongsTo(User)
 
-Material.hasMany(Location)
-Location.hasMany(Material)
+Material.belongsToMany(Location, {through: 'material_location'});
+Location.belongsToMany(Material, {through: 'material_location'})
 
 User.hasMany(Location, {
     onDelete: 'cascade'
