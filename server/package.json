@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "seedDb": "node ./db/seed.js",
-    "reset": "node ./db/reset.js",
+    "reset": "node ./db/resetDb.js",
     "createDb": "dropdb --if-exists -e recycle_project_db && createdb -e recycle_project_db",
     "start": "nodemon server.js"
   },

@@ -62,5 +62,6 @@ Location.belongsTo(User)
 module.exports = {
     Location, 
     Material,
-    User
+    User,
+    db
 }
