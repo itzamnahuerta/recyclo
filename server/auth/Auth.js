@@ -45,16 +45,13 @@ passport.use('login', new LocalStrategy({
         if(!user){
             return done(null, false,{msg:'user not found'})
         }
-
         const validateUser = await bcrypt.compare(password, user.password);
         console.log('***Checking Password', validate);
         if(!validate){
             return done(null,false, {msg:'could not validate user password'})
         }
-
         // return user if validated
         return done(null, user, {msg: 'User is validated and logged in'});
-
     } catch (error) {
         return done(error);
     }
@@ -71,7 +68,6 @@ passport.use(new JWTStrategy({
         const user = await User.findbyPk(token.id);
         console.log('token from', user);
         user ? done(null,user): done(null,false);
-
     } catch (error) {
         done(error)
     }
@@ -83,7 +79,6 @@ const userAuthorized = (req,res,next) => {
     passport.authenticate('jwt', {session:false}, async (error, token) => {
         let err;
         error || !token ? err = new Error('unable to authenticate'): null
-
         try {
             const user = await User.findOne({where: {id: token.id}})
         } catch (error) {

@@ -10,7 +10,6 @@ AuthRouter.post('/login', async (req,res,next) => {
                 const error = new Error('Error occured');
                 return next(error)
             }
-
             req.login(user, {
                 session: false,
             }, async (error) => {
