@@ -61,8 +61,36 @@ passport.use('login', new LocalStrategy({
 }
 ));
 
+passport.use(new JWTStrategy({
+    secretOrKey: SECRET,
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
+}, async (token, done) => {
+    console.log(`getting token`);
+    try {
+        console.log('***Token***',token);
+        const user = await User.findbyPk(token.id);
+        console.log('token from', user);
+        user ? done(null,user): done(null,false);
+
+    } catch (error) {
+        done(error)
+    }
+}
+));
+
+// checking Auth from JWT
 const userAuthorized = (req,res,next) => {
-    
+    passport.authenticate('jwt', {session:false}, async (error, token) => {
+        let err;
+        error || !token ? err = new Error('unable to authenticate'): null
+
+        try {
+            const user = await User.findOne({where: {id: token.id}})
+        } catch (error) {
+            next(error)
+        }
+        next();
+    })(req,res,next)
 }
 
 module.exports = {
