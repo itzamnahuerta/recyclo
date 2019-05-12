@@ -46,7 +46,7 @@ const User = db.define('user', {
 /* I think these relationships make sense, but of course feel free to counter! The onDelete is in place so that if a user deletes a location from their 'favorites' list*/
 
 User.hasMany(Material)
-Material.belongsTo(Material)
+Material.belongsTo(User)
 
 Material.hasMany(Location)
 Location.hasMany(Material)
