@@ -69,12 +69,12 @@ Material.hasMany(MaterialType)
 MaterialType.belongsTo(Material)
 
 MaterialType.belongsToMany(Location, {
-    through: 'material_location',
+    through: 'material_type_location',
     foreignKey: 'materialTypeId'
 })
 
 Location.belongsToMany(MaterialType, {
-    through: 'material_location',
+    through: 'material_type_location',
     foreignKey:'locationId'
 })
 
