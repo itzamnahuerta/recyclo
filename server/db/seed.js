@@ -1,4 +1,5 @@
-const { Material, Location, MaterialType } = require('./models');
+
+const { User, Material, Location, MaterialType } = require('./models');
 
 // const createLOCATION = (name, pN, url, pc, lat,long , mat = 'glass') =>
 // {
@@ -12,7 +13,8 @@ const { Material, Location, MaterialType } = require('./models');
 // }
 // }
 
-const main = async() => {
+
+const main = async () => {
     await Material.destroy({
         where: {}
     });
@@ -36,6 +38,7 @@ const main = async() => {
         name: 'Plastic'
     });
 
+
     const wood = await Material.create({
         name: 'Wood'
     })
@@ -48,6 +51,14 @@ const main = async() => {
         name: 'Miscellaneous'
     })
 
+    await User.create({
+        name: 'tester 1',
+        username: 'tester1',
+        email: 'tester1@fakemail.com',
+        password: 'test1'
+    });
+
+
     const newStyle = await Location.create({
         name: 'New Style Recycling',
         phone_number: '7183264175',
@@ -56,6 +67,7 @@ const main = async() => {
         latitude: '40.741895',
         longitude: '-73.989308'
     })
+
 
     const greenChip = await Location.create({
         name: 'Green Chip Ewaste Solutions',
@@ -187,6 +199,7 @@ const main = async() => {
 
     
     await newStyle.addMaterial(plastic)
+
     await newStyle.addMaterial(glass)
     await newStyle.addMaterial(metal)
 
@@ -225,17 +238,16 @@ const main = async() => {
 
 
 
-} 
+}
 
 async function run() {
     try {
-      await main();
+        await main();
     } catch (e) {
-      console.error(e);
+        console.error(e);
     } finally {
-      await process.exit()
+        await process.exit()
     }
-  }
-  
-  run();
+}
 
+run();

@@ -1,6 +1,6 @@
 const express = require('express');
 const AuthRouter = express.Router();
-const { passport, jwtSign  } = require('../auth/Auth');
+const { passport, signToken  } = require('../auth/Auth');
 
 AuthRouter.post('/login', async (req,res,next) => {
     passport.authenticate('login', async (err,user,info) => {
@@ -18,7 +18,7 @@ AuthRouter.post('/login', async (req,res,next) => {
                 }
                 const {username, id} = user
                 const payload = {username, id}
-                const token = jwtSign(payload)
+                const token = signToken(payload)
                 // return user
                 return res.json({user, token});
             });
@@ -45,6 +45,6 @@ AuthRouter.post('/signup', async (req,res,next) => {
             return next(error);
         }
     })(req,res,next)
-})
+});
 
 module.exports = AuthRouter;
