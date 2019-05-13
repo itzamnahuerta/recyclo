@@ -1,6 +1,10 @@
-const { Material, Location } = require('./models');
+const {
+    User,
+    Material,
+    Location
+} = require('./models');
 
-const main = async() => {
+const main = async () => {
     await Material.destroy({
         where: {}
     });
@@ -24,6 +28,13 @@ const main = async() => {
         name: 'Plastic'
     });
 
+    await User.create({
+        name: 'tester 1',
+        username: 'tester1',
+        email: 'tester1@fakemail.com',
+        password: 'test1'
+    });
+
     const newStyle = await Location.create({
         name: 'New Style Recycling',
         phone_number: '7183264175',
@@ -32,22 +43,20 @@ const main = async() => {
         latitude: '40.741895',
         longitude: '-73.989308'
     })
-
     await newStyle.addMaterial(glass)
     await newStyle.addMaterial(metal)
     await newStyle.addMaterial(paper)
 
-} 
+}
 
 async function run() {
     try {
-      await main();
+        await main();
     } catch (e) {
-      console.error(e);
+        console.error(e);
     } finally {
-      await process.exit()
+        await process.exit()
     }
-  }
-  
-  run();
+}
 
+run();

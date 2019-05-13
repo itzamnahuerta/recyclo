@@ -39,21 +39,24 @@ passport.use('signup', new LocalStrategy({
 ));
 
 passport.use('login', new LocalStrategy({
-    userNameField : 'username',
+    usernameField : 'username',
     passwordField : 'password'
-}, async (email, password, done) => {
+}, async (username, password, done) => {
     try {
-        console.log(email);
+        console.log('***Username from route***',username);
+        console.log('***Passqword from auth', password)
         // finding users from db 
         const user = await User.findOne({
-            username:username
+            where: {
+                username:username
+            }
         });
         if(!user){
             return done(null, false,{msg:'user not found'})
         }
         const validateUser = await bcrypt.compare(password, user.password);
-        console.log('***Checking Password', validate);
-        if(!validate){
+        console.log('***Checking Password', validateUser);
+        if(!validateUser){
             return done(null,false, {msg:'could not validate user password'})
         }
         // return user if validated
