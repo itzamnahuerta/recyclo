@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-// Add Users Here
+const { User  } = require('../db/models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const JWTStrategy = require('passport-jwt').Strategy;
@@ -9,21 +9,23 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const SECRET = process.env.APP_SECRET;
 
 const signToken = payload => jwt.sign(payload, SECRET);
-console.log(signToken);
 
 // creating user signup
 passport.use('signup', new LocalStrategy({
-    userNameField : 'username',
+    nameField : 'name',
     emailField : 'email',
+    usernameField : 'username',
     passwordField : 'password'
-}, async (username, email, password, done) => {
-    console.log('***SignUp***');
+}, async (name, email, username, password, done) => {
+    console.log(name)
     try {
-        const user = await User.create({username,email,password});
+        const user = await User.create({name,email,username,password});
+        console.log('***finding user', user)
         if(!user){
             return done(null,false, {msg: 'Unable to create user'})
         }
-        console.log(user.email, user.username)
+        console.log(user.name);
+        done(null, user);
     } catch (error) {
         console.log(error);
         done(error);
@@ -90,5 +92,5 @@ const userAuthorized = (req,res,next) => {
 module.exports = {
     userAuthorized,
     passport,
-    jwtSign
+    signToken
 }
