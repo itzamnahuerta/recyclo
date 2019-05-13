@@ -111,18 +111,18 @@ const main = async() => {
         longitude: '-73.928795'
     })
 
-    const greenTreeMorning = = await Location.create({
+    const greenTreeMorning = await Location.create({
         name: `Green Tree Recycling - Morningside Park’s Down to Earth Farmers Market`, 
-        phone_number: '',
+        phone_number: '0',
         url: 'https://www.greentreetextiles.org/farmersmarkets/',
         postal_code: '10026',
         latitude: '40.798271',
         longitude: '-73.95253'
     })
 
-    const greenTreeOssining = = await Location.create({
+    const greenTreeOssining = await Location.create({
         name: `Green Tree Recycling - Ossining’s Down to Earth Farmers Market`, 
-        phone_number: '',
+        phone_number: '0',
         url: 'https://www.greentreetextiles.org/farmersmarkets/',
         postal_code: '10562',
         latitude: '41.161527',
@@ -131,7 +131,7 @@ const main = async() => {
 
     const greenTreeHarvest = await Location.create({
         name: `Green Tree Recycling - Harvest Home Market`, 
-        phone_number: '',
+        phone_number: '0',
         url: 'https://www.greentreetextiles.org/farmersmarkets/',
         postal_code: '10026',
         latitude: '40.802433',
@@ -140,7 +140,7 @@ const main = async() => {
 
     const greenTreeUES = await Location.create({
         name: `Green Tree Recycling - Upper East Side Manhattan`, 
-        phone_number: '',
+        phone_number: '0',
         url: 'https://www.greentreetextiles.org/farmersmarkets/',
         postal_code: '10029',
         latitude: '40.7907798',
@@ -149,7 +149,7 @@ const main = async() => {
 
     const greenTreeParkSlope = await Location.create({
         name: `Green Tree Recycling - Down to Earth Park Slope Farmers Market`,
-        phone_number: '',
+        phone_number: '0',
         url: 'https://www.greentreetextiles.org/farmersmarkets/',
         postal_code: '11215',
         latitude: '40.682534',
@@ -158,21 +158,32 @@ const main = async() => {
 
     const greenTreeStuy = await Location.create({
         name: `Green Tree Recycling - Stuyvesant Town Greenmarket`,
-        phone_number: '',
+        phone_number: '0',
         url: 'https://www.greentreetextiles.org/farmersmarkets/',
         postal_code: '10009',
         latitude: '40.712728',
         longitude: '-74.006015'
     })
 
-    const greenTreeStuy = await Location.create({
+    const greenTreeRiverdale = await Location.create({
         name: `Green Tree Recycling - Riverdale Y Sunday Farmers Market`,
-        phone_number: '',
+        phone_number: '0',
         url: 'https://www.greentreetextiles.org/farmersmarkets/',
         postal_code: '10463',
         latitude: '40.887784',
         longitude: '-73.913587'
     })
+
+    const fabscrap = await Location.create({
+        name: `Fabscrap`,
+        phone_number: '9292763188',
+        url: 'https://fabscrap.org/',
+        postal_code: '11220',
+        latitude: '40.644524',
+        longitude: '-74.022532'
+    })
+
+
 
     
     await newStyle.addMaterial(plastic)
@@ -206,6 +217,9 @@ const main = async() => {
     await greenTreeParkSlope.addMaterial(textile)
     await greenTreeStuy.addMaterial(textile)
     await greenTreeUES.addMaterial(textile)
+    await greenTreeRiverdale.addMaterial(textile)
+
+    await fabscrap.addMaterial(textile)
 
 
 
