@@ -36,6 +36,10 @@ const main = async() => {
         name: 'Plastic'
     });
 
+    const wood = await Material.create({
+        name: 'Wood'
+    })
+
     const newStyle = await Location.create({
         name: 'New Style Recycling',
         phone_number: '7183264175',
@@ -81,15 +85,42 @@ const main = async() => {
         longitude: '-73.9454337'
     })
 
-    
+    const bigReuse = await Location.create({
+        name: 'Big Reuse',
+        phone_number: '7187258925',
+        url: 'https://bigreuse.org/',
+        postal_code: '10032',
+        latitude: '40.67225',
+        longitude: '-73.996964'
+    })
 
 
 
 
 
 
-
+    await newStyle.addMaterial(plastic)
     await newStyle.addMaterial(glass)
+    await newStyle.addMaterial(metal)
+
+    await greenChip.addMaterial(metal)
+
+    await simsMunicipal.addMaterial(plastic)
+    await simsMunicipal.addMaterial(glass)
+    await simsMunicipal.addMaterial(metal)
+
+    // await wearCollections.addMaterial()
+
+    await leaveNoFootprint.addMaterial(plastic)
+    await leaveNoFootprint.addMaterial(glass)
+    await leaveNoFootprint.addMaterial(metal)
+    await leaveNoFootprint.addMaterial(paper)
+
+
+    //Upcycle location
+    // await bigReuse.addMaterial(wood)
+
+    
 
 
 } 
