@@ -16,13 +16,12 @@ const db = new Sequelize({
 const Location = db.define('location', {
     name: Sequelize.STRING,
     phone_number: Sequelize.BIGINT,
+    
     url: Sequelize.STRING,
     postal_code: Sequelize.INTEGER,
     latitude: Sequelize.DECIMAL,
     longitude: Sequelize.DECIMAL
 })
-
-const MaterialLocation = db.define('material_location');
 
 const Material = db.define('material', {
     name: Sequelize.STRING
@@ -71,7 +70,7 @@ MaterialType.belongsTo(Material)
 
 MaterialType.belongsToMany(Location, {
     through: 'material_location',
-    foreignKey: 'material_typeId'
+    foreignKey: 'materialTypeId'
 })
 
 Location.belongsToMany(MaterialType, {

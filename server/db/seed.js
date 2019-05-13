@@ -1,5 +1,17 @@
 const { Material, Location } = require('./models');
 
+// const createLOCATION = (name, pN, url, pc, lat,long , mat = 'glass') =>
+// {
+//   return {  name: name,
+//     phone_number: PN,
+//     url: url,
+//     postal_code: pc,
+//     latitude: lat,
+//     longitude: long,
+//     mat: mat,
+// }
+// }
+
 const main = async() => {
     await Material.destroy({
         where: {}
@@ -32,6 +44,44 @@ const main = async() => {
         latitude: '40.741895',
         longitude: '-73.989308'
     })
+
+    const greenChip = await Location.create({
+        name: 'Green Chip Ewaste Solutions',
+        phone_number: '8447830443',
+        url: 'https://www.greenchiprecycling.com/',
+        postal_code: '11222',
+        latitude: '40.7355376',
+        longitude: '-73.9444023'
+    })
+
+    const simsMunicipal = await Location.create({
+        name: 'Sims Municipal Recycling',
+        phone_number: '3474298097',
+        url: 'https://www.simsmunicipal.com/',
+        postal_code: '11232',
+        latitude: '40.66239',
+        longitude: '-74.0097671'
+    })
+
+    const wearCollections = await Location.create({
+        name: 'Wearable Collections Clothing Recycling',
+        phone_number: '6465154387',
+        url: 'http://wearablecollections.com/',
+        postal_code: '10001',
+        latitude: '40.747337',
+        longitude: '-73.997189'
+    })
+
+    const leaveNoFootprint = await Location.create({
+        name: 'Leave No Footprint',
+        phone_number: '6462299282',
+        url: 'http://leavenofootprintnyc.com/',
+        postal_code: '10032',
+        latitude: '40.8350927',
+        longitude: '-73.9454337'
+    })
+
+
 
     await newStyle.addMaterial(glass)
     await newStyle.addMaterial(metal)
