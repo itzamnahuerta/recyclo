@@ -39,6 +39,7 @@ class CreateUser extends Component {
         const {name,password,email,username} = this.state;
         return (
             <div className={this.props.toggleForm}>
+            <div className="form-container">
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
                     <label>Name</label>
                     <input type="text" name="name" value={name} />
@@ -50,6 +51,7 @@ class CreateUser extends Component {
                     <input type="password" name="password" value={password} />
                     <button type="submit"> Sign Up</button>
                 </form>
+                </div>
             </div>
         );
     }
