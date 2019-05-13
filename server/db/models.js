@@ -68,25 +68,25 @@ Material.belongsTo(User)
 Material.hasMany(MaterialType)
 MaterialType.belongsTo(Material)
 
-MaterialType.belongsToMany(Location, {
-    through: 'material_type_location',
-    foreignKey: 'materialTypeId'
-})
-
-Location.belongsToMany(MaterialType, {
-    through: 'material_type_location',
-    foreignKey:'locationId'
-})
-
-// Material.belongsToMany(Location, {
-//     through: 'material_location',
-//     foreignKey: 'materialId'
-
-// });
-// Location.belongsToMany(Material, {
-//     through: 'material_location',
-//     foreignKey: 'locationId'
+// MaterialType.belongsToMany(Location, {
+//     through: 'material_type_location',
+//     foreignKey: 'materialTypeId'
 // })
+
+// Location.belongsToMany(MaterialType, {
+//     through: 'material_type_location',
+//     foreignKey:'locationId'
+// })
+
+Material.belongsToMany(Location, {
+    through: 'material_location',
+    foreignKey: 'materialId'
+
+});
+Location.belongsToMany(Material, {
+    through: 'material_location',
+    foreignKey: 'locationId'
+})
 
 User.belongsToMany(Location, {
     through: 'user_location',

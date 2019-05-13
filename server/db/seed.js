@@ -24,8 +24,6 @@ const main = async() => {
         name: 'Metal'
     });
 
-    
-
     const glass = await Material.create({
         name: 'Glass'
     });
@@ -118,6 +116,7 @@ const main = async() => {
     await leaveNoFootprint.addMaterial(metal)
     await leaveNoFootprint.addMaterial(paper)
 
+    
 
     //Upcycle location
     // await bigReuse.addMaterial(wood)
