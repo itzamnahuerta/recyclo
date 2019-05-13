@@ -76,6 +76,16 @@ User.hasMany(Location, {
 
 Location.belongsTo(User)
 
+User.belongsToMany(Location, {
+    through: 'user_location',
+    foreignKey: 'userId'
+
+});
+Location.belongsToMany(User, {
+    through: 'user_location',
+    foreignKey: 'locationId'
+})
+
 module.exports = {
     Location,
     Material,

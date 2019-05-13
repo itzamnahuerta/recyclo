@@ -1,5 +1,7 @@
-import React, {Component} from 'react'
-import '../styles/Materials.scss'
+
+import React, { Component } from 'react'
+// import './Materials.css'
+
 
 
 
