@@ -26,6 +26,10 @@ const Material = db.define('material', {
     name: Sequelize.STRING
 })
 
+const MaterialType = db.define('material_type', {
+    name: Sequelize.STRING
+})
+
 const User = db.define('user', {
     name: {
         type: Sequelize.STRING,
@@ -60,6 +64,9 @@ User.beforeCreate(async (user, options) => {
 User.hasMany(Material)
 Material.belongsTo(User)
 
+Material.hasMany(MaterialType)
+MaterialType.belongsTo(Material)
+
 Material.belongsToMany(Location, {
     through: 'material_location',
     foreignKey: 'materialId'
@@ -69,12 +76,6 @@ Location.belongsToMany(Material, {
     through: 'material_location',
     foreignKey: 'locationId'
 })
-
-User.hasMany(Location, {
-    onDelete: 'cascade'
-});
-
-Location.belongsTo(User)
 
 User.belongsToMany(Location, {
     through: 'user_location',
@@ -86,9 +87,10 @@ Location.belongsToMany(User, {
     foreignKey: 'locationId'
 })
 
-module.exports = {
-    Location,
+module.exports = { 
+    MaterialType,   
     Material,
+    Location,
     User,
     db
 }
