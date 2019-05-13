@@ -94,6 +94,15 @@ const main = async() => {
         longitude: '-73.996964'
     })
 
+    const cooperTank = await Location.create({
+        name: 'Cooper Tank Recycling', 
+        phone_number: '7183847727',
+        url: 'http://coopertankrecycling.com',
+        postal_code: '11237',
+        latitude: '40.709921',
+        longitude: '-73.928795'
+    })
+
 
 
 
@@ -116,10 +125,13 @@ const main = async() => {
     await leaveNoFootprint.addMaterial(metal)
     await leaveNoFootprint.addMaterial(paper)
 
-    
-
     //Upcycle location
-    // await bigReuse.addMaterial(wood)
+    await bigReuse.addMaterial(wood)
+
+    await cooperTank.addMaterial(paper)
+    await cooperTank.addMaterial(wood)
+    await cooperTank.addMaterial(metal)
+
 
 
 
