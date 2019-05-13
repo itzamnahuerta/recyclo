@@ -6,6 +6,7 @@ Recyclo is an application that both informs users on recycling materials and loc
 
 
 ### Package Dependencies: 
+- [react]()
 - [axios]()
 - [nodemon]()
 - [passport]()
