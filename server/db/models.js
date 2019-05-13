@@ -1,4 +1,6 @@
-const { Sequelize } = require('sequelize');
+const {
+    Sequelize
+} = require('sequelize');
 const bcrypt = require('bcrypt')
 
 
@@ -8,7 +10,7 @@ const db = new Sequelize({
     define: {
         underscored: true
     },
-}) 
+})
 
 
 const Location = db.define('location', {
@@ -25,14 +27,17 @@ const Material = db.define('material', {
 })
 
 const User = db.define('user', {
-    name: Sequelize.STRING,
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
-      }
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+            isEmail: true
+        }
     },
     username: {
         type: Sequelize.STRING,
@@ -40,14 +45,14 @@ const User = db.define('user', {
         unique: true
     },
     password: {
-      type: Sequelize.STRING,
-      allowNull: false
+        type: Sequelize.STRING,
+        allowNull: false
     }
-  })
+})
 
-  User.beforeCreate(async (user, options) => {
+User.beforeCreate(async (user, options) => {
     const hashedPassword = await bcrypt.hash(user.password, 12)
-  user.password = hashedPassword
+    user.password = hashedPassword
 });
 
 /* I think these relationships make sense, but of course feel free to counter! The onDelete is in place so that if a user deletes a location from their 'favorites' list*/
@@ -72,7 +77,7 @@ User.hasMany(Location, {
 Location.belongsTo(User)
 
 module.exports = {
-    Location, 
+    Location,
     Material,
     User,
     db
