@@ -13,7 +13,7 @@ function App() {
     <h1> recyclo. </h1>
     <Header />
     <Materials />
-    {/* <LoginForm/> */}
+    <LoginForm/>
     <CreateUser/>
     </div>
   );
