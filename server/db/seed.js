@@ -111,11 +111,70 @@ const main = async() => {
         longitude: '-73.928795'
     })
 
+    const greenTreeMorning = = await Location.create({
+        name: `Green Tree Recycling - Morningside Park’s Down to Earth Farmers Market`, 
+        phone_number: '',
+        url: 'https://www.greentreetextiles.org/farmersmarkets/',
+        postal_code: '10026',
+        latitude: '40.798271',
+        longitude: '-73.95253'
+    })
 
+    const greenTreeOssining = = await Location.create({
+        name: `Green Tree Recycling - Ossining’s Down to Earth Farmers Market`, 
+        phone_number: '',
+        url: 'https://www.greentreetextiles.org/farmersmarkets/',
+        postal_code: '10562',
+        latitude: '41.161527',
+        longitude: '-73.862395'
+    })
 
+    const greenTreeHarvest = await Location.create({
+        name: `Green Tree Recycling - Harvest Home Market`, 
+        phone_number: '',
+        url: 'https://www.greentreetextiles.org/farmersmarkets/',
+        postal_code: '10026',
+        latitude: '40.802433',
+        longitude: '-73.949015'
+    })
 
+    const greenTreeUES = await Location.create({
+        name: `Green Tree Recycling - Upper East Side Manhattan`, 
+        phone_number: '',
+        url: 'https://www.greentreetextiles.org/farmersmarkets/',
+        postal_code: '10029',
+        latitude: '40.7907798',
+        longitude: '-73.9391947'
+    })
 
+    const greenTreeParkSlope = await Location.create({
+        name: `Green Tree Recycling - Down to Earth Park Slope Farmers Market`,
+        phone_number: '',
+        url: 'https://www.greentreetextiles.org/farmersmarkets/',
+        postal_code: '11215',
+        latitude: '40.682534',
+        longitude: '-73.976332'
+    })
 
+    const greenTreeStuy = await Location.create({
+        name: `Green Tree Recycling - Stuyvesant Town Greenmarket`,
+        phone_number: '',
+        url: 'https://www.greentreetextiles.org/farmersmarkets/',
+        postal_code: '10009',
+        latitude: '40.712728',
+        longitude: '-74.006015'
+    })
+
+    const greenTreeStuy = await Location.create({
+        name: `Green Tree Recycling - Riverdale Y Sunday Farmers Market`,
+        phone_number: '',
+        url: 'https://www.greentreetextiles.org/farmersmarkets/',
+        postal_code: '10463',
+        latitude: '40.887784',
+        longitude: '-73.913587'
+    })
+
+    
     await newStyle.addMaterial(plastic)
     await newStyle.addMaterial(glass)
     await newStyle.addMaterial(metal)
@@ -140,6 +199,13 @@ const main = async() => {
     await cooperTank.addMaterial(paper)
     await cooperTank.addMaterial(wood)
     await cooperTank.addMaterial(metal)
+
+    await greenTreeHarvest.addMaterial(textile)
+    await greenTreeMorning.addMaterial(textile)
+    await greenTreeOssining.addMaterial(textile)
+    await greenTreeParkSlope.addMaterial(textile)
+    await greenTreeStuy.addMaterial(textile)
+    await greenTreeUES.addMaterial(textile)
 
 
 
