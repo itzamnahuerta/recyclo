@@ -98,8 +98,21 @@ Location.belongsToMany(User, {
     foreignKey: 'locationId'
 })
 
+
+User.belongsToMany(Location, {
+    through: 'user_location',
+    foreignKey: 'userId'
+
+});
+Location.belongsToMany(User, {
+    through: 'user_location',
+    foreignKey: 'locationId'
+})
+
+
 module.exports = { 
     MaterialType,   
+
     Material,
     Location,
     User,

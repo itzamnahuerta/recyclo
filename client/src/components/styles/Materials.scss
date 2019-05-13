@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+
+.Materials{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    div{ 
+        align-content: center;
+        // text-align: center;
+        // justify-content: center;
+        width: 900px;
+        height: 400px;
+        font-size: 60pt;
+        margin: 6%;
+        font-family: 'Roboto', sans-serif;
+
+    }
+    .Plastic {
+        background-color: #dacf00;
+    }
+    .Metals {
+        background-color: #fd8a34;
+    }
+    .Textile {
+        background-color: #79cfca;
+    }
+    .MixPaper {
+        background-color: #61c900;;
+    }
+}

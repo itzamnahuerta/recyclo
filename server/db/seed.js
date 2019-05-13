@@ -1,4 +1,5 @@
 
+
 const { User, Material, Location, MaterialType } = require('./models');
 
 // const createLOCATION = (name, pN, url, pc, lat,long , mat = 'glass') =>
@@ -12,7 +13,6 @@ const { User, Material, Location, MaterialType } = require('./models');
 //     mat: mat,
 // }
 // }
-
 
 const main = async () => {
     await Material.destroy({
@@ -39,6 +39,7 @@ const main = async () => {
     });
 
 
+
     const wood = await Material.create({
         name: 'Wood'
     })
@@ -58,7 +59,6 @@ const main = async () => {
         password: 'test1'
     });
 
-
     const newStyle = await Location.create({
         name: 'New Style Recycling',
         phone_number: '7183264175',
@@ -67,6 +67,7 @@ const main = async () => {
         latitude: '40.741895',
         longitude: '-73.989308'
     })
+
 
 
     const greenChip = await Location.create({
@@ -199,10 +200,8 @@ const main = async () => {
 
     
     await newStyle.addMaterial(plastic)
-
     await newStyle.addMaterial(glass)
     await newStyle.addMaterial(metal)
-
     await greenChip.addMaterial(metal)
 
     await simsMunicipal.addMaterial(plastic)
@@ -233,9 +232,6 @@ const main = async () => {
     await greenTreeRiverdale.addMaterial(textile)
 
     await fabscrap.addMaterial(textile)
-
-
-
 
 
 }
