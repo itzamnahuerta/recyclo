@@ -24,6 +24,8 @@ const main = async() => {
         name: 'Metal'
     });
 
+    
+
     const glass = await Material.create({
         name: 'Glass'
     });
@@ -120,7 +122,7 @@ const main = async() => {
     //Upcycle location
     // await bigReuse.addMaterial(wood)
 
-    
+
 
 
 } 
