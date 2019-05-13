@@ -13,11 +13,11 @@ const db = new Sequelize({
 
 const Location = db.define('location', {
     name: Sequelize.STRING,
-    phone_number: Sequelize.INTEGER,
+    phone_number: Sequelize.BIGINT,
     url: Sequelize.STRING,
     postal_code: Sequelize.INTEGER,
-    latitude: Sequelize.INTEGER,
-    longitude: Sequelize.INTEGER
+    latitude: Sequelize.DECIMAL,
+    longitude: Sequelize.DECIMAL
 })
 
 const Material = db.define('material', {
@@ -50,8 +50,15 @@ const User = db.define('user', {
 User.hasMany(Material)
 Material.belongsTo(User)
 
-Material.belongsToMany(Location, {through: 'material_location'});
-Location.belongsToMany(Material, {through: 'material_location'})
+Material.belongsToMany(Location, {
+    through: 'material_location',
+    foreignKey: 'materialId'
+
+});
+Location.belongsToMany(Material, {
+    through: 'material_location',
+    foreignKey: 'locationId'
+})
 
 User.hasMany(Location, {
     onDelete: 'cascade'
