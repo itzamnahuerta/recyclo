@@ -1,15 +1,18 @@
+
 import React, { Component } from 'react'
 // import './Materials.css'
 
-export default class Materials extends Component {
+
+
+
+export default class Materials extends Component  {
   render() {
     return (
       <div className='Materials'>
-        <div className="Plastic"> Plastic </div>
-
-        <div className="Metals"> Metals </div>
-        <div className="Textile"> Textile </div>
-        <div className="MixPaper">Mix-Paper </div> 
+        <div className="Plastic"> PLASTIC </div>
+        <div className="Metals"> METALS </div>
+        <div className="Textile"> TEXTILE</div>
+        <div className="MixPaper">MIX-PAPER </div> 
       </div>
     )
   }
