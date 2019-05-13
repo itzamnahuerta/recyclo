@@ -16,6 +16,7 @@ const db = new Sequelize({
 const Location = db.define('location', {
     name: Sequelize.STRING,
     phone_number: Sequelize.BIGINT,
+
     url: Sequelize.STRING,
     postal_code: Sequelize.INTEGER,
     latitude: Sequelize.DECIMAL,
@@ -23,6 +24,10 @@ const Location = db.define('location', {
 })
 
 const Material = db.define('material', {
+    name: Sequelize.STRING
+})
+
+const MaterialType = db.define('material_type', {
     name: Sequelize.STRING
 })
 
@@ -60,6 +65,19 @@ User.beforeCreate(async (user, options) => {
 User.hasMany(Material)
 Material.belongsTo(User)
 
+Material.hasMany(MaterialType)
+MaterialType.belongsTo(Material)
+
+// MaterialType.belongsToMany(Location, {
+//     through: 'material_type_location',
+//     foreignKey: 'materialTypeId'
+// })
+
+// Location.belongsToMany(MaterialType, {
+//     through: 'material_type_location',
+//     foreignKey:'locationId'
+// })
+
 Material.belongsToMany(Location, {
     through: 'material_location',
     foreignKey: 'materialId'
@@ -69,12 +87,6 @@ Location.belongsToMany(Material, {
     through: 'material_location',
     foreignKey: 'locationId'
 })
-
-User.hasMany(Location, {
-    onDelete: 'cascade'
-});
-
-Location.belongsTo(User)
 
 User.belongsToMany(Location, {
     through: 'user_location',
@@ -86,9 +98,23 @@ Location.belongsToMany(User, {
     foreignKey: 'locationId'
 })
 
-module.exports = {
-    Location,
+
+User.belongsToMany(Location, {
+    through: 'user_location',
+    foreignKey: 'userId'
+
+});
+Location.belongsToMany(User, {
+    through: 'user_location',
+    foreignKey: 'locationId'
+})
+
+
+module.exports = { 
+    MaterialType,   
+
     Material,
+    Location,
     User,
     db
 }
