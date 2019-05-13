@@ -22,6 +22,8 @@ const Location = db.define('location', {
     longitude: Sequelize.DECIMAL
 })
 
+const MaterialLocation = db.define('material_location');
+
 const Material = db.define('material', {
     name: Sequelize.STRING
 })
@@ -66,6 +68,16 @@ Material.belongsTo(User)
 
 Material.hasMany(MaterialType)
 MaterialType.belongsTo(Material)
+
+MaterialType.belongsToMany(Location, {
+    through: 'material_location',
+    foreignKey: 'material_typeId'
+})
+
+Location.belongsToMany(MaterialType, {
+    through: 'material_location',
+    foreignKey:'locationId'
+})
 
 Material.belongsToMany(Location, {
     through: 'material_location',
