@@ -1,15 +1,23 @@
 # Recyclo 
 ###### Group Members: Andre Pato Itzamna Huerta, Jack Gay
 
-#####Ovbjective: 
+### Objective: 
 Recyclo is an application that both informs users on recycling materials and locates centers to dispose them in New York City. Users are able to create a profile which allows them to favorite their locations and add new recycle locations onto a map. 
 
 
-#####Package Dependencies: 
+### Package Dependencies: 
 - [axios]()
 - [nodemon]()
 - [passport]()
 - [passport-jwt]()
+- [bcrypt]()
+- [body-parser]()
+- [cors]()
+- [dotenv]()
+- [express]()
+- [morgan]()
+- [pg]()
+- [sequelize]()
 
 ### ERD
 ![ERD](https://user-images.githubusercontent.com/36831606/57632867-7e769b80-7570-11e9-9a26-609663eebd0c.png)
