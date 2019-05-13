@@ -40,6 +40,14 @@ const main = async() => {
         name: 'Wood'
     })
 
+    const textile = await Material.create({
+        name: 'Textile'
+    })
+
+    const misc = await Material.create({
+        name: 'Miscellaneous'
+    })
+
     const newStyle = await Location.create({
         name: 'New Style Recycling',
         phone_number: '7183264175',
@@ -127,6 +135,7 @@ const main = async() => {
 
     //Upcycle location
     await bigReuse.addMaterial(wood)
+    await bigReuse.addMaterial(textile)
 
     await cooperTank.addMaterial(paper)
     await cooperTank.addMaterial(wood)

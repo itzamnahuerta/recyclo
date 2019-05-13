@@ -27,9 +27,9 @@ const Material = db.define('material', {
     name: Sequelize.STRING
 })
 
-const MaterialType = db.define('material_type', {
-    name: Sequelize.STRING
-})
+// const MaterialType = db.define('material_type', {
+//     name: Sequelize.STRING
+// })
 
 const User = db.define('user', {
     name: {
