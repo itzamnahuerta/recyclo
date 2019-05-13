@@ -17,7 +17,7 @@ MaterialRoute.get('/materials/:name/', async (req,res) => {
             where : {
                 name: req.params.name,
             }
-        })
+        });
         res.send(type);
     } catch (error) {
         throw error;
