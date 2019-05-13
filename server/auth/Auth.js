@@ -12,19 +12,17 @@ const signToken = payload => jwt.sign(payload, SECRET);
 
 // creating user signup
 passport.use('signup', new LocalStrategy({
-    // nameField : 'name',
-    // emailField : 'email',
     usernameField : 'username',
     passwordField : 'password'
-}, async ( username, password, done) => {
-    // console.log(name)
+}, async ( username,password, done) => {
+    console.log(username)
     try {
         const user = await User.create({username,password});
         console.log('***finding user', user)
         if(!user){
             return done(null,false, {msg: 'Unable to create user'})
         }
-        console.log(user.name);
+        console.log(user);
         done(null, user);
     } catch (error) {
         console.log(error);

@@ -31,7 +31,10 @@ AuthRouter.post('/login', async (req,res,next) => {
 AuthRouter.post('/signup', async (req,res,next) => {
     passport.authenticate('signup', async (err, user,info) => {
         try {
+            // console.log(user)
             if(!user || err){
+                // console.log(user);
+                
                 let err = new Error('*** cannot create account***');
                 err.status = 400
                 return next(err);

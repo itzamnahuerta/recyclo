@@ -25,17 +25,18 @@ const Material = db.define('material', {
 })
 
 const User = db.define('user', {
-    name: {
-      type:  Sequelize.STRING,
-    },
-    email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
-      }
-    },
+    // name: {
+    //   type:  Sequelize.STRING,
+    //   allowNull: false
+    // },
+    // email: {
+    //   type: Sequelize.STRING,
+    //   allowNull: false,
+    //   unique: true,
+    //   validate: {
+    //     isEmail: true
+    //   }
+    // },
     username: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -45,7 +46,7 @@ const User = db.define('user', {
       type: Sequelize.STRING,
       allowNull: false
     }
-  })
+})
 
   User.beforeCreate(async (user, options) => {
     const hashedPassword = await bcrypt.hash(user.password, 12)
@@ -54,24 +55,24 @@ const User = db.define('user', {
 
 /* I think these relationships make sense, but of course feel free to counter! The onDelete is in place so that if a user deletes a location from their 'favorites' list*/
 
-// User.hasMany(Material)
-// Material.belongsTo(User)
+User.hasMany(Material)
+Material.belongsTo(User)
 
-// Material.belongsToMany(Location, {
-//     through: 'material_location',
-//     foreignKey: 'materialId'
+Material.belongsToMany(Location, {
+    through: 'material_location',
+    foreignKey: 'materialId'
 
-// });
-// Location.belongsToMany(Material, {
-//     through: 'material_location',
-//     foreignKey: 'locationId'
-// })
+});
+Location.belongsToMany(Material, {
+    through: 'material_location',
+    foreignKey: 'locationId'
+})
 
-// User.hasMany(Location, {
-//     onDelete: 'cascade'
-// });
+User.hasMany(Location, {
+    onDelete: 'cascade'
+});
 
-// Location.belongsTo(User)
+Location.belongsTo(User)
 
 module.exports = {
     Location, 
