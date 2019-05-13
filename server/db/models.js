@@ -1,4 +1,6 @@
-const { Sequelize } = require('sequelize');
+const {
+    Sequelize
+} = require('sequelize');
 const bcrypt = require('bcrypt')
 
 
@@ -8,16 +10,16 @@ const db = new Sequelize({
     define: {
         underscored: true
     },
-}) 
+})
 
 
 const Location = db.define('location', {
     name: Sequelize.STRING,
-    phone_number: Sequelize.INTEGER,
+    phone_number: Sequelize.BIGINT,
     url: Sequelize.STRING,
     postal_code: Sequelize.INTEGER,
-    latitude: Sequelize.INTEGER,
-    longitude: Sequelize.INTEGER
+    latitude: Sequelize.DECIMAL,
+    longitude: Sequelize.DECIMAL
 })
 
 const Material = db.define('material', {
@@ -25,24 +27,32 @@ const Material = db.define('material', {
 })
 
 const User = db.define('user', {
-    name: Sequelize.STRING,
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
-      }
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+            isEmail: true
+        }
+    },
+    username: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
     },
     password: {
-      type: Sequelize.STRING,
-      allowNull: false
+        type: Sequelize.STRING,
+        allowNull: false
     }
-  })
+})
 
-  User.beforeCreate(async (user, options) => {
+User.beforeCreate(async (user, options) => {
     const hashedPassword = await bcrypt.hash(user.password, 12)
-  user.password = hashedPassword
+    user.password = hashedPassword
 });
 
 /* I think these relationships make sense, but of course feel free to counter! The onDelete is in place so that if a user deletes a location from their 'favorites' list*/
@@ -50,8 +60,15 @@ const User = db.define('user', {
 User.hasMany(Material)
 Material.belongsTo(User)
 
-Material.belongsToMany(Location, {through: 'material_location'});
-Location.belongsToMany(Material, {through: 'material_location'})
+Material.belongsToMany(Location, {
+    through: 'material_location',
+    foreignKey: 'materialId'
+
+});
+Location.belongsToMany(Material, {
+    through: 'material_location',
+    foreignKey: 'locationId'
+})
 
 User.hasMany(Location, {
     onDelete: 'cascade'
@@ -60,7 +77,7 @@ User.hasMany(Location, {
 Location.belongsTo(User)
 
 module.exports = {
-    Location, 
+    Location,
     Material,
     User,
     db
