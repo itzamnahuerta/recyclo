@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const AuthRouter = require('./routes/AuthRouter');
+const MaterialRoute = require('./routes/MaterialRoute')
 
 const PORT = process.env.PORT || 3001;
 
@@ -25,12 +26,14 @@ app.get('/', async(req,res) =>  {
     }
 });
 
-// app.use((err, req, res, next) => {
-//     // render the error 
-//     console.log('error in error handler', err)
-//     res.status(err.status || 500);
-//     res.json({ message: err.message });
-// });
+app.use((err, req, res, next) => {
+    // render the error 
+    console.log('error in error handler', err)
+    res.status(err.status || 500);
+    res.json({ message: err.message });
+});
+
+app.use('/content', MaterialRoute);
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}!`);
