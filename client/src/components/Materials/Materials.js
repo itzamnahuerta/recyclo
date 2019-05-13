@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Materials.css'
+// import './Materials.css'
 
 export default class Materials extends Component {
   render() {
