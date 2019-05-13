@@ -38,7 +38,7 @@ class CreateUser extends Component {
     render() {
         const {name,password,email,username} = this.state;
         return (
-            <div className="signup-form">
+            <div className={this.props.toggleForm}>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
                     <label>Name</label>
                     <input type="text" name="name" value={name} />
