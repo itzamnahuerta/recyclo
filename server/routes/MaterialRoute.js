@@ -24,7 +24,7 @@ MaterialRoute.get('/materials/:name/', async (req,res) => {
     }
 });
 
-MaterialRoute.post('/materials/:name', async (req,res) => {
+MaterialRoute.post('/materials/', async (req,res) => {
     try {
         const create = await Material.create(req.body);
         res.send(create)
