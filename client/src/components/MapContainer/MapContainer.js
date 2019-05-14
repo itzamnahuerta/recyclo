@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Map from '../Map/Map';
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:3001/content'
 
 class MapContainer extends Component {
     
@@ -21,13 +24,11 @@ class MapContainer extends Component {
     // }
 
     render() {
-        // let materialsUpdate = this.state.materials
-        // let locationsUpdate = this.state.locations
-        // console.log(locationsUpdate)
-        console.log(this.props.locationList)
+        // const locationData = this.state.data
+        // console.log(locationData)
         return (
             <div>
-                <Map component={Map}  />
+                <Map component={Map} />
             </div>
         );
     }

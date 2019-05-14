@@ -32,6 +32,8 @@ app.get('/', async(req,res) =>  {
     }
 });
 
+
+
 app.use((err, req, res, next) => {
     // render the error 
     console.log('error in error handler', err)
