@@ -1,6 +1,6 @@
 const express = require('express');
-// const LocationRoute = express.Router();
-// const { Location  } = require('../db/models');
+const LocationRoute = express.Router();
+const { Location  } = require('../db/models');
 
 LocationRoute.get('/locations', async(req,res) =>{
     try {
@@ -12,12 +12,14 @@ LocationRoute.get('/locations', async(req,res) =>{
 });
 
 LocationRoute.get('/locations/:name', async (req,res) => {
-    try {        
+    try {
+        
         const locationName = await Location.findAll({
             where: {
                 name: req.params.name
             }
-        });        
+        });
+        console.log(req.params.name)
         res.send(locationName);
     } catch (error) {
         throw error
