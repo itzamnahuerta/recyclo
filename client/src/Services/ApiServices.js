@@ -34,3 +34,43 @@ export const signup = async (data) => {
         throw error
     }
 }
+
+export const getMaterials = async (data) => {
+    try {
+        const resp = await api.get('/content/materials');
+        console.log(resp);
+        return resp;
+    } catch (error) {
+        throw error
+    }
+}
+
+export const postMaterials = async (data) => {
+    try {
+        const resp = await api.post('/content/materials', data);
+        console.log(resp);
+        return resp;
+    } catch (error) {
+        throw error
+    }
+}
+
+export const getLocations = async () => {
+    try {
+        const resp = await api.get('/content/locations');
+        console.log(resp);
+        return resp;
+    } catch (error) {
+        throw error
+    }
+}
+
+export const postLocations = async (data) => {
+    try {
+        const resp = await api.post('/content/locations', data);
+        console.log(resp);
+        return resp;
+    } catch (error) {
+        throw error;
+    }
+}
