@@ -76,9 +76,9 @@ class Map extends Component {
           onViewportChange={(viewport) => this.setState({ viewport })}
           mapboxApiAccessToken={MAPBOX_TOKEN}>
 
-          {crimedata.map(this._renderMarker)}
+          {/* {crimedata.map(this._renderMarker)} */}
 
-          {this.state.popupInfo && this._renderPopup()}
+          {/* {this.state.popupInfo && this._renderPopup()} */}
 
         </ReactMapGL>
       </div>
