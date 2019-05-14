@@ -1,32 +1,114 @@
-.signup-form {
-    display: none;  
-    background: rgba(0,0,0, 0.5);
-    filter: blur(2px);
+.create-account {
+
+    .create-account-btn {
+        top: 1em;
+        left: 1em;
+        position: absolute;
+        border-radius: 6px;
+        border: 2px solid #DACF00;
+        cursor: pointer;
+        background-color: #DACF00;
+        padding: 1em 2em;
+        transition: all 0.4s;
+        font-weight: 800;
+        box-shadow: 3px 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .create-account-btn:hover {
+        background-color: #FD8934;
+        border: 2px solid #FD8934;
+    }
+
 }
 
-.show {
-    display: block;
+.signup-form {
     position: absolute;
-    z-index: 100;
+    top: 0px;
+    z-index: 1000;
     width: 100%;
     height: 100%;
-
+    justify-content: center;
+    transition: all 0.5s;
+    background: rgba(0,0,0, 0.9);
+    backdrop-filter: blur(10px);
 
     .form-container {
+        position: relative;
+        top: 30%;
+        width: 100%;
+
+        .close {
+            position: relative;
+            top: 0;
+            left: 70%;
+            font-size: 1.5em;
+            width: 2em;
+            height: 2em;
+            color: #f4f4f4;
+            background-color: transparent;
+            border: none;
+            color: #DACF00;
+            font-weight: 800;
+            transition: all 0.4s;
+        }
+
+        .close:active, .close:focus {
+            outline:none;
+        }
+
+        .close:hover {
+            color: #FD8934;
+        }
+
         form {
             display: flex;
             align-content: center;
             justify-content: center;
             flex-direction: column;
-            width: 50%;
+            width: 40%;
             margin: auto;
             z-index: 1000;
         }
-    
+
+        label {
+            color: #f4f4f4;
+            margin-bottom: .5em;
+        }
+
         input{
-    
+            margin-bottom: .5em;
+            height: 2em;
+            border-radius: 6px;
+            border: 2px solid #f4f4f4;
+            transition: all 0.4s;
+            padding: 0 .4em;
+        }
+
+        input:active, input:focus {
+            outline: none;
+            border: 2px solid red;
+        }
+
+        button {
+            width: 40%;
+            height: 3em;
+            margin: auto;
+            border-radius: 6px;
+            border: 2px solid #f4f4f4;
+            cursor: pointer;
         }
     }
+    
 
+}
 
+.show {
+    opacity: 1;
+    transition: all 0.5s;
+    transform: translateY(0);
+    position: fixed;
+}
+
+.hide {
+    transform: translateY(-100%);
 }
