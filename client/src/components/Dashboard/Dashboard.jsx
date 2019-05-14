@@ -54,7 +54,7 @@ class Dashboard extends Component {
             <div className="dashboard">
             <FiMenu/>
             <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
-                <MapContainer/>
+                <MapContainer materialList={materialList} locationList={locationList} />
             </div>
         );
     }

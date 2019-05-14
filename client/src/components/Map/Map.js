@@ -29,10 +29,11 @@ class Map extends Component {
       <Marker key={`locations-${i}`} longitude={long} latitude={lat} >
         <MapPin
           size={15}
-          onClick={() =>
-            this.setState({ popupInfo: locations })}
+          // onClick={() =>
+          //   this.setState({ popupInfo:  })}
         />
       </Marker>
+      
     );
   }
 
@@ -54,7 +55,7 @@ class Map extends Component {
 
   render() {
     const { viewport } = this.state;
-    // const locations = this.props.locations
+    const locations = this.props.locationData
     
     return (
       <div className="center-map">

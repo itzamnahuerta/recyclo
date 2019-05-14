@@ -3,31 +3,17 @@ import Map from '../Map/Map';
 
 class MapContainer extends Component {
     
-    // getLocationInfo() {
-    //     const url = `${BASE_URL}/locations`
-    //     axios.get(url)
-    //     .then(response => {
-    //         this.setState({
-    //             data: response.data
-    //         });            
-    //     })
-    //     .catch((e)  => {
-    //         console.log(`getlocationinfo error: ${e} ` )
-    //     });
-    // }
-
-    // componentDidMount() {
-    //     this.getLocationInfo();
-    // }
 
     render() {
+        const locationData = this.props.locationList
+        console.log(this.props.locationList)
         // let materialsUpdate = this.state.materials
         // let locationsUpdate = this.state.locations
         // console.log(locationsUpdate)
-        console.log(this.props.locationList)
+        
         return (
             <div>
-                <Map component={Map}  />
+                <Map component={Map} locationData={locationData} />
             </div>
         );
     }
