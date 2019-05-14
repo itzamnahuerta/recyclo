@@ -1,6 +1,9 @@
 import React from 'react';
+<<<<<<< Updated upstream
 // import "./styles/App.scss";
 
+=======
+>>>>>>> Stashed changes
 import './styles/App.scss'
 
 import Header from './components/Header/Header'
