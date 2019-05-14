@@ -38,12 +38,11 @@ class LoginForm extends Component {
         const {username, password} = this.state;
         return (
             <div className="login-form">
+                <h3>Login</h3>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
-                    <label>Username</label>
-                    <input type="text" name='username' value={username}/>
-                    <label>password</label>
-                    <input type="password" name='password' value={password}/>
-                    <button type="submit">Login</button>
+                    <input type="text" name='username' value={username} placeholder="Username" />
+                    <input type="password" name='password' value={password} placeholder="Password"/>
+                    <button type="submit" className="sign-in-btn">Login</button>
                 </form> 
             </div>
         );
