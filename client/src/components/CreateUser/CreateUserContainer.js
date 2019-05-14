@@ -15,11 +15,11 @@ class CreateUserContainer extends Component {
 
     render() {
         const {isClicked} = this.state;
-        const toggleForm = isClicked === true ? 'signup-form show': 'signup-form'
+        const toggleForm = isClicked === true ? 'signup-form show': 'signup-form hide'
         return (
-            <div>
-                <CreateUser toggleForm={toggleForm}/>
-                <button onClick={this.handleClick}>Click</button>
+            <div className="create-account">
+                <CreateUser toggleForm={toggleForm} handleClick={this.handleClick}/>
+                <button className="create-account-btn" onClick={this.handleClick}>Create Account</button>
             </div>
         );
     }

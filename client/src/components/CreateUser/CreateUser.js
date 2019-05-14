@@ -39,19 +39,23 @@ class CreateUser extends Component {
         const {name,password,email,username} = this.state;
         return (
             <div className={this.props.toggleForm}>
+            <div className="glass"></div>
             <div className="form-container">
+            <button className="close" type="none" onClick={this.props.handleClick}>X</button>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
+                    
                     <label>Name</label>
-                    <input type="text" name="name" value={name} />
+                    <input type="text" name="name" value={name} placeholder="Name"/>
                     <label>Email</label>
-                    <input type="email" name="email" value={email} />
+                    <input type="email" name="email" value={email} placeholder="Email" />
                     <label>Username</label>
-                    <input type="text" name="username" value={username} />
+                    <input type="text" name="username" value={username} placeholder="Username" />
                     <label>Password</label>
-                    <input type="password" name="password" value={password} />
-                    <button type="submit"> Sign Up</button>
+                    <input type="password" name="password" value={password} placeholder="Password" />
+                    <button type="submit" className="sign-up-btn"> Sign Up</button>
                 </form>
                 </div>
+                
             </div>
         );
     }
