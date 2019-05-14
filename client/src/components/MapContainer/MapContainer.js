@@ -1,26 +1,13 @@
-import Map from './components/Map/Map'
-
+import React, { Component } from 'react';
+import Map from '../Map/Map';
 class MapContainer extends Component {
-    constructor() {
-        super()
-        this.state = {
-            render() {
-                return (
-                    <div>
-                        <Map component={Map} />
-                    </div>
-    )
-            }
-        }
+    render() {
+        return (
+            <div>
+                <Map />
+            </div>
+        );
     }
 }
 
-export default MapContainer
-
-
-
-
-
-
-
- 
+export default MapContainer;

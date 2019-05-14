@@ -59,7 +59,7 @@ export const getLocations = async () => {
     try {
         const resp = await api.get('/content/locations');
         console.log(resp);
-        return resp;
+        return resp.data;
     } catch (error) {
         throw error
     }
