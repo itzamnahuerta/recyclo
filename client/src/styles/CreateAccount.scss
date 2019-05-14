@@ -81,12 +81,20 @@
             border-radius: 6px;
             border: 2px solid #f4f4f4;
             transition: all 0.4s;
-            padding: 0 .4em;
+            padding: .5em .4em;
         }
 
         input:active, input:focus {
             outline: none;
             border: 2px solid red;
+        }
+        input::placeholder, input::placeholder{
+            transition: all 0.4s;
+            opacity: 1;
+        }
+
+        input:focus::placeholder, input:focus::placeholder{
+            opacity: 0;
         }
 
         button {
