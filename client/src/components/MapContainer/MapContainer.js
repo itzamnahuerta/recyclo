@@ -5,29 +5,23 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:3001/content'
 
 class MapContainer extends Component {
-    constructor(){
-        super();
-        this.state = {
-            data: {}
-        }
-    }
+    
+    // getLocationInfo() {
+    //     const url = `${BASE_URL}/locations`
+    //     axios.get(url)
+    //     .then(response => {
+    //         this.setState({
+    //             data: response.data
+    //         });            
+    //     })
+    //     .catch((e)  => {
+    //         console.log(`getlocationinfo error: ${e} ` )
+    //     });
+    // }
 
-    getLocationInfo() {
-        const url = `${BASE_URL}/locations`
-        axios.get(url)
-        .then(res => {
-            this.setState({
-                data: res.data
-            });            
-        })
-        .catch((e)  => {
-            console.log(`getlocationinfo error:${e} ` )
-        });
-    }
-
-    componentDidMount() {
-        this.getLocationInfo();
-    }
+    // componentDidMount() {
+    //     this.getLocationInfo();
+    // }
 
     render() {
         const locationData = this.state.data

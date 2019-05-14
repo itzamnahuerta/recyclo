@@ -72,7 +72,7 @@ class Map extends Component {
           onViewportChange={(viewport) => this.setState({ viewport })}
           mapboxApiAccessToken={MAPBOX_TOKEN}>
 
-          {locationdata.map(this._renderMarker)}
+          {/* {locationdata.map(this._renderMarker)} */}
 
           {/* {this.state.popupInfo && this._renderPopup()} */}
 
