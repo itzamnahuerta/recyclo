@@ -53,8 +53,13 @@ class Dashboard extends Component {
         return (
             <div className="dashboard">
             <FiMenu/>
+<<<<<<< HEAD
             <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
                 <MapContainer/>
+=======
+            <HamburgerMenu materialList={materialList} locationList={locationList} />
+                <MapContainer materialList={materialList} locationList={locationList}/>
+>>>>>>> bc98f61627d888e0b4fdb65e8298f59f40fb4924
             </div>
         );
     }
