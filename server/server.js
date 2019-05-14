@@ -9,6 +9,9 @@ const AppRouter = require('./routes/AppRouter');
 const MaterialRoute = require('./routes/MaterialRoute');
 const LocationRoute = require('./routes/LocationRoute');
 
+
+
+
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -39,6 +42,10 @@ app.use((err, req, res, next) => {
 
 app.use('/content', MaterialRoute);
 app.use('/content', LocationRoute);
+
+
+
+
 
 
 

@@ -208,7 +208,7 @@ const main = async () => {
     await simsMunicipal.addMaterial(glass)
     await simsMunicipal.addMaterial(metal)
 
-    // await wearCollections.addMaterial()
+    await wearCollections.addMaterial(textile)
 
     await leaveNoFootprint.addMaterial(plastic)
     await leaveNoFootprint.addMaterial(glass)
@@ -232,6 +232,7 @@ const main = async () => {
     await greenTreeRiverdale.addMaterial(textile)
 
     await fabscrap.addMaterial(textile)
+    await fabscrap.addMaterial(misc)
 
 
 }
