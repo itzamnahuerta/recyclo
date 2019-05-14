@@ -1,6 +1,6 @@
 const express = require('express');
 const LocationRoute = express.Router();
-const { Location  } = require('../db/models');
+// const { Location  } = require('../db/models');
 
 LocationRoute.get('/locations', async(req,res) =>{
     try {

@@ -1,5 +1,7 @@
 const express = require('express');
 const { Material } = require('../db/models');
+const { Location  } = require('../db/models');
+
 const MaterialRoute = express.Router();
 
 MaterialRoute.get('/materials', async(req,res) => {
