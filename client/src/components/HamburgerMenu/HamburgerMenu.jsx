@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 
 class HamburgerMenu extends Component {
 
-    handleItemClick = e => {
-        const target = e.target.getAttribute('name')
-        console.log('name',target, 'value',e.target.value)
-    }
+
 
     render() {
         const { locationList, materialList } = this.props;
@@ -17,7 +14,7 @@ class HamburgerMenu extends Component {
                                 key={material.id} 
                                 name={material.name} 
                                 value={material.id}
-                                onClick={this.handleItemClick}>
+                                onClick={this.props.handleItemClick}>
                             {material.name}
                             </li>
                 }) : <h3>No Data</h3>}
@@ -28,7 +25,7 @@ class HamburgerMenu extends Component {
                                 key={index} 
                                 name={location.latitude} 
                                 value={location.longitude}
-                                onClick={this.handleItemClick}>
+                                onClick={this.props.handleItemClick}>
                             {location.name}
                             </li>
                 }) : <h3>No Data</h3>}

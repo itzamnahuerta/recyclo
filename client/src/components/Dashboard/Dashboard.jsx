@@ -9,6 +9,7 @@ class Dashboard extends Component {
         this.state = {
             isClicked: false,
             isOpen : false,
+            selectedItem: [],
             materialList : [],
             locationList: []
         }
@@ -39,12 +40,20 @@ class Dashboard extends Component {
         }
     }
 
+    handleItemClick = e => {
+        const target = e.target.value
+        const name = e.target.getAttribute('name');
+        const items = {name:name, value:target}
+        this.setState({selectedItem:[...this.state.selectedItem,items] })
+    }
+
     render() {
+        // console.log([...this.state.selectedItem])
         const {materialList, locationList} = this.state
         return (
             <div className="dashboard">
             <FiMenu/>
-            <HamburgerMenu materialList={materialList} locationList={locationList} />
+            <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
                 <MapContainer/>
             </div>
         );
