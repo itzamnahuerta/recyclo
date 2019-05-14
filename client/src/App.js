@@ -5,7 +5,7 @@ import './styles/App.scss'
 
 import Header from './components/Header/Header'
 import Materials from './components/Materials/Materials'
-import Map from './components/Map/Map'
+// import Map from './components/Map/Map'
 // import UserProfile from './components/UserProfile/UserProfile'
 import './styles/App.scss';
 
@@ -21,6 +21,7 @@ function App() {
 
     <Header />
     <Materials />
+    {/* <Map component={Map} /> */}
     </div>
   );
 }
