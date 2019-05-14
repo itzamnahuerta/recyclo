@@ -15,7 +15,7 @@ MaterialRoute.get('/materials/:name/', async (req,res) => {
     try {
         const type = await Material.findAll({
             where : {
-                name: req.params.name,
+                name: req.params.name
             }
         });
         res.send(type);

@@ -12,12 +12,12 @@ LocationRoute.get('/locations', async(req,res) =>{
 });
 
 LocationRoute.get('/locations/:name', async (req,res) => {
-    try {
+    try {        
         const locationName = await Location.findAll({
             where: {
                 name: req.params.name
             }
-        });
+        });        
         res.send(locationName);
     } catch (error) {
         throw error
