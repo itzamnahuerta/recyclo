@@ -22,15 +22,15 @@ class Map extends Component {
   };
 
 
-  _renderMarker(locationdata, i) {
-    const lat = Number(locationdata.latitude)
-    const long = Number(locationdata.longitude)
+  _renderMarker(locations, i) {
+    const lat = Number(locations.latitude)
+    const long = Number(locations.longitude)
     return (
-      <Marker key={`locationdata-${i}`} longitude={long} latitude={lat} >
+      <Marker key={`locations-${i}`} longitude={long} latitude={lat} >
         <MapPin
           size={15}
           onClick={() =>
-            this.setState({ popupInfo: locationdata })}
+            this.setState({ popupInfo: locations })}
         />
       </Marker>
     );
@@ -54,10 +54,8 @@ class Map extends Component {
 
   render() {
     const { viewport } = this.state;
-    const locationdata = this.props.locationData
-    console.log(locationdata)
-    console.log(MAPBOX_TOKEN)
-
+    // const locations = this.props.locations
+    
     return (
       <div className="center-map">
         <ReactMapGL
@@ -72,7 +70,7 @@ class Map extends Component {
           onViewportChange={(viewport) => this.setState({ viewport })}
           mapboxApiAccessToken={MAPBOX_TOKEN}>
 
-          {/* {locationdata.map(this._renderMarker)} */}
+          {locations.map(this._renderMarker)}
 
           {/* {this.state.popupInfo && this._renderPopup()} */}
 

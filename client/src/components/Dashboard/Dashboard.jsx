@@ -49,6 +49,7 @@ class Dashboard extends Component {
 
     render() {
         const {materialList, locationList} = this.state
+        console.log(this.state.locationList)
         return (
             <div className="dashboard">
             <FiMenu/>
