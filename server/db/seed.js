@@ -23,33 +23,33 @@ const main = async () => {
     });
 
     const metal = await Material.create({
-        name: 'Metal'
+        name: 'metal'
     });
 
     const glass = await Material.create({
-        name: 'Glass'
+        name: 'glass'
     });
 
     const paper = await Material.create({
-        name: 'Paper'
+        name: 'paper'
     });
 
     const plastic = await Material.create({
-        name: 'Plastic'
+        name: 'plastic'
     });
 
 
 
     const wood = await Material.create({
-        name: 'Wood'
+        name: 'wood'
     })
 
     const textile = await Material.create({
-        name: 'Textile'
+        name: 'textile'
     })
 
     const misc = await Material.create({
-        name: 'Miscellaneous'
+        name: 'miscellaneous'
     })
 
     await User.create({
@@ -208,7 +208,7 @@ const main = async () => {
     await simsMunicipal.addMaterial(glass)
     await simsMunicipal.addMaterial(metal)
 
-    // await wearCollections.addMaterial()
+    await wearCollections.addMaterial(textile)
 
     await leaveNoFootprint.addMaterial(plastic)
     await leaveNoFootprint.addMaterial(glass)
@@ -232,6 +232,7 @@ const main = async () => {
     await greenTreeRiverdale.addMaterial(textile)
 
     await fabscrap.addMaterial(textile)
+    await fabscrap.addMaterial(misc)
 
 
 }
