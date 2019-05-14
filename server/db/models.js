@@ -112,7 +112,6 @@ Location.belongsToMany(User, {
 
 module.exports = { 
     MaterialType,   
-
     Material,
     Location,
     User,
