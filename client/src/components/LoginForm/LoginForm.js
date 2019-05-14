@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CreateUserContainer from '../CreateUser/CreateUserContainer';
 import {login} from '../../Services/ApiServices';
 import { Redirect  } from 'react-router-dom';
+import Dashboard from '../Dashboard/Dashboard';
 
 class LoginForm extends Component {
     constructor(){
@@ -29,10 +30,7 @@ class LoginForm extends Component {
             const resp = await login({username,password});
             console.log(resp);
             this.setState({isAuthenticated: true})
-            if(isAuthenticated === true && error !== true){
-                this.setState({})
-                return <Redirect to='/Dashboard'/>
-            }
+
             this.setState({
                 username: '',
                 password: '',
@@ -58,6 +56,9 @@ class LoginForm extends Component {
         const {username, password, error, isAuthenticated} = this.state;
             if(error === true ){
                 alert('Invalid Login')
+            }
+            if(isAuthenticated === true && error !== true){
+                return <Redirect to='/Dashboard' component={Dashboard}/>
             }
 
         return (

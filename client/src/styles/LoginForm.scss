@@ -20,11 +20,13 @@
         border: 2px solid #79CECA;
         transition: all 0.4s;
         padding: .5em .4em;
+        box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
     }
 
     input:active, input:focus {
         outline: none;
         border: 2px solid #FD8934;
+        transform: scale(1.2);
     }
     input::placeholder, input::placeholder{
         color: #FD8934;
@@ -45,12 +47,14 @@
         font-weight: 800;
         letter-spacing: .3em;
         background-color: #79CECA;
-        border: 2px solid #f4f4f4;
+        border: 2px solid #79CECA;
         cursor: pointer;
         transition: all 0.4s;
+        box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
     }
 
     .sign-in-btn:hover {
+        border:2px solid #FD8934;
         background-color: #FD8934;
     }
 
