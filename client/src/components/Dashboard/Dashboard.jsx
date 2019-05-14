@@ -16,6 +16,7 @@ class Dashboard extends Component {
 
     async componentDidMount() {
         this.fetchMaterials();
+        this.fetchLocations();
     }
 
     fetchMaterials = async () => {
@@ -29,7 +30,16 @@ class Dashboard extends Component {
         }
     }
 
-
+    fetchLocations = async () => {
+        const { locationList  } = this.state;
+        try {
+            const resp = await getLocations(locationList);
+            console.log(resp)
+            this.setState({locationList:resp})
+        } catch (error) {
+            throw error
+        }
+    }
 
     render() {
         return (
