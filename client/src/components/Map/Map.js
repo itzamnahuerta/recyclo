@@ -22,15 +22,15 @@ class Map extends Component {
   };
 
 
-  _renderMarker(crimedata, i) {
-    const lat = Number(crimedata.latitude)
-    const long = Number(crimedata.longitude)
+  _renderMarker(locationdata, i) {
+    const lat = Number(locationdata.latitude)
+    const long = Number(locationdata.longitude)
     return (
-      <Marker key={`crimedata-${i}`} longitude={long} latitude={lat} >
+      <Marker key={`locationdata-${i}`} longitude={long} latitude={lat} >
         <MapPin
           size={15}
           onClick={() =>
-            this.setState({ popupInfo: crimedata })}
+            this.setState({ popupInfo: locationdata })}
         />
       </Marker>
     );
@@ -54,8 +54,8 @@ class Map extends Component {
 
   render() {
     const { viewport } = this.state;
-    const crimedata = this.props.crimeData
-
+    const locationdata = this.props.locationData
+    console.log(locationdata)
     console.log(MAPBOX_TOKEN)
 
     return (
@@ -72,7 +72,7 @@ class Map extends Component {
           onViewportChange={(viewport) => this.setState({ viewport })}
           mapboxApiAccessToken={MAPBOX_TOKEN}>
 
-          {/* {crimedata.map(this._renderMarker)} */}
+          {locationdata.map(this._renderMarker)}
 
           {/* {this.state.popupInfo && this._renderPopup()} */}
 
