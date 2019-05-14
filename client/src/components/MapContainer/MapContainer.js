@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Map from '../Map/Map';
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:3001/content'
 
 class MapContainer extends Component {
     render() {

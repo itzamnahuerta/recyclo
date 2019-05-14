@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MapContainer from '../MapContainer/MapContainer';
+import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import {getMaterials, getLocations} from '../../Services/ApiServices';
@@ -18,6 +19,7 @@ class Dashboard extends Component {
     async componentDidMount() {
         this.fetchMaterials();
         this.fetchLocations();
+        await getUser()
     }
 
     fetchMaterials = async () => {
