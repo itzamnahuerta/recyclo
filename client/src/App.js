@@ -1,6 +1,6 @@
 import React from 'react';
 // import "./styles/App.scss";
-
+import {Route} from 'react-router-dom';
 import './styles/App.scss'
 
 import Header from './components/Header/Header'
@@ -8,6 +8,7 @@ import Materials from './components/Materials/Materials'
 // import Map from './components/Map/Map'
 // import UserProfile from './components/UserProfile/UserProfile'
 import './styles/App.scss';
+import Dashboard from './components/Dashboard/Dashboard';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
 
     <Header />
     <Materials />
+    <Route to='/Dashboard' component={Dashboard}/>
     </div>
   );
 }

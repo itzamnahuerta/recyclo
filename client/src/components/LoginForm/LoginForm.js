@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import {login} from '../../Services/ApiServices'
+import {login} from '../../Services/ApiServices';
+import { Redirect  } from 'react-router-dom';
 
 class LoginForm extends Component {
     constructor(){
         super();
         this.state = {
+            error : false,
             isAuthenticated : false,
             username: '',
             password: ''
@@ -18,12 +20,16 @@ class LoginForm extends Component {
     }
 
     handleLogin = async () => {
-        const {username, password} = this.state;
+        const {username, password, isAuthenticated, error} = this.state;
         try {
             const resp = await login({username,password});
             console.log(resp);
             this.setState({isAuthenticated: true})
+            if(isAuthenticated === true && error !== true){
+                return <Redirect to='/Dashboard'/>
+            }
         } catch (error) {
+            this.setState({error:true})
             throw error
         }
     }
@@ -35,7 +41,11 @@ class LoginForm extends Component {
     }
 
     render() {
-        const {username, password} = this.state;
+        const {username, password, error, isAuthenticated} = this.state;
+            if(error === true ){
+                alert('Invalid Login')
+            }
+
         return (
             <div className="login-form">
                 <h3>Login</h3>
