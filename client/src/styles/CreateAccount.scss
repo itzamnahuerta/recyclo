@@ -109,7 +109,7 @@
             font-weight: 800;
             letter-spacing: .3em;
             background-color: #79CECA;
-            border: 2px solid #f4f4f4;
+            border: 2px solid #79CECA;
             cursor: pointer;
             transition: all 0.4s;
             box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
@@ -117,6 +117,7 @@
 
         .sign-up-btn:hover {
             background-color: #FD8934;
+            border: 2px solid #FD8934;
         }
     }
     
