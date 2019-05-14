@@ -50,6 +50,7 @@
             color: #79CECA;
             font-weight: 800;
             transition: all 0.4s;
+            cursor: pointer;
         }
 
         .close:active, .close:focus {
@@ -71,6 +72,7 @@
         }
 
         label {
+            font-family: 'Open-Sans';
             color: #FD8934;
             margin-bottom: .5em;
         }
@@ -97,7 +99,8 @@
             opacity: 0;
         }
 
-        button {
+        .sign-up-btn {
+            font-family: 'Noto sans';
             margin: 1em auto;
             width: 40%;
             height: 4em;
@@ -110,7 +113,7 @@
             transition: all 0.4s;
         }
 
-        button:hover {
+        .sign-up-btn:hover {
             background-color: #FD8934;
         }
     }

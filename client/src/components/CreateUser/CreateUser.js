@@ -52,7 +52,7 @@ class CreateUser extends Component {
                     <input type="text" name="username" value={username} placeholder="Username" />
                     <label>Password</label>
                     <input type="password" name="password" value={password} placeholder="Password" />
-                    <button type="submit"> Sign Up</button>
+                    <button type="submit" className="sign-up-btn"> Sign Up</button>
                 </form>
                 </div>
                 
