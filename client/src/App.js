@@ -21,7 +21,6 @@ function App() {
 
     <Header />
     <Materials />
-    <Map component={Map} />
     </div>
   );
 }
