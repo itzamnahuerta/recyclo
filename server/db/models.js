@@ -25,9 +25,9 @@ const Location = db.define('location', {
 
 const Material = db.define('material', {
     name: Sequelize.STRING,
-    material_type: [{
-        keyname: Sequelize.STRING
-    }]
+    // material_type: [{
+    //     keyname: Sequelize.STRING
+    // }]
 })
 
 const MaterialType = db.define('material_type', {

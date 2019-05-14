@@ -29,8 +29,8 @@ class Map extends Component {
       <Marker key={`locations-${i}`} longitude={long} latitude={lat} >
         <MapPin
           size={15}
-          // onClick={() =>
-          //   this.setState({ popupInfo:  })}
+          onClick={() =>
+            this.setState({ popupInfo: locations })}
         />
       </Marker>
       
@@ -73,7 +73,7 @@ class Map extends Component {
 
           {locations.map(this._renderMarker)}
 
-          {/* {this.state.popupInfo && this._renderPopup()} */}
+          {this.state.popupInfo && this._renderPopup()}
 
         </ReactMapGL>
       </div>
