@@ -22,6 +22,15 @@ MaterialRoute.get('/materials/:name/', async (req,res) => {
     } catch (error) {
         throw error;
     }
+});
+
+MaterialRoute.post('/materials/:name', async (req,res) => {
+    try {
+        const create = await Material.create(req.body);
+        res.send(create)
+    } catch (error) {
+        throw error
+    }
 })
 
 module.exports = MaterialRoute;
