@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CreateUserContainer from '../CreateUser/CreateUserContainer';
 import {login} from '../../Services/ApiServices';
 import { Redirect  } from 'react-router-dom';
 
@@ -60,7 +61,8 @@ class LoginForm extends Component {
             }
 
         return (
-            <div className="login-form">
+            <div>
+                <div className="login-form">
                 <h3>Login</h3>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit} ref="">
                     <input type="text" name='username' value={username} placeholder="Username" />
@@ -68,6 +70,9 @@ class LoginForm extends Component {
                     <button type="submit" className="sign-in-btn">Login</button>
                 </form> 
             </div>
+            <CreateUserContainer/>
+            </div>
+                
         );
     }
 }

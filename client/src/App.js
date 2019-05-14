@@ -1,14 +1,8 @@
 import React from 'react';
-// import "./styles/App.scss";
 import {Route} from 'react-router-dom';
-import './styles/App.scss'
-
-import Header from './components/Header/Header'
-import Materials from './components/Materials/Materials'
-// import Map from './components/Map/Map'
-// import UserProfile from './components/UserProfile/UserProfile'
 import './styles/App.scss';
 import Dashboard from './components/Dashboard/Dashboard';
+import Home from './components/Home/Home';
 
 
 function App() {
@@ -19,10 +13,10 @@ function App() {
         <span className="font-two">CYCLO</span> 
         <span className="star-character"> *</span>
       </div>
-
-    <Header />
-    <Materials />
-    <Route to='/Dashboard' component={Dashboard}/>
+    <main>
+      <Route exact path='/Dashboard' component={Dashboard}/>
+      <Route exact path = '/' component={Home}/>
+    </main>
     </div>
   );
 }
