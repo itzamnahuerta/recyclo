@@ -24,7 +24,6 @@ class Dashboard extends Component {
         try {
             const resp = await getMaterials(materialList);
             this.setState({materialList:resp.data})
-            // return resp;
         } catch (error) {
             throw error
         }
@@ -34,7 +33,6 @@ class Dashboard extends Component {
         const { locationList  } = this.state;
         try {
             const resp = await getLocations(locationList);
-            console.log(resp)
             this.setState({locationList:resp})
         } catch (error) {
             throw error
@@ -42,10 +40,11 @@ class Dashboard extends Component {
     }
 
     render() {
+        const {materialList, locationList} = this.state
         return (
             <div className="dashboard">
             <FiMenu/>
-            <HamburgerMenu/>
+            <HamburgerMenu materialList={materialList} locationList={locationList} />
                 <MapContainer/>
             </div>
         );

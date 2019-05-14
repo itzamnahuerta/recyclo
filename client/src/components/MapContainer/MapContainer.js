@@ -4,7 +4,7 @@ class MapContainer extends Component {
     render() {
         return (
             <div>
-                <Map />
+                <Map component={Map}/>
             </div>
         );
     }

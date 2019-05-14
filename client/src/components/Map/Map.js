@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import MapPin from './map-pin';
 import PinInfo from './pin-info'
-
-
 const MAPBOX_TOKEN = process.env.REACT_APP_API_KEY
 
 class Map extends Component {
@@ -34,9 +32,7 @@ class Map extends Component {
           onClick={() =>
             this.setState({ popupInfo: crimedata })}
         />
-
       </Marker>
-
     );
   }
 
