@@ -16,7 +16,10 @@ class LoginForm extends Component {
     handleFormChange = (e) => {
         const fieldName = e.target.name;
         const value = e.target.value;
-        this.setState({[fieldName] : value})
+        this.setState({
+            [fieldName] : value,
+            error: false
+        })
     }
 
     handleLogin = async () => {
@@ -26,10 +29,20 @@ class LoginForm extends Component {
             console.log(resp);
             this.setState({isAuthenticated: true})
             if(isAuthenticated === true && error !== true){
+                this.setState({})
                 return <Redirect to='/Dashboard'/>
             }
+            this.setState({
+                username: '',
+                password: '',
+                error: false
+            })
         } catch (error) {
-            this.setState({error:true})
+            this.setState({
+                error:true,
+                username: '',
+                password: ''
+            })
             throw error
         }
     }
@@ -49,7 +62,7 @@ class LoginForm extends Component {
         return (
             <div className="login-form">
                 <h3>Login</h3>
-                <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
+                <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit} ref="">
                     <input type="text" name='username' value={username} placeholder="Username" />
                     <input type="password" name='password' value={password} placeholder="Password"/>
                     <button type="submit" className="sign-in-btn">Login</button>
