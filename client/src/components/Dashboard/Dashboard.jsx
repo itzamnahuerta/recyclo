@@ -51,12 +51,11 @@ class Dashboard extends Component {
 
     render() {
         const {materialList, locationList} = this.state
-        console.log(this.state.locationList)
         return (
             <div className="dashboard">
             <FiMenu/>
             <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
-                <MapContainer materialList={materialList} locationList={locationList} />
+                <MapContainer/>
             </div>
         );
     }
