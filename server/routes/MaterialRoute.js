@@ -2,9 +2,9 @@ const express = require('express');
 const { Material } = require('../db/models');
 const { Location  } = require('../db/models');
 
-const MaterialRoute = express.Router();
+const app = express.Router();
 
-MaterialRoute.get('/materials', async(req,res) => {
+app.get('/materials', async(req,res) => {
     try {
         const materials = await Material.findAll();
         res.send(materials);
@@ -13,7 +13,7 @@ MaterialRoute.get('/materials', async(req,res) => {
     }
 });
 
-MaterialRoute.get('/materials/:name/', async (req,res) => {
+app.get('/materials/:name/', async (req,res) => {
     try {
         const type = await Material.findAll({
             where : {
@@ -26,7 +26,7 @@ MaterialRoute.get('/materials/:name/', async (req,res) => {
     }
 });
 
-MaterialRoute.post('/materials/', async (req,res) => {
+app.post('/materials/', async (req,res) => {
     try {
         const create = await Material.create(req.body);
         res.send(create)

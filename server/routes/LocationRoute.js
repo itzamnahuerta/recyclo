@@ -1,5 +1,5 @@
 const express = require('express');
-const LocationRoute = express.Router();
+// const LocationRoute = express.Router();
 // const { Location  } = require('../db/models');
 
 LocationRoute.get('/locations', async(req,res) =>{
