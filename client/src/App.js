@@ -17,7 +17,6 @@ function App() {
         <span className="font-two">CYCLO</span> 
         <span className="star-character"> *</span>
       </div>
-
     <Header />
     <Materials />
     </div>
