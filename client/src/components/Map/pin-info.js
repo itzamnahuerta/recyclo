@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-class CrimeInfo extends PureComponent {
+class PinInfo extends PureComponent {
 
   render() {
 
