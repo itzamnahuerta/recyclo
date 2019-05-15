@@ -9,7 +9,8 @@ class AccountSettings extends Component {
             user: [],
             name: '',
             username : '',
-            email : ''
+            email : '',
+            password: ''
         }
     }
 
@@ -35,12 +36,13 @@ class AccountSettings extends Component {
 
     handleUpdateUser = async (e) => {
         e.preventDefault();
-        const {user, name, username, email } = this.state;
+        const {user, name, username, email, password } = this.state;
         const newUser = {
             id: user[0].id,
             name: name,
             username: username,
-            email: email
+            email: email,
+            password: password
         }
 
         const updatedUser = await updateUser(user[0].id, newUser)
@@ -59,9 +61,11 @@ class AccountSettings extends Component {
                                 <label>Name</label>
                                 <input type="text" name="name" id="name"  defaultValue={user.name}/>
                                 <label>Email</label>
-                                <input type="text" name="username" id="email"  defaultValue={user.email}/>
+                                <input type="text" name="email" id="email"  defaultValue={user.email}/>
                                 <label>Username</label>
-                                <input type="text" name="email" id="username"  defaultValue={user.username}/>
+                                <input type="text" name="username" id="username"  defaultValue={user.username}/>
+                                <label>Password</label>
+                                <input type="password" name="password" id="password" defaultValue={user.password}/>
                                 <button type="submit">Update Account</button>
                             </form>
                         )
