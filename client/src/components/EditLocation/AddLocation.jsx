@@ -19,7 +19,9 @@ class AddLocation extends Component {
     }
 
     componentDidMount() {
-        this.setState({isError:false, isSubmit:false, disabled:true})
+        this.setState({isError:false, isSubmit:false, 
+            disabled:true
+        })        
     }
 
     handleCreateLocation = async () => {
@@ -42,12 +44,29 @@ class AddLocation extends Component {
     handleFormChange = e => {
         const {name, value} = e.target;
         this.setState({[name]:value});
+        this.checkLongFunc();
+    }
+
+    checkLongFunc = () => {
+        const { latitude, longitude } = this.state;
+        const lat = parseInt(latitude)        
+        const long = parseInt(longitude)
+        console.log(lat, long)
+        if ((long > -180 && long < 180) && (lat > -90 && lat < 90)) {
+            this.setState({
+                disabled: false
+            })
+        } else {
+            this.setState({
+                disabled: true
+            })
+        }
     }
     
     handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            await this.handleCreateLocation()
+            await this.handleCreateLocation()            
             this.setState({
                 isSubmit:true                
                 
@@ -57,6 +76,15 @@ class AddLocation extends Component {
         }
     }
 
+    
+
+
+    // else if ((longitude > 180 || longitude < -180) || (latitude > 90 || latitude < -90)) {
+    //     this.setState({
+    //     disabled: true
+    //     })
+    // } 
+    
 
 
   
@@ -69,11 +97,9 @@ class AddLocation extends Component {
             return <Redirect to='/dashboard'/>
         } else if (isError === true){            
             alert('Incorrect Values')
-        }  else if ((longitude > 180 || longitude < -180) || (latitude > 90 || latitude < -90)) {
-            this.setState({
-            disabled: true
-            })
-        } 
+        }  
+
+       
        
         return (
             <div>
