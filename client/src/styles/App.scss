@@ -2,8 +2,9 @@
 @import 'CreateAccount';
 @import 'LoginForm';
 @import 'Map';
+@import 'Colors';
 body{
-    background-color: white;
+    background-color: $white;
 }
 .App {    
     .page-title{
