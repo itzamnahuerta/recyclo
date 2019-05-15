@@ -43,6 +43,15 @@ AuthRouter.post('/signup', async (req,res,next) => {
     })(req,res,next)
 });
 
+AuthRouter.get('/users/:id', async(req,res) => {
+    try {
+        const users = await User.findByPk(req.params.id);
+        res.send(users)
+    } catch (error) {
+        
+    }
+})
+
 AuthRouter.get('/users/:username', async(req,res) => {
     try {
         console.log(req.user)
