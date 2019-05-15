@@ -45,7 +45,6 @@ AuthRouter.post('/signup', async (req,res,next) => {
 
 AuthRouter.get('/users/:username', async(req,res) => {
     try {
-        console.log(req.user)
         const users = await User.findAll({
             where: {
                 username: req.params.username
@@ -56,5 +55,18 @@ AuthRouter.get('/users/:username', async(req,res) => {
         throw error
     }
 });
+
+AuthRouter.put('/users/:id', async (req,res) => {
+    try {
+        const user = await User.findByPk(req.params.id)
+        if(user)await User.update(req.body,{where:{}});
+            res.json({user});
+        
+    } catch (error) {
+        res.status(error.status || 500)
+        res.send({msg: error})
+        // throw error
+    }
+})
 
 module.exports = AuthRouter;

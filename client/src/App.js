@@ -3,6 +3,7 @@ import {Route} from 'react-router-dom';
 import './styles/App.scss';
 import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Home/Home';
+import AccountSettings from './components/AccountSettings/AccountSettings';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <span className="star-character"> *</span>
       </div>
     <main>
+      <Route exact path="/account-settings" component={AccountSettings}/>
       <Route exact path='/Dashboard' component={Dashboard}/>
       <Route exact path = '/' component={Home}/>
     </main>
