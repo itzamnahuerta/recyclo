@@ -27,7 +27,7 @@ export const signup = async (data) => {
     try {
         const resp = await api.post('/auth/signup', data)
         const {data:{token, user}} = resp;
-        console.log(resp)
+        // console.log(resp)
         setToken.setToken(token);
         return user
     } catch (error) {
@@ -35,10 +35,21 @@ export const signup = async (data) => {
     }
 }
 
+export const getUser = async (data) => {
+    const user = localStorage.getItem('user')
+    try {
+        const resp = await api.get(`/auth/users/${user}`, data);
+        console.log(resp.data)
+        return resp.data;
+    } catch (error){
+        throw error
+    }
+}
+
 export const getMaterials = async (data) => {
     try {
         const resp = await api.get('/content/materials');
-        console.log(resp);
+        // console.log(resp);
         return resp;
     } catch (error) {
         throw error
@@ -48,7 +59,7 @@ export const getMaterials = async (data) => {
 export const postMaterials = async (data) => {
     try {
         const resp = await api.post('/content/materials', data);
-        console.log(resp);
+        // console.log(resp);
         return resp;
     } catch (error) {
         throw error
@@ -58,8 +69,8 @@ export const postMaterials = async (data) => {
 export const getLocations = async () => {
     try {
         const resp = await api.get('/content/locations');
-        console.log(resp);
-        return resp;
+        // console.log(resp);
+        return resp.data;
     } catch (error) {
         throw error
     }
@@ -68,7 +79,7 @@ export const getLocations = async () => {
 export const postLocations = async (data) => {
     try {
         const resp = await api.post('/content/locations', data);
-        console.log(resp);
+        // console.log(resp);
         return resp;
     } catch (error) {
         throw error;

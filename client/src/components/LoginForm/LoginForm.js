@@ -25,13 +25,12 @@ class LoginForm extends Component {
     }
 
     handleLogin = async () => {
-        const {username, password, isAuthenticated, error} = this.state;
+        const {username, password} = this.state;
         try {
-            const resp = await login({username,password});
-            console.log(resp);
-            this.setState({isAuthenticated: true})
-
+            await login({username,password});
+            localStorage.setItem('user', username)
             this.setState({
+                isAuthenticated: true,
                 username: '',
                 password: '',
                 error: false
