@@ -1,5 +1,7 @@
 import Axios from 'axios';
 import setToken from './setToken';
+import AuthService from './AuthService'
+import authService from './AuthService';
 const JwtToken = 'token';
 const BASE_URL = 'http://localhost:3001';
 
@@ -14,9 +16,11 @@ const api = Axios.create({
 
 export const login = async (data) => {
     try {
+
         const resp = await api.post('/auth/login', data);
         const {data:{token, user}} = resp;
         sessionStorage.setItem('token', token);
+        authService.isAuthenticated();
         return user;
     } catch (error) {
         throw error
@@ -25,6 +29,7 @@ export const login = async (data) => {
 
 export const logout = async () => {
     try {
+        authService.isAuthenticated()
         const resp = await api.get('/logout');
         sessionStorage.clear();
         return resp

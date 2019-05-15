@@ -1,12 +1,13 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import './styles/App.scss';
 import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Home/Home';
 import AccountSettings from './components/AccountSettings/AccountSettings';
 import AddLocation from './components/EditLocation/AddLocation';
-
+import authService from './Services/AuthService';
 function App() {
+  const authenticate = authService.isAuthenticated()
   return (
     <div className="App">
       <div className="page-title"> 
@@ -17,7 +18,7 @@ function App() {
     <main>
       <Route exact path="/account-settings" component={AccountSettings}/>
       <Route exact path='/add-location' component={AddLocation}/>
-      <Route exact path='/Dashboard' component={Dashboard}/>
+      <Route exact path='/Dashboard' component={(props)=> <Dashboard {...props}/>}/>
       <Route exact path = '/' component={Home}/>
     </main>
     </div>
