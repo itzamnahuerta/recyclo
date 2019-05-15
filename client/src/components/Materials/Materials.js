@@ -105,7 +105,18 @@ export default class Materials extends Component  {
             {this.state.showContent[3] && 
 
               <div className="MixPaperOverlay">
-                Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.
+              <span>newspapers, magazines, catalogs </span>
+              <span> receipts</span>
+              <span>wrapping paper </span>
+              <span>envelopes, including window envelopes </span>
+              <span>softcover books (no hardcover books) </span>
+              <span>cardboard boxes, including pizza boxes (first throw away the liner) </span>
+              <span> egg cartons</span>
+              <span>paper bags </span>
+              <span> paper towel rolls</span>
+              <span> paper cups</span>
+              <span> Do not include: food-contaminated paper, hardcover books, bubble wrap, photographs, tissues, napkins, paper towels, tissue paper or waxed and plastic-coated paper (example: candy wrappers)</span>
+              <span> </span>
               </div>
             }
         </div> 

@@ -1,0 +1,27 @@
+.dashboard{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 90%;
+    height: 1200px;
+    .account-settings {
+        position: fixed;
+        top: 12%;
+        left: 85%;
+    }
+}
+
+.fi-menu-visible {
+    position: absolute;
+    z-index: 2000;
+    width: 30px;
+    height: 3%;
+}
+
+.fi-menu-invisible{
+    width: 30px;
+    height: 3%;
+    // border: 2px solid green;
+    // display: none
+}
+

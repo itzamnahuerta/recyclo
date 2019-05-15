@@ -55,9 +55,11 @@ class Map extends Component {
 
   render() {
     const { viewport } = this.state;
-    // const locations = this.props.locationData
+
+    const locations = this.props.locationData
     const selectedItem = this.props.selectedItem
     
+
     return (
       <div className="center-map">
         <ReactMapGL

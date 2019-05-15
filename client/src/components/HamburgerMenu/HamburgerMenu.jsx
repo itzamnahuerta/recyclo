@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
+import { FiMenu  } from 'react-icons/fi';
 
 class HamburgerMenu extends Component {
+    constructor (props) {
+        super(props);
 
-
+    }
 
     render() {
-        const { locationList, materialList } = this.props;
+        const { locationList, materialList, isMenuClicked } = this.props;
+
+        const showMenu = isMenuClicked === true ? 'sidebar open' : 'sidebar ';
+
         return (
-            <div className="sidebar">
+                // <FiMenu className="fi-menu"/>
+            <div className={showMenu}>
+                <div  onClick={this.props.handleMenuOpen}> <span className="xMark"> x</span> </div>
                 <div className="bar materials">
-                {materialList ? materialList.map((material,index) => {
+                <span className="materials-title"> MATERIALS </span>
+                {materialList ? materialList.map((material, index) => {
                     return <li 
                                 key={material.id} 
                                 name={material.name} 
@@ -20,6 +29,7 @@ class HamburgerMenu extends Component {
                 }) : <h3>No Data</h3>}
                 </div>
                 <div className="bar locations">
+                <span className="locations-title"> LOCATIONS </span>
                 {locationList ? locationList.map((location, index) => {
                     return <li 
                                 key={index} 
@@ -36,6 +46,11 @@ class HamburgerMenu extends Component {
                 }) : <h3>No Data</h3>}
                 </div>
             </div>
+            
+
+            
+
+        
         );
     }
 }

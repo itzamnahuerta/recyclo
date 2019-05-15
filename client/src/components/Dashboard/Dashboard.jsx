@@ -16,7 +16,8 @@ class Dashboard extends Component {
             isOpen : false,
             selectedItem: [],
             materialList : [],
-            locationList: []
+            locationList: [],
+            isMenuClicked: false
         }
     }
 
@@ -70,19 +71,20 @@ class Dashboard extends Component {
         })                         
     }
 
+    handleMenuOpen = () => {
+        this.setState({isMenuClicked: !this.state.isMenuClicked})
+    }
 
-    render() {    
-        console.log(this.state.selectedItem)            
-        const {materialList, locationList, selectedItem } = this.state
+    render() {
+        const {materialList, locationList, isMenuClicked } = this.state
+        const showHamburgerIcon = isMenuClicked === true ? 'fi-menu-visible' : 'fi-menu-invisible'
+
         return (
             <div className="dashboard">
-            <FiMenu/>
-            <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
-            <div> {this.state.isClicked === true ?  <MapContainer selectedItem={selectedItem} materialList={materialList} locationList={locationList}/> : <div></div> }
-                </div>
-            <Link to="/account-settings">Account Settings</Link>
-            <Link to="/add-location">Add Location</Link>
-            <Route exact path='/add-location' component={(props)=> AddLocation}/>
+                <FiMenu className={showHamburgerIcon} onClick={this.handleMenuOpen}/>
+                <HamburgerMenu  isMenuClicked={isMenuClicked} materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} handleMenuOpen={this.handleMenuOpen} />
+                <MapContainer className="map-box" materialList={materialList} locationList={locationList}/>
+                <Link className="account-settings" to="/account-settings">Account Settings</Link>
 
             </div>
         );
