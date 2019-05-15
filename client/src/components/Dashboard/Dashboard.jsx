@@ -66,7 +66,7 @@ class Dashboard extends Component {
                 <FiMenu className={showHamburgerIcon} onClick={this.handleMenuOpen}/>
                 <HamburgerMenu  isMenuClicked={isMenuClicked} materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} handleMenuOpen={this.handleMenuOpen} />
                 <MapContainer className="map-box" materialList={materialList} locationList={locationList}/>
-                <Link to="/account-settings">Account Settings</Link>
+                <Link className="account-settings" to="/account-settings">Account Settings</Link>
             </div>
         );
     }

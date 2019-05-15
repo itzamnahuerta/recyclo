@@ -10,12 +10,12 @@ class HamburgerMenu extends Component {
     render() {
         const { locationList, materialList, isMenuClicked } = this.props;
 
-        const showMenu = isMenuClicked === true ? 'sidebar open' : 'sidebar close-menu ';
+        const showMenu = isMenuClicked === true ? 'sidebar open' : 'sidebar ';
 
         return (
                 // <FiMenu className="fi-menu"/>
             <div className={showMenu}>
-                <div className="close-menu" onClick={this.props.handleMenuOpen}> x </div>
+                <div  onClick={this.props.handleMenuOpen}> <span className="xMark"> x</span> </div>
                 <div className="bar materials">
                 <span className="materials-title"> MATERIALS </span>
                 {materialList ? materialList.map((material, index) => {
