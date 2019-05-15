@@ -10,7 +10,6 @@ class PinInfo extends PureComponent {
     const url = `${info.url}`
     const id = `${info.id}`
 
-
     return (
       <div>  
         <div>Name: {placeName}</div>        

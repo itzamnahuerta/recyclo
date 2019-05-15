@@ -61,7 +61,10 @@ class Dashboard extends Component {
             postcode,
             url,
             value:target}
-        this.setState({selectedItem:[...this.state.selectedItem,items] })                         
+        this.setState({
+            isClicked: true,
+            selectedItem:[...this.state.selectedItem,items] 
+        })                         
     }
 
 
@@ -72,7 +75,10 @@ class Dashboard extends Component {
             <div className="dashboard">
             <FiMenu/>
             <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
-                <MapContainer selectedItem={selectedItem} materialList={materialList} locationList={locationList}/>
+
+            <div> {this.state.isClicked === true ?  <MapContainer selectedItem={selectedItem} materialList={materialList} locationList={locationList}/> : <div></div> }
+                </div>
+               
             </div>
         );
     }

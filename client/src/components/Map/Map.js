@@ -28,7 +28,7 @@ class Map extends Component {
     return (
       <Marker key={`locations-${i}`} longitude={long} latitude={lat} >
         <MapPin
-          size={15}
+          size={15}          
           onClick={() =>
             this.setState({ popupInfo: selectedItem  })}
         />
