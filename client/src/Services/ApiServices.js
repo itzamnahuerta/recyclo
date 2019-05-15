@@ -46,6 +46,16 @@ export const getUser = async (data) => {
     }
 }
 
+export const updateUser = async (id, data) => {
+    try {
+        const resp = api.put(`auth/users/${id}`, data);
+        console.log('updating user in service',resp)
+        return resp.data
+    } catch (error) {
+        
+    }
+}
+
 export const getMaterials = async (data) => {
     try {
         const resp = await api.get('/content/materials');

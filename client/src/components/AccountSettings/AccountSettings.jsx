@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getUser } from '../../Services/ApiServices';
+import {updateUser} from '../../Services/ApiServices'
 
 class AccountSettings extends Component {
     constructor(props) {
@@ -13,10 +14,12 @@ class AccountSettings extends Component {
     }
 
     async componentDidMount() {
-        this.setUser();
-        // const {user} = this.state.user;
-        const user = await getUser();
-        this.setState({user})
+        try {
+            const user = await getUser();
+            this.setState({user})    
+        } catch (error) {
+            throw error
+        }
     }
 
     handleFormChange = async (e) => {
@@ -30,28 +33,39 @@ class AccountSettings extends Component {
         })
     }
 
-    setUser = () => {
+    handleUpdateUser = async (e) => {
+        e.preventDefault();
+        const {user, name, username, email } = this.state;
+        const newUser = {
+            id: user[0].id,
+            name: name,
+            username: username,
+            email: email
+        }
 
+        const updatedUser = await updateUser(user[0].id, newUser)
+        return updatedUser
+        console.log(newUser)
     }
 
     render() {
-        const { user, username, name,email } = this.state
+        const { user } = this.state
         console.log(this.state.user)
         return (
             <div>
-                    {user.map(user => {
+                    { user ? user.map(user => {
                         return (
-                            <form onChange={this.handleFormChange}>
-                            <label>Name</label>
-                            <input type="text" name="name" id="name" onChange={this.handleFormChange} defaultValue={user.name}/>
-                            <label>Email</label>
-                            <input type="text" name="username" id="email" onChange={this.handleFormChange} defaultValue={user.email}/>
-                            <label>Username</label>
-                            <input type="text" name="email" id="username" onChange={this.handleFormChange} defaultValue={user.username}/>
-                            <button type="submit">Update Account</button>
-                        </form>
+                            <form onChange={this.handleFormChange} onSubmit={this.handleUpdateUser}>
+                                <label>Name</label>
+                                <input type="text" name="name" id="name"  defaultValue={user.name}/>
+                                <label>Email</label>
+                                <input type="text" name="username" id="email"  defaultValue={user.email}/>
+                                <label>Username</label>
+                                <input type="text" name="email" id="username"  defaultValue={user.username}/>
+                                <button type="submit">Update Account</button>
+                            </form>
                         )
-                    })}
+                    }) : <h4>Cannot retrive account settings</h4>}
             </div>
         );
     }
