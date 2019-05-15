@@ -22,15 +22,15 @@ class Map extends Component {
   };
 
 
-  _renderMarker(locations, i) {
-    const lat = Number(locations.latitude)
-    const long = Number(locations.longitude)
+  _renderMarker(selectedItem, i) {
+    const lat = Number(selectedItem.latitude)
+    const long = Number(selectedItem.longitude)
     return (
       <Marker key={`locations-${i}`} longitude={long} latitude={lat} >
         <MapPin
-          size={15}
+          size={15}          
           onClick={() =>
-            this.setState({ popupInfo: locations })}
+            this.setState({ popupInfo: selectedItem  })}
         />
       </Marker>
       
@@ -55,7 +55,8 @@ class Map extends Component {
 
   render() {
     const { viewport } = this.state;
-    const locations = this.props.locationData
+    // const locations = this.props.locationData
+    const selectedItem = this.props.selectedItem
     
     return (
       <div className="center-map">
@@ -71,7 +72,7 @@ class Map extends Component {
           onViewportChange={(viewport) => this.setState({ viewport })}
           mapboxApiAccessToken={MAPBOX_TOKEN}>
 
-          {locations.map(this._renderMarker)}
+          {selectedItem.map(this._renderMarker)}
 
           {this.state.popupInfo && this._renderPopup()}
 

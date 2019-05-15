@@ -22,7 +22,7 @@ class Dashboard extends Component {
 
     async componentDidMount() {
         this.fetchMaterials();
-        this.fetchLocations();
+        this.fetchLocations();        
         await getUser()
     }
 
@@ -48,21 +48,42 @@ class Dashboard extends Component {
 
     handleItemClick = e => {
         const target = e.target.value
+        const id = e.target.getAttribute('id');
         const name = e.target.getAttribute('name');
-        const items = {name:name, value:target}
-        this.setState({selectedItem:[...this.state.selectedItem,items] })
+        const number = e.target.getAttribute('number');
+        const latitude = e.target.getAttribute('latitude');
+        const postcode = e.target.getAttribute('postcode')
+        const url = e.target.getAttribute('url');
+        const longitude = e.target.getAttribute('longitude');    
+        const items = {
+            id,
+            latitude, 
+            longitude, 
+            number, 
+            name,
+            postcode,
+            url,
+            value:target}
+        this.setState({
+            isClicked: true,
+            selectedItem:[...this.state.selectedItem,items] 
+        })                         
     }
 
-    render() {
-        const {materialList, locationList} = this.state
+
+    render() {    
+        console.log(this.state.selectedItem)            
+        const {materialList, locationList, selectedItem } = this.state
         return (
             <div className="dashboard">
             <FiMenu/>
             <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
-                <MapContainer materialList={materialList} locationList={locationList}/>
+            <div> {this.state.isClicked === true ?  <MapContainer selectedItem={selectedItem} materialList={materialList} locationList={locationList}/> : <div></div> }
+                </div>
             <Link to="/account-settings">Account Settings</Link>
             <Link to="/add-location">Add Location</Link>
             <Route exact path='/add-location' component={(props)=> AddLocation}/>
+
             </div>
         );
     }
