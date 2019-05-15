@@ -57,4 +57,16 @@ AuthRouter.get('/users/:username', async(req,res) => {
     }
 });
 
+AuthRouter.put('/users/:id', async (req,res) => {
+    try {
+        const user = await User.findByPk(req.params.id)
+        console.log('finding user in auth',user)
+        if(user)await User.update(req.body);
+            res.json({user});
+        
+    } catch (error) {
+        throw error
+    }
+})
+
 module.exports = AuthRouter;
