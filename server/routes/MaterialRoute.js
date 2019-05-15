@@ -1,5 +1,6 @@
 const express = require('express');
 const { Material } = require('../db/models');
+const { Location } = require('../db/models')
 const MaterialRoute = express.Router();
 
 MaterialRoute.get('/materials', async(req,res) => {
@@ -11,12 +12,17 @@ MaterialRoute.get('/materials', async(req,res) => {
     }
 });
 
-MaterialRoute.get('/materials/:name/', async (req,res) => {
+MaterialRoute.get('/materials/:name/locations', async (req,res) => {
     try {
         const type = await Material.findAll({
             where : {
-                name: req.params.name,
-            }
+                name: req.params.name
+            },
+
+            include: [{
+                model: Location,
+                require: true
+            }]
         });
         res.send(type);
     } catch (error) {

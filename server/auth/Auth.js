@@ -16,7 +16,6 @@ passport.use('signup', new LocalStrategy({
     usernameField : 'username',
     passwordField : 'password'
 }, async (req,username, password, done) => {
-    console.log(req)
     try {
         
         const user = await User.create({
@@ -25,14 +24,11 @@ passport.use('signup', new LocalStrategy({
             username,
             password
         });
-        console.log('***finding user', user)
         if(!user){
             return done(null,false, {msg: 'Unable to create user'})
         }
-        console.log(user);
         done(null, user);
     } catch (error) {
-        console.log(error);
         done(error);
     }
 }
@@ -43,8 +39,6 @@ passport.use('login', new LocalStrategy({
     passwordField : 'password'
 }, async (username, password, done) => {
     try {
-        console.log('***Username from route***',username);
-        console.log('***Passqword from auth', password)
         // finding users from db 
         const user = await User.findOne({
             where: {
@@ -55,7 +49,6 @@ passport.use('login', new LocalStrategy({
             return done(null, false,{msg:'user not found'})
         }
         const validateUser = await bcrypt.compare(password, user.password);
-        console.log('***Checking Password', validateUser);
         if(!validateUser){
             return done(null,false, {msg:'could not validate user password'})
         }
@@ -71,11 +64,8 @@ passport.use(new JWTStrategy({
     secretOrKey: SECRET,
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 }, async (token, done) => {
-    console.log(`getting token`);
     try {
-        console.log('***Token***',token);
         const user = await User.findbyPk(token.id);
-        console.log('token from', user);
         user ? done(null,user): done(null,false);
     } catch (error) {
         done(error)
