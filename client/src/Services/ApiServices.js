@@ -48,11 +48,13 @@ export const getUser = async (data) => {
 
 export const updateUser = async (id, data) => {
     try {
+        // console.log('id in service',id)
+        console.log('user data',data);
         const resp = api.put(`auth/users/${id}`, data);
         console.log('updating user in service',resp)
-        return resp.data
+        return resp
     } catch (error) {
-        
+        throw error
     }
 }
 

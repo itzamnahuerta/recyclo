@@ -44,8 +44,8 @@ class AccountSettings extends Component {
         }
 
         const updatedUser = await updateUser(user[0].id, newUser)
+        console.log('new user', newUser)
         return updatedUser
-        console.log(newUser)
     }
 
     render() {
