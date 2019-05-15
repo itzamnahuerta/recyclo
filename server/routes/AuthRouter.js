@@ -38,6 +38,7 @@ AuthRouter.post('/signup', async (req,res,next) => {
             }
             return res.json({msg: 'User Created', user:user}) 
         } catch (error) {
+            res.send()
             return next(error);
         }
     })(req,res,next)

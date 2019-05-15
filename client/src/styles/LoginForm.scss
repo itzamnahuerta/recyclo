@@ -58,5 +58,43 @@
         background-color: #FD8934;
     }
 
+    .error-modal {
+        margin:auto;
+        top: 40%;
+        left: 26%;
+        height: 100%;
+        width: 50%;
+        position: absolute;
+        z-index: 100;
+        background-color: #333;
+        transform: translateX(0);
+        transition: all 0.4s;
+        border-radius: 6px;
+        background: rgba(255,255,255, .9);
+        box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+        
+        button {
+            margin-top: 5em;
+            background-color: #79CECA;
+            border: 2px solid #79CECA;
+            width: 40%;
+            height: 4em;
+            border-radius: 6px;
+            font-weight: 800;
+            letter-spacing: .3em;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        button:hover {
+            background-color: #FD8934;
+            border: 2px solid #FD8934;
+        }
+    }
+
+    .no-error {
+        transform: translateX(-92em); 
+    }
+
 }
 
