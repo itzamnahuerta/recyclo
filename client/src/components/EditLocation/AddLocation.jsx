@@ -47,17 +47,17 @@ class AddLocation extends Component {
         this.checkLongFunc();
     }
 
-    checkLongFunc = () => {
+    checkLongFunc = async () => {
         const { latitude, longitude } = this.state;
         const lat = parseInt(latitude)        
         const long = parseInt(longitude)
-        console.log(lat, long)
-        if ((long > -180 && long < 180) && (lat > -90 && lat < 90)) {
-            this.setState({
+        console.log(long, lat)
+        if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
+           await this.setState({
                 disabled: false
             })
         } else {
-            this.setState({
+            await this.setState({
                 disabled: true
             })
         }
