@@ -13,12 +13,15 @@ class AddLocation extends Component {
             longitude: '',
             latitude: '',
             isSubmit : false,
-            isError : false
+            isError : false,
+            disabled: true
         }
     }
 
     componentDidMount() {
-        this.setState({isError:false,isSubmit:false})
+        this.setState({isError:false, isSubmit:false, 
+            disabled:true
+        })        
     }
 
     handleCreateLocation = async () => {
@@ -41,25 +44,63 @@ class AddLocation extends Component {
     handleFormChange = e => {
         const {name, value} = e.target;
         this.setState({[name]:value});
+        this.checkLongFunc();
+    }
+
+    checkLongFunc = async () => {
+        const { latitude, longitude } = this.state;
+        const lat = parseInt(latitude)        
+        const long = parseInt(longitude)
+        console.log(long, lat)
+        if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
+           await this.setState({
+                disabled: false
+            })
+        } else {
+            await this.setState({
+                disabled: true
+            })
+        }
     }
     
     handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            await this.handleCreateLocation()
-            this.setState({isSubmit:true})
+            await this.handleCreateLocation()            
+            this.setState({
+                isSubmit:true                
+                
+            })
         } catch (error) {
             if(error)this.setState({isError:true})
         }
     }
 
+    
+
+
+    // else if ((longitude > 180 || longitude < -180) || (latitude > 90 || latitude < -90)) {
+    //     this.setState({
+    //     disabled: true
+    //     })
+    // } 
+    
+
+
+  
+
+
+
     render() {
         const { name, website,postalCode,phoneNumber,longitude,latitude, isSubmit, isError  } = this.state
-        if(isSubmit === true){
+        if(isSubmit === true){                        
             return <Redirect to='/dashboard'/>
-        } else if (isError === true){
+        } else if (isError === true){            
             alert('Incorrect Values')
-        }
+        }  
+
+       
+       
         return (
             <div>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
@@ -75,7 +116,7 @@ class AddLocation extends Component {
                     <input name="longitude" value={longitude}/>
                     <label>Latitude</label>
                     <input name="latitude" value={latitude}/>
-                    <button type="submit">Submit</button>
+                    <button disabled={this.state.disabled} type="submit">Submit</button>
                 </form>
             </div>
         );
