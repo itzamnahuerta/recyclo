@@ -23,8 +23,9 @@ class HamburgerMenu extends Component {
                 {locationList ? locationList.map((location, index) => {
                     return <li 
                                 key={index} 
-                                name={location.latitude} 
-                                value={location.longitude}
+                                // name={location.latitude} 
+                                // value={location.longitude}
+                                id={location.id}
                                 onClick={this.props.handleItemClick}>
                             {location.name}
                             </li>

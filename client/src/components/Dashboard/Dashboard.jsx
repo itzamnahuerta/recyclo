@@ -45,18 +45,20 @@ class Dashboard extends Component {
 
     handleItemClick = e => {
         const target = e.target.value
-        const name = e.target.getAttribute('name');
-        const items = {name:name, value:target}
-        this.setState({selectedItem:[...this.state.selectedItem,items] })
+        const id = e.target.getAttribute('id');
+        const items = {id:id, value:target}
+        this.setState({selectedItem:[...this.state.selectedItem,items] }) 
+        
+            
     }
 
-    render() {
-        const {materialList, locationList} = this.state
+    render() {                
+        const {materialList, locationList, selectedItem } = this.state
         return (
             <div className="dashboard">
             <FiMenu/>
             <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
-                <MapContainer materialList={materialList} locationList={locationList}/>
+                <MapContainer selectedItem={selectedItem} materialList={materialList} locationList={locationList}/>
             </div>
         );
     }
