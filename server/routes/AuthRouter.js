@@ -63,7 +63,9 @@ AuthRouter.put('/users/:id', async (req,res) => {
             res.json({user});
         
     } catch (error) {
-        throw error
+        res.status(error.status || 500)
+        res.send({msg: error})
+        // throw error
     }
 })
 

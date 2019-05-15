@@ -51,7 +51,7 @@ class AccountSettings extends Component {
             this.setState({isUpdated:true})
             return updatedUser
         } catch (error) {
-            this.setState({error: true})
+            if(error){this.setState({isError: true})}
         }
     }
 
