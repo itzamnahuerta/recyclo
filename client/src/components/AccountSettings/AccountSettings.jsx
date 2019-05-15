@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getUser } from '../../Services/ApiServices';
-import {updateUser} from '../../Services/ApiServices'
+import {updateUser} from '../../Services/ApiServices';
+import { Redirect  } from 'react-router';
 
 class AccountSettings extends Component {
     constructor(props) {
@@ -10,11 +11,14 @@ class AccountSettings extends Component {
             name: '',
             username : '',
             email : '',
-            password: ''
+            password: '',
+            isUpdated : false,
+            isError: false
         }
     }
 
     async componentDidMount() {
+        this.setState({isUpdated:false, error:false});
         try {
             const user = await getUser();
             this.setState({user})    
@@ -35,20 +39,29 @@ class AccountSettings extends Component {
 
     handleUpdateUser = async (e) => {
         e.preventDefault();
-        const {user, name, username, email, password } = this.state;
-        const newUser = {
-            id: user[0].id,
-            name: name,
-            username: username,
-            email: email,
-            password: password
+        const {user, name, username, email, } = this.state;
+        try {
+            const newUser = {
+                id: user[0].id,
+                name: name,
+                username: username,
+                email: email,
+            }
+            const updatedUser = await updateUser(user[0].id, newUser)
+            this.setState({isUpdated:true})
+            return updatedUser
+        } catch (error) {
+            this.setState({error: true})
         }
-        const updatedUser = await updateUser(user[0].id, newUser)
-        return updatedUser
     }
 
     render() {
-        const { user } = this.state
+        const { user, isUpdated, isError } = this.state
+        if(isUpdated === true){
+            return  <Redirect to='/dashboard'/>
+        } else if(isError === true) {
+            alert('Unable to update');
+        }
         return (
             <div>
                     { user ? user.map(user => {
@@ -60,8 +73,6 @@ class AccountSettings extends Component {
                                 <input type="text" name="email" id="email"  defaultValue={user.email}/>
                                 <label>Username</label>
                                 <input type="text" name="username" id="username"  defaultValue={user.username}/>
-                                <label>Password</label>
-                                <input type="password" name="password" id="password" defaultValue={user.password}/>
                                 <button type="submit">Update Account</button>
                             </form>
                         )
