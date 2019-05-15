@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import MapContainer from '../MapContainer/MapContainer';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
+import AccountSettings from '../AccountSettings/AccountSettings';
+import {getMaterials, getLocations} from '../../Services/ApiServices';
 import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
-import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
-import {getMaterials, getLocations} from '../../Services/ApiServices';
 import { Route, Link  } from 'react-router-dom';
 
 class Dashboard extends Component {
@@ -58,6 +59,7 @@ class Dashboard extends Component {
             <FiMenu/>
             <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
                 <MapContainer materialList={materialList} locationList={locationList}/>
+            <Link to="/account-settings">Account Settings</Link>
             </div>
         );
     }
