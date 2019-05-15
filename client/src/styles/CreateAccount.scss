@@ -131,8 +131,17 @@
         left: 25%;
         width: 50%;
         height: 10%;
-        background: rgba(0,0,0, .9);
+        background: rgba(121,207,202, .9);
         border-radius: 6px;
+        opacity: 1;
+        transition: all 0.4s;
+        h3 {
+            margin-top: 2em;
+        }
+    }
+
+    .signup-noerr {
+        opacity: 0;
     }
 
 }

@@ -32,6 +32,10 @@ class CreateUser extends Component {
         }
     }
 
+
+    handleHideError = () => {
+        this.setState({error:false})
+    }
     handleFormChange= e => {
         const fieldName = e.target.name;
         const value = e.target.value;
@@ -40,9 +44,9 @@ class CreateUser extends Component {
 
     render() {
         const {name,password,email,username, error} = this.state;
-        const containErr = error === true ? <div className='signup-err'><h3>Unable to create Account</h3></div> : <div className="signup-noerr"></div>
+        const containErr = error === true ? <div className='signup-err' onMouseLeave={this.handleHideError}><h3>Unable to create Account</h3></div> : <div className="signup-noerr"></div>
         return (
-            <div className={this.props.toggleForm}>
+            <div className={this.props.toggleForm} onClick={this.handleHideError}>
             {containErr}
             <div className="form-container">
             <button className="close" type="none" onClick={this.props.handleClick}>X</button>
