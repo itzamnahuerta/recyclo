@@ -14,17 +14,18 @@ class AccountSettings extends Component {
 
     async componentDidMount() {
         this.setUser();
-        const {user} = this.state.user;
-        await getUser()
+        // const {user} = this.state.user;
+        const user = await getUser();
+        console.log(user)
     }
 
     setUser = () => {
         const user = sessionStorage.getItem('user');
-        this.setState({user});
+        // this.setState({user});
     }
 
     render() {
-        console.log(this.state.user)
+        // console.log(this.state.user)
         return (
             <div>
                 <form>
