@@ -6,6 +6,7 @@ import {getMaterials, getLocations} from '../../Services/ApiServices';
 import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
 import { Route, Link  } from 'react-router-dom';
+import AddLocation from '../EditLocation/AddLocation';
 
 class Dashboard extends Component {
     constructor(){
@@ -60,6 +61,8 @@ class Dashboard extends Component {
             <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
                 <MapContainer materialList={materialList} locationList={locationList}/>
             <Link to="/account-settings">Account Settings</Link>
+            <Link to="/edit-location">Edit Location</Link>
+            <Route exact path='/edit-location' component={(props)=> AddLocation}/>
             </div>
         );
     }

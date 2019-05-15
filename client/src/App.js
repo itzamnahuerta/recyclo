@@ -4,6 +4,7 @@ import './styles/App.scss';
 import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Home/Home';
 import AccountSettings from './components/AccountSettings/AccountSettings';
+import AddLocation from './components/EditLocation/AddLocation';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       </div>
     <main>
       <Route exact path="/account-settings" component={AccountSettings}/>
+      <Route exact path='/edit-location' component={AddLocation}/>
       <Route exact path='/Dashboard' component={Dashboard}/>
       <Route exact path = '/' component={Home}/>
     </main>
