@@ -61,7 +61,8 @@ AuthRouter.put('/users/:id', async (req,res) => {
     try {
         const user = await User.findByPk(req.params.id)
         console.log('finding user in auth',user)
-        if(user)await User.update(req.body);
+        console.log('sending body',req.body)
+        if(user)await User.update(req.body,{where:{}});
             res.json({user});
         
     } catch (error) {
