@@ -26,6 +26,17 @@ LocationRoute.get('/locations/:name', async (req,res) => {
     }
 });
 
+LocationRoute.get('/locations/:id', async(req, res) => {
+    try {
+        const id = req.params.id;
+        const locationId = await Location.findByPk(id)
+        res.send(locationId)
+    } catch(error) {
+        throw error
+        console.log(`error at location id route: ${error}`)
+    }
+})
+
 LocationRoute.post('/locations/', async (req,res) => {
     try {
         const newLocation = await Location.create(req.body);
