@@ -39,7 +39,6 @@ export const getUser = async (data) => {
     const user = localStorage.getItem('user')
     try {
         const resp = await api.get(`/auth/users/${user}`, data);
-        console.log(resp.data)
         return resp.data;
     } catch (error){
         throw error
@@ -48,10 +47,7 @@ export const getUser = async (data) => {
 
 export const updateUser = async (id, data) => {
     try {
-        // console.log('id in service',id)
-        console.log('user data',data);
         const resp = api.put(`auth/users/${id}`, data);
-        console.log('updating user in service',resp)
         return resp
     } catch (error) {
         throw error

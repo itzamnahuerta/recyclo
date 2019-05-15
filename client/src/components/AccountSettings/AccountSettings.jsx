@@ -29,7 +29,6 @@ class AccountSettings extends Component {
         await this.setState(prevState => {
             let newUser = prevState.user
             newUser[name] = value
-            console.log('setting user in account', newUser)
             return newUser
         })
     }
@@ -44,15 +43,12 @@ class AccountSettings extends Component {
             email: email,
             password: password
         }
-
         const updatedUser = await updateUser(user[0].id, newUser)
-        console.log('new user', newUser)
         return updatedUser
     }
 
     render() {
         const { user } = this.state
-        console.log(this.state.user)
         return (
             <div>
                     { user ? user.map(user => {
