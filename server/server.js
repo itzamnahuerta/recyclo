@@ -32,7 +32,11 @@ app.get('/', async(req,res) =>  {
     }
 });
 
-
+app.get('/logout', (req,res) => {
+    req.logout()
+    res.redirect('/');
+    
+})
 
 app.use((err, req, res, next) => {
     // render the error 

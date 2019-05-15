@@ -16,8 +16,18 @@ export const login = async (data) => {
     try {
         const resp = await api.post('/auth/login', data);
         const {data:{token, user}} = resp;
-        localStorage.setItem('token', token);
+        sessionStorage.setItem('token', token);
         return user;
+    } catch (error) {
+        throw error
+    }
+}
+
+export const logout = async () => {
+    try {
+        const resp = await api.get('/logout');
+        sessionStorage.clear();
+        return resp
     } catch (error) {
         throw error
     }
