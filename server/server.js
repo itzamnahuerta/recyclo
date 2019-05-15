@@ -32,13 +32,9 @@ app.get('/', async(req,res) =>  {
     }
 });
 
-
-
-app.use((err, req, res, next) => {
-    // render the error 
-    console.log('error in error handler', err)
+app.use( '/',(err, req, res, next) => {
     res.status(err.status || 500);
-    res.json({ message: err.message });
+    res.send({ message: err.message });
 });
 
 

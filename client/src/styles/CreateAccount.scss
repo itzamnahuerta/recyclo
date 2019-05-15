@@ -24,7 +24,7 @@
 .signup-form {
     position: absolute;
     top: 0px;
-    z-index: 1000;
+    z-index: 100;
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -121,6 +121,19 @@
         }
     }
     
+    .signup-err {
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        z-index: 1000;
+        position: absolute;
+        top: 45%;
+        left: 25%;
+        width: 50%;
+        height: 10%;
+        background: rgba(0,0,0, .9);
+        border-radius: 6px;
+    }
 
 }
 

@@ -27,7 +27,6 @@ export const signup = async (data) => {
     try {
         const resp = await api.post('/auth/signup', data)
         const {data:{token, user}} = resp;
-        // console.log(resp)
         setToken.setToken(token);
         return user
     } catch (error) {

@@ -9,24 +9,27 @@ class CreateUser extends Component {
             name: '',
             username: '',
             email : '',
-            password: ''
+            password: '',
+            error:false
         }
     }
 
     handleSignUp = async () => {
+
+    }
+
+    handleFormSubmit =  (e) => {
+        e.preventDefault();
         const {name,username,email,password} = this.state;
         try {
-            const resp = signup({name,username,email,password});
-            console.log(resp);
+            const resp = signup({name,username,email,password})
+            .then(resp => resp)
+            .catch(e => this.setState({error:true, isValid:false}))
             this.setState({isValid:true});
+            return resp
         } catch (error) {
             throw error
         }
-    }
-
-    handleFormSubmit = e => {
-        e.preventDefault();
-        this.handleSignUp();
     }
 
     handleFormChange= e => {
@@ -36,10 +39,11 @@ class CreateUser extends Component {
     }
 
     render() {
-        const {name,password,email,username} = this.state;
+        const {name,password,email,username, error} = this.state;
+        const containErr = error === true ? <div className='signup-err'><h3>Unable to create Account</h3></div> : <div className="signup-noerr"></div>
         return (
             <div className={this.props.toggleForm}>
-            <div className="glass"></div>
+            {containErr}
             <div className="form-container">
             <button className="close" type="none" onClick={this.props.handleClick}>X</button>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>

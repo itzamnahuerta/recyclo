@@ -62,8 +62,6 @@ class LoginForm extends Component {
         }
             const errorModal = error === true ? <div className="error-modal"><h3>Invalid Login Information</h3><button onClick={this.toggleErrorModal}>Close</button></div> : <div className="no-error"></div>
                 
-
-
         return (
             <div>
                 <div className="login-form">
