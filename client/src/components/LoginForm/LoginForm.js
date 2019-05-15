@@ -51,19 +51,24 @@ class LoginForm extends Component {
         console.log('handle Submit')
     }
 
+    toggleErrorModal = () => {
+        this.setState({error:false})
+    }
+
     render() {
         const {username, password, error, isAuthenticated} = this.state;
-            if(error === true ){
-                alert('Invalid Login')
-            }
-            if(isAuthenticated === true && error !== true){
-                return <Redirect to='/Dashboard' component={Dashboard}/>
-            }
+        if(isAuthenticated === true && error !== true){
+            return <Redirect to='/Dashboard' component={Dashboard}/>
+        }
+            const errorModal = error === true ? <div className="error-modal"><h3>Invalid Login Information</h3><button onClick={this.toggleErrorModal}>Close</button></div> : <div className="no-error"></div>
+                
+
 
         return (
             <div>
                 <div className="login-form">
                 <h3>Login</h3>
+                {errorModal}
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit} ref="">
                     <input type="text" name='username' value={username} placeholder="Username" />
                     <input type="password" name='password' value={password} placeholder="Password"/>
