@@ -45,7 +45,6 @@ AuthRouter.post('/signup', async (req,res,next) => {
 
 AuthRouter.get('/users/:username', async(req,res) => {
     try {
-        console.log(req.user)
         const users = await User.findAll({
             where: {
                 username: req.params.username
@@ -60,8 +59,6 @@ AuthRouter.get('/users/:username', async(req,res) => {
 AuthRouter.put('/users/:id', async (req,res) => {
     try {
         const user = await User.findByPk(req.params.id)
-        console.log('finding user in auth',user)
-        console.log('sending body',req.body)
         if(user)await User.update(req.body,{where:{}});
             res.json({user});
         
