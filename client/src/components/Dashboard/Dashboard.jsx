@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import MapContainer from '../MapContainer/MapContainer';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
+import AccountSettings from '../AccountSettings/AccountSettings';
+import {getMaterials, getLocations} from '../../Services/ApiServices';
 import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
-import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
-import {getMaterials, getLocations} from '../../Services/ApiServices';
+import { Route, Link  } from 'react-router-dom';
+import AddLocation from '../EditLocation/AddLocation';
 
 class Dashboard extends Component {
     constructor(){
@@ -75,10 +78,12 @@ class Dashboard extends Component {
             <div className="dashboard">
             <FiMenu/>
             <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
-
             <div> {this.state.isClicked === true ?  <MapContainer selectedItem={selectedItem} materialList={materialList} locationList={locationList}/> : <div></div> }
                 </div>
-               
+            <Link to="/account-settings">Account Settings</Link>
+            <Link to="/add-location">Add Location</Link>
+            <Route exact path='/add-location' component={(props)=> AddLocation}/>
+
             </div>
         );
     }

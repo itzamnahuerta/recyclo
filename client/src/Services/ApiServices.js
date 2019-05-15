@@ -39,9 +39,17 @@ export const getUser = async (data) => {
     const user = localStorage.getItem('user')
     try {
         const resp = await api.get(`/auth/users/${user}`, data);
-        console.log(resp.data)
         return resp.data;
     } catch (error){
+        throw error
+    }
+}
+
+export const updateUser = async (id, data) => {
+    try {
+        const resp = api.put(`auth/users/${id}`, data);
+        return resp
+    } catch (error) {
         throw error
     }
 }
