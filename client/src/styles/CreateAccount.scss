@@ -90,6 +90,7 @@
         input:active, input:focus {
             outline: none;
             border: 2px solid #FD8934;
+            transform: scale(1.2);
         }
         input::placeholder, input::placeholder{
             transition: all 0.4s;
@@ -142,6 +143,37 @@
 
     .signup-noerr {
         opacity: 0;
+    }
+
+    .success {
+        position: absolute;
+        width: 100%;
+        padding: 2em 0;
+        top: 0em;
+        text-align: center;
+        background: rgba(121,207,202, .9);
+        transform: translateY(0);
+        transition: all 0.4s;
+
+        button{
+            background-color: #FD8934;
+            border: 2px solid #FD8934;
+            border-radius: 6px;
+            font-size: 1.1em;
+            padding: .4em 1.4em;
+            transition: all 0.4s;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #DACF00;
+            border: 2px solid #DACF00;
+        }
+    }
+
+    .hide {
+        top: -20em;
     }
 
 }
