@@ -46,9 +46,21 @@ class Dashboard extends Component {
     handleItemClick = e => {
         const target = e.target.value
         const id = e.target.getAttribute('id');
+        const name = e.target.getAttribute('name');
+        const number = e.target.getAttribute('number');
         const latitude = e.target.getAttribute('latitude');
+        const postcode = e.target.getAttribute('postcode')
+        const url = e.target.getAttribute('url');
         const longitude = e.target.getAttribute('longitude');    
-        const items = {id:id, latitude:latitude, longitude:longitude, value:target}
+        const items = {
+            id,
+            latitude, 
+            longitude, 
+            number, 
+            name,
+            postcode,
+            url,
+            value:target}
         this.setState({selectedItem:[...this.state.selectedItem,items] })                         
     }
 

@@ -26,7 +26,7 @@ class HamburgerMenu extends Component {
                                 name={location.name}
                                 postcode={location.postal_code}
                                 url={location.url}
-                                number={location.}
+                                number={location.phone_number}
                                 latitude={location.latitude} 
                                 longitude={location.longitude}
                                 id={location.id}

@@ -5,8 +5,8 @@ class PinInfo extends PureComponent {
   render() {
     const { info } = this.props;
     const placeName = `${info.name}`;
-    const number = `${info.phone_number}`;
-    const postCode = `${info.postal_code}`;
+    const number = `${info.number}`;
+    const postCode = `${info.postcode}`;
     const url = `${info.url}`
     const id = `${info.id}`
 
