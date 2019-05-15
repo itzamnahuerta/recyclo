@@ -16,7 +16,7 @@ function App() {
       </div>
     <main>
       <Route exact path="/account-settings" component={AccountSettings}/>
-      <Route exact path='/edit-location' component={AddLocation}/>
+      <Route exact path='/add-location' component={AddLocation}/>
       <Route exact path='/Dashboard' component={Dashboard}/>
       <Route exact path = '/' component={Home}/>
     </main>

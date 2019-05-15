@@ -17,12 +17,8 @@ class AddLocation extends Component {
         }
     }
 
-    async componentDidMount() {
-        try {
-            
-        } catch (error) {
-            
-        }
+    componentDidMount() {
+        this.setState({isError:false,isSubmit:false})
     }
 
     handleCreateLocation = async () => {

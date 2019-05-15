@@ -61,8 +61,8 @@ class Dashboard extends Component {
             <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
                 <MapContainer materialList={materialList} locationList={locationList}/>
             <Link to="/account-settings">Account Settings</Link>
-            <Link to="/edit-location">Edit Location</Link>
-            <Route exact path='/edit-location' component={(props)=> AddLocation}/>
+            <Link to="/add-location">Add Location</Link>
+            <Route exact path='/add-location' component={(props)=> AddLocation}/>
             </div>
         );
     }
