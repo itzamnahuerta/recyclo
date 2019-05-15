@@ -19,7 +19,7 @@ class Dashboard extends Component {
 
     async componentDidMount() {
         this.fetchMaterials();
-        this.fetchLocations();
+        this.fetchLocations();        
         await getUser()
     }
 
@@ -46,13 +46,15 @@ class Dashboard extends Component {
     handleItemClick = e => {
         const target = e.target.value
         const id = e.target.getAttribute('id');
-        const items = {id:id, value:target}
-        this.setState({selectedItem:[...this.state.selectedItem,items] }) 
-        
-            
+        const latitude = e.target.getAttribute('latitude');
+        const longitude = e.target.getAttribute('longitude');    
+        const items = {id:id, latitude:latitude, longitude:longitude, value:target}
+        this.setState({selectedItem:[...this.state.selectedItem,items] })                         
     }
 
-    render() {                
+
+    render() {    
+        console.log(this.state.selectedItem)            
         const {materialList, locationList, selectedItem } = this.state
         return (
             <div className="dashboard">

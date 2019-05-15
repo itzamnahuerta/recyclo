@@ -7,13 +7,17 @@ class PinInfo extends PureComponent {
     const placeName = `${info.name}`;
     const number = `${info.phone_number}`;
     const postCode = `${info.postal_code}`;
+    const url = `${info.url}`
+    const id = `${info.id}`
 
 
     return (
       <div>  
         <div>Name: {placeName}</div>        
         <div>Phone number: {number}</div>        
-        <div>Postcode: {postCode}</div>              
+        <div>Postcode: {postCode}</div>    
+        <div>URL: {url}</div>    
+        {/* <div>ID: {id}</div>           */}
       </div>
     )
 
