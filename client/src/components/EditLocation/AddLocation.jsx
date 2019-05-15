@@ -41,27 +41,43 @@ class AddLocation extends Component {
         }
     }
 
-    handleFormChange = e => {
-        const {name, value} = e.target;
-        this.setState({[name]:value});
-        this.checkLongFunc();
+    checkLongFunc = () => {
+        const { latitude, longitude } = this.state;
+        console.log(this.state.latitude)
+        // const lat = parseInt(latitude)        
+        // const long = parseInt(longitude)
+        console.log(longitude, latitude)
+        // if(latitude.length = 5){
+        // if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
+        //     this.setState({
+        //         disabled: false
+        //     })
+        // } else {
+        //      this.setState({
+        //         disabled: true
+        //     })
+        // }
+    // }
     }
 
-    checkLongFunc = async () => {
-        const { latitude, longitude } = this.state;
-        const lat = parseInt(latitude)        
-        const long = parseInt(longitude)
-        console.log(long, lat)
-        if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
-           await this.setState({
+    handleFormChange = e => {
+        const { name, value } = e.target;
+        console.log(name, value)
+        this.setState({ [name]: value });
+        // this.checkLongFunc();
+        if (((name === 'latitude') && (value >= -90 && value <= 90)) || (name === 'longitude') && (value >= -180 && value <= 180)) {
+            this.setState({
                 disabled: false
             })
         } else {
-            await this.setState({
+            this.setState({
                 disabled: true
+
             })
         }
     }
+
+
     
     handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -98,7 +114,7 @@ class AddLocation extends Component {
         } else if (isError === true){            
             alert('Incorrect Values')
         }  
-
+console.log(this.state.latitude)
        
        
         return (
