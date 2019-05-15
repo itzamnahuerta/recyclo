@@ -11,20 +11,15 @@ LocationRoute.get('/locations', async(req,res) =>{
     }
 });
 
-LocationRoute.get('/locations/:name', async (req,res) => {
+LocationRoute.get('/locations/:id', async (req,res) => {
     try {
-        
-        const locationName = await Location.findAll({
-            where: {
-                name: req.params.name
-            }
-        });
-        console.log(req.params.name)
-        res.send(locationName);
+        const location = await Location.findAll({where:{id: req.params.id}});
+        console.log(location)
+        res.send(location);
     } catch (error) {
         throw error
     }
-});
+})
 
 LocationRoute.post('/locations/', async (req,res) => {
     try {
