@@ -1,15 +1,24 @@
-
-
 .dashboard{
-    border: 1px solid red;
-    width: 30%;
-    
-    // z-index: 1;
-    // display: flex;
-    // flex-direction: column;
-    // width: 90%;
-    // height: 80%;
-    // padding: 10%;
+    // border: 1px solid red;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 90%;
+    height: 1200px;
 
 }
 
+.fi-menu-visible {
+    position: absolute;
+    z-index: 2000;
+    width: 30px;
+    height: 3%;
+    border: 2px solid green;
+}
+
+.fi-menu-invisible{
+    width: 30px;
+    height: 3%;
+    border: 2px solid green;
+    display: none
+}

@@ -15,7 +15,8 @@ class Dashboard extends Component {
             isOpen : false,
             selectedItem: [],
             materialList : [],
-            locationList: []
+            locationList: [],
+            isMenuClicked: false
         }
     }
 
@@ -52,14 +53,20 @@ class Dashboard extends Component {
         this.setState({selectedItem:[...this.state.selectedItem,items] })
     }
 
+    handleMenuOpen = () => {
+        this.setState({isMenuClicked: !this.state.isMenuClicked})
+    }
+
     render() {
-        const {materialList, locationList} = this.state
+        const {materialList, locationList, isMenuClicked } = this.state
+        const showHamburgerIcon = isMenuClicked === true ? 'fi-menu-visible' : 'fi-menu-invisible'
+
         return (
             <div className="dashboard">
-            <FiMenu/>
-            <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
-                <MapContainer materialList={materialList} locationList={locationList}/>
-            <Link to="/account-settings">Account Settings</Link>
+                <FiMenu className={showHamburgerIcon} onClick={this.handleMenuOpen}/>
+                <HamburgerMenu  isMenuClicked={isMenuClicked} materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} handleMenuOpen={this.handleMenuOpen} />
+                <MapContainer className="map-box" materialList={materialList} locationList={locationList}/>
+                <Link to="/account-settings">Account Settings</Link>
             </div>
         );
     }
