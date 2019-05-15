@@ -1,16 +1,28 @@
+
 .Materials{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 2px solid red;
+    z-index: 0;
+
+    @keyframes moveContent {
+        0% {
+            left: 0;
+        }
+        100% {
+            left: 18%;
+        }
+    }
 
     div{ 
         align-content: center;
         width: 900px;
         height: 400px;
         font-size: 60pt;
-        margin: 6%;
         font-family: 'Roboto', sans-serif;
+        margin: 4%;
     }
 
     .Plastic {
@@ -18,7 +30,7 @@
 
         .PlasticTitle {
             position: absolute;
-            z-index: 10;
+            z-index: 2;
         }
         .PlasticBag {
             position: relative;
@@ -26,7 +38,6 @@
             bottom: 20px;
             width: 460px;
             height: 310px;
-            // border: 1px solid red;
             z-index: 1;
         }
         .PlasticBottle {
@@ -35,50 +46,76 @@
             padding: 20px;
             width: 200px;
             height: 300px;
-            // border: 1px solid red;
-            z-index: 2;
+            z-index: 1;
+        }
+        .PlasticOverlay{
+            position: absolute;
+            opacity: .9;
+            background-color: green;
+            animation: moveContent 2s ease;
+            z-index: 20;
+            font-size: 18pt;
+            top: 12%;
+            left: 18%;
+            color: white;
         }
     }
 
     .Metals {
         background-color: #fd8a34;
+
+        .MetalsTitle {
+            position: absolute;
+            top: 0px;
+            z-index: 2;
+        }
+        .MetalsOverlay {
+            opacity: .9;
+            background-color: #79cfca;
+            position: absolute;
+            top: 62.5%;
+            left: 18%;
+            animation: moveContent 2s ease;
+            z-index: 20;
+            font-size: 12pt;
+        }
+
     }
     .Textile {
         background-color: #79cfca;
+        .TextileOverlay {
+            opacity: .9;
+            background-color: #61c900;
+            position: absolute;
+            top: 113%;
+            left: 18%;
+            animation: moveContent 2s ease;
+            z-index: 20;
+            font-size: 12pt;
+        }
+        .Pants {
+            position: relative;
+            margin-top: 6%;
+            width: 300px;
+            height: 300px;
+        }
+        .Shirt {
+            width: 200px;
+            height: 200px;
+        }
     }
     .MixPaper {
         background-color: #61c900;;
+        .MixPaperOverlay {
+            opacity: .9;
+            background-color: #fd8a34;
+            position: absolute;
+            top: 163.5%;
+            left: 18%; 
+            animation: moveContent 2s ease;
+            z-index: 20;
+            font-size: 12pt;
+        }
     }
 }
 
-// plastic overlay
-
-.PlasticOverlay {
-    font-size: 12pt;
-    position: absolute;
-    right: 100%;
-    top: 10%;
-    bottom: 0%;
-    background-color: #008CBA;
-    overflow: hidden;
-    width: 0%;
-    height:100%;
-    transition: .5s ease;
-    z-index: 20;
-}
-.Plastic:hover .PlasticOverlay {
-    right: 0;
-    width: 100%;
-}
-.PlasticContent {
-
-    position: absolute;
-    right: 100%;
-    left: 0;
-    right: 0;
-    background-color: #008CBA;
-    overflow: hidden;
-    width: 100%;
-    height:0;
-    transition: .5s ease;
-}
