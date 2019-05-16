@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 const HamburgerMenu = (props) => {
     const { locationList, materialList, isMenuClicked } = props;
     const showMenu = isMenuClicked === true ? 'sidebar open' : 'sidebar ';
@@ -8,6 +8,7 @@ const HamburgerMenu = (props) => {
         <div className={showMenu}>
             <div  onClick={props.handleMenuOpen}> <span className="xMark"> x</span> </div>
             <div className="bar materials">
+            <Link to='/add-location'>Add New Location</Link>
             <span className="materials-title"> MATERIALS </span>
             {materialList ? materialList.map((material, index) => {
                 return <li 
