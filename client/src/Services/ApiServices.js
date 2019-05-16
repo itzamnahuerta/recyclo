@@ -16,7 +16,9 @@ export const login = async (data) => {
     try {
         const resp = await api.post('/auth/login', data);
         const {data:{token, user}} = resp;
-        localStorage.setItem('token', token);
+        console.log(user)
+        localStorage.setItem('token', token, 'user', user.username);
+        JSON.stringify(sessionStorage.setItem('user', user))
         return user;
     } catch (error) {
         throw error
@@ -35,9 +37,10 @@ export const signup = async (data) => {
 }
 
 export const getUser = async (data) => {
-    const user = localStorage.getItem('user')
     try {
-        const resp = await api.get(`/auth/users/${user}`, data);
+        const user = localStorage.getItem('user')
+        const resp = await api.get(`/auth/users/name/${user}`, data);
+        console.log(resp.data)
         return resp.data;
     } catch (error){
         throw error
