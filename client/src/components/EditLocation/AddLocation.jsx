@@ -25,7 +25,7 @@ class AddLocation extends Component {
     }
 
     handleCreateLocation = async () => {
-        const { name, website,postalCode,phoneNumber,longitude,latitude  } = this.state
+        const { name, website, postalCode,phoneNumber,longitude,latitude  } = this.state
         try {
             const resp = await postLocations({
                 name, 
@@ -42,25 +42,42 @@ class AddLocation extends Component {
     }
 
     handleFormChange = e => {
+        console.log(this.checkLongFunc())
         const {name, value} = e.target;
+        console.log(name, value)
         this.setState({[name]:value});
-        this.checkLongFunc();
+        
+        // this.checkLongFunc();
+        e.preventDefault()
+        console.log(this.checkLongFunc())
+
+
+
     }
 
-    checkLongFunc = async () => {
+
+
+
+    checkLongFunc = () => {
         const { latitude, longitude } = this.state;
-        const lat = parseInt(latitude)        
+        // const lat = parseInt(latitude)        
+        // const long = parseInt(longitude)
+        const lat = parseInt(latitude)
         const long = parseInt(longitude)
-        console.log(long, lat)
-        if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
-           await this.setState({
-                disabled: false
-            })
-        } else {
-            await this.setState({
-                disabled: true
-            })
-        }
+        return(
+            console.log('~~~~~~~~~~~~',long)
+        )
+
+        // if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
+        //    await this.setState({
+        //         disabled: false
+        //     })
+        // } else {
+        //     await this.setState({
+        //         disabled: true
+        //     })
+        // }
+        
     }
     
     handleFormSubmit = async (e) => {
@@ -93,6 +110,7 @@ class AddLocation extends Component {
 
     render() {
         const { name, website,postalCode,phoneNumber,longitude,latitude, isSubmit, isError  } = this.state
+        
         if(isSubmit === true){                        
             return <Redirect to='/dashboard'/>
         } else if (isError === true){            

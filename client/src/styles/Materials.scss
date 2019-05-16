@@ -66,7 +66,6 @@
 
         .MetalsTitle {
             position: absolute;
-            top: 0px;
             z-index: 2;
         }
         .MetalsOverlay {
@@ -83,6 +82,11 @@
     }
     .Textile {
         background-color: #79cfca;
+        .MetalsTitle {
+            position: absolute;
+            top:0;
+            z-index: 2;
+        }
         .TextileOverlay {
             opacity: .9;
             background-color: #61c900;
@@ -105,7 +109,10 @@
         }
     }
     .MixPaper {
-        background-color: #61c900;;
+        background-color: #61c900;
+        .MixPaperTitle {
+            position: absolute;
+        }
         .MixPaperOverlay {
             opacity: .9;
             background-color: #fd8a34;
