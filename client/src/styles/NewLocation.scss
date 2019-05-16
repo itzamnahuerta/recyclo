@@ -1,9 +1,32 @@
 @import 'Colors';
 
 .add-location {
+    margin-top: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    a {
+        position:absolute;
+        top: 0em;
+        left: 0;
+        margin: 2em;
+        background-color: $orange;
+        padding: .6em 1.5em;
+        border-radius: 6px;
+        color: $white;
+        text-decoration: none;
+        transition: all 0.4s;
+        box-shadow: 4px 4px 10px $shadow;
+        
+    }
+
+    a:hover {
+        transform: scale(1.1);
+        background-color: $blue;
+        color: #333;
+    }
+    
     form {
         display: flex;
         flex-direction: column;
@@ -40,6 +63,7 @@
         button:hover {
             background-color: $orange;
             border: 2px solid $orange;
+            color: $white;
         }
 
     }

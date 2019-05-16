@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { postLocations  } from '../../Services/ApiServices';
-import { Redirect  } from 'react-router-dom';
+import { postLocations, getGeoCode  } from '../../Services/ApiServices';
+import { Redirect,Link  } from 'react-router-dom';
 
 class AddLocation extends Component {
     constructor(){
@@ -10,11 +10,14 @@ class AddLocation extends Component {
             website: '',
             postalCode: '',
             phoneNumber: '',
-            longitude: 0,
-            latitude: 0,
+            address: '',
+            city: '',
+            state: '',
             isSubmit : false,
             isError : false,
-            disabled: true
+            disabled: true,
+            longitude: '',
+            latitude: ''
         }
     }
 
@@ -25,6 +28,7 @@ class AddLocation extends Component {
     }
 
     handleCreateLocation = async () => {
+        console.log('wokring')
         const { name, website, postalCode,phoneNumber,longitude,latitude  } = this.state
         try {
             const resp = await postLocations({
@@ -35,62 +39,42 @@ class AddLocation extends Component {
                 longitude,
                 latitude
             })
+            return resp
         } catch (error) {
             throw error
         }
-    }
-    // 
-    // Which handle change are we using?
-    // 
-    handleFormChange = e => {
-        console.log(this.checkLongFunc())
-        const {name, value} = e.target;
-        console.log(name, value)
-        this.setState({[name]:value});
-        
-        // this.checkLongFunc();
-        e.preventDefault()
-        console.log(this.checkLongFunc())
-    }
-
-
-
-
-    checkLongFunc = async () => {
-        const { latitude, longitude } = this.state;
-        const lat = latitude
-        const long = longitude     
-        const latVal = (lat >= -90 && lat <= 90) && lat !== '' ? true : false
-        const longVal = (long >= -180 && long <= 180) && long !== '' ? true : false
-        const result = !(latVal && longVal)       
-            await this.setState({
-                disabled: result
-            })
     }
 
     handleFormChange = async (e) => {
         const { name, value } = e.target;    
         await this.setState({ [name]: value });
-        await this.checkLongFunc();
     }
 
     handleFormSubmit = async (e) => {
+        const {name,address,city,state} = this.state
         e.preventDefault();
         try {
-            await this.handleCreateLocation()            
-            this.setState({
+            const resp = await getGeoCode(address,city,state)
+            // console.log(resp.results)
+            const results = resp.results
+            console.log('resultssss', results[0].geometry.location)
+            
+            await this.setState({
+                longitude: results[0].geometry.location.lng,
+                latitude: results[0].geometry.location.lat,
                 isSubmit:true                
-                
             })
+            await this.handleCreateLocation()
+            return resp
         } catch (error) {
             if(error)this.setState({isError:true})
         }
     }
     
     render() {
-        const { name, website,postalCode,phoneNumber,longitude,latitude, isSubmit, isError  } = this.state
+        const { name, website,postalCode,phoneNumber, address, city, state, isSubmit, isError  } = this.state
         
-        if(isSubmit === true){                        
+        if(isSubmit === true){ 
             return <Redirect to='/dashboard'/>
         } else if (isError === true){            
             alert('Incorrect Values')
@@ -98,6 +82,7 @@ class AddLocation extends Component {
 
         return (
             <div className="add-location">
+                <Link to='/dashboard'>Back</Link>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
                     <label>Name</label>
                     <input name="name" value={name}/>
@@ -107,11 +92,13 @@ class AddLocation extends Component {
                     <input name="postalCode" value={postalCode}/>
                     <label>Phone Number</label>
                     <input name="phoneNumber" value={phoneNumber}/>
-                    <label>Longitude</label>
-                    <input name="longitude" value={longitude} type="number"/>
-                    <label>Latitude</label>
-                    <input name="latitude" value={latitude} type="number"/>
-                    <button disabled={this.state.disabled} type="submit">Submit</button>
+                    <label>Address</label>
+                    <input name="address" value={address} type="text"/>
+                    <label>City</label>
+                    <input name="city" value={city} type="text"/>
+                    <label>State</label>
+                    <input name="state" value={state} type="text"/>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         );

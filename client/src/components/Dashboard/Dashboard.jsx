@@ -33,6 +33,7 @@ class Dashboard extends Component {
         try {
             const resp = await getMaterials(materialList);
             this.setState({materialList:resp.data})
+            console.log(this.state.materialList)
         } catch (error) {
             throw error
         }
@@ -79,9 +80,11 @@ class Dashboard extends Component {
     render() {
         const {materialList, locationList, selectedItem, isMenuClicked } = this.state
         const showHamburgerIcon = isMenuClicked === true ? ' icon fi-menu-visible' : 'icon fi-menu-invisible'
+        console.log(this.state.selectedItem) 
+        console.log(this.state.materialList)    
 
         return (
-            <div className="top-dashboard">
+            <div className="dashboard">
                 <FiMenu 
                     className={`${showHamburgerIcon} fi-menu`} 
                     onClick={this.handleMenuOpen}
@@ -100,17 +103,14 @@ class Dashboard extends Component {
                     to="/account-settings"> 
                     Account Settings
                 </Link>
-                <div className="dash-grid-container"> 
-                    <div> {this.state.isClicked === true ? 
-                        <MapContainer 
-                        className="map-dash-container"
-                        selectedItem={selectedItem} 
-                        materialList={materialList} 
-                        locationList={locationList}/> 
-                        : <div></div> }
-                    </div>
-                    <Materials className="materials-dash-container"/>
-                </div> 
+                {this.state.isClicked === true ? 
+                    <MapContainer 
+                    className="map-container"
+                    selectedItem={selectedItem} 
+                    materialList={materialList} 
+                    locationList={locationList}/> 
+                    : <div></div> }
+                <Materials/>
             </div>
         );
     }
