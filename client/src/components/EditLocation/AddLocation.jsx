@@ -25,7 +25,7 @@ class AddLocation extends Component {
     }
 
     handleCreateLocation = async () => {
-        const { name, website,postalCode,phoneNumber,longitude,latitude  } = this.state
+        const { name, website, postalCode,phoneNumber,longitude,latitude  } = this.state
         try {
             const resp = await postLocations({
                 name, 
@@ -41,6 +41,7 @@ class AddLocation extends Component {
         }
     }
 
+<<<<<<< Updated upstream
     checkLongFunc = async () => {
         const { latitude, longitude } = this.state;
         console.log(this.state.latitude)
@@ -52,6 +53,45 @@ class AddLocation extends Component {
             await this.setState({
                 disabled: result
             })
+=======
+    handleFormChange = e => {
+        console.log(this.checkLongFunc())
+        const {name, value} = e.target;
+        console.log(name, value)
+        this.setState({[name]:value});
+        
+        // this.checkLongFunc();
+        e.preventDefault()
+        console.log(this.checkLongFunc())
+
+
+
+    }
+
+
+
+
+    checkLongFunc = () => {
+        const { latitude, longitude } = this.state;
+        // const lat = parseInt(latitude)        
+        // const long = parseInt(longitude)
+        const lat = parseInt(latitude)
+        const long = parseInt(longitude)
+        return(
+            console.log('~~~~~~~~~~~~',long)
+        )
+
+        // if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
+        //    await this.setState({
+        //         disabled: false
+        //     })
+        // } else {
+        //     await this.setState({
+        //         disabled: true
+        //     })
+        // }
+        
+>>>>>>> Stashed changes
     }
 
     handleFormChange = async (e) => {
@@ -92,6 +132,7 @@ class AddLocation extends Component {
 
     render() {
         const { name, website,postalCode,phoneNumber,longitude,latitude, isSubmit, isError  } = this.state
+        
         if(isSubmit === true){                        
             return <Redirect to='/dashboard'/>
         } else if (isError === true){            

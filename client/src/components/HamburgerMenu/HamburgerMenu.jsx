@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FiMenu  } from 'react-icons/fi';
+// import { FiMenu  } from 'react-icons/fi';
 
 class HamburgerMenu extends Component {
     constructor (props) {

@@ -67,8 +67,10 @@ class AccountSettings extends Component {
                     { user ? user.map(user => {
                         return (
                             <form onChange={this.handleFormChange} onSubmit={this.handleUpdateUser}>
+                            
                                 <label>Name</label>
                                 <input type="text" name="name" id="name"  defaultValue={user.name}/>
+
                                 <label>Email</label>
                                 <input type="text" name="email" id="email"  defaultValue={user.email}/>
                                 <label>Username</label>

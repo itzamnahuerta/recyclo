@@ -7,6 +7,7 @@ import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
 import { Route, Link  } from 'react-router-dom';
 import AddLocation from '../EditLocation/AddLocation';
+import Materials from '../Materials/Materials';
 
 class Dashboard extends Component {
     constructor(){
@@ -86,6 +87,7 @@ class Dashboard extends Component {
                 <div> {this.state.isClicked === true ?  <MapContainer selectedItem={selectedItem} materialList={materialList} locationList={locationList}/> : <div></div> }
                 </div>
                 <Link className="account-settings" to="/account-settings">Account Settings</Link>
+                <Materials/>
 
             </div>
         );
