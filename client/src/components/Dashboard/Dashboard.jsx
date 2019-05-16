@@ -91,12 +91,35 @@ class Dashboard extends Component {
 
         return (
             <div className="dashboard">
-                <FiMenu className={showHamburgerIcon} onClick={this.handleMenuOpen}/>
-                <HamburgerMenu  isMenuClicked={isMenuClicked} materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} handleMenuOpen={this.handleMenuOpen} />
-                <div> {this.state.isClicked === true ?  <MapContainer selectedItem={selectedItem} materialList={materialList} locationList={locationList}/> : <div></div> }
-                </div>
-                <Link className="account-settings" to="/account-settings">Account Settings</Link>
-                <Materials/>
+                <FiMenu 
+                    className={`${showHamburgerIcon} fi-menu`} 
+                    onClick={this.handleMenuOpen}
+                />
+                <HamburgerMenu
+                    className="hamburger-menu"  
+                    isMenuClicked={isMenuClicked} 
+                    materialList={materialList} 
+                    locationList={locationList} 
+                    handleItemClick={this.handleItemClick} 
+                    handleMenuOpen={this.handleMenuOpen} 
+
+                />
+                <Link 
+                    className="account-settings" 
+                    to="/account-settings"> 
+                    Account Settings
+                </Link>
+                <div className="dash-grid-container"> 
+                    <div> {this.state.isClicked === true ? 
+                        <MapContainer 
+                        className="map-container"
+                        selectedItem={selectedItem} 
+                        materialList={materialList} 
+                        locationList={locationList}/> 
+                        : <div></div> }
+                    </div>
+                    <Materials className="materials"/>
+                </div> 
             </div>
         );
     }
