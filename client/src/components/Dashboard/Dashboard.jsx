@@ -47,6 +47,10 @@ class Dashboard extends Component {
         }
     }
 
+    handleMenuOpen= () => {
+        this.setState({isMenuClicked:!this.state.isMenuClicked})
+    }
+
     handleItemClick = e => {
         const target = e.target.value
         const id = e.target.getAttribute('id');
@@ -70,6 +74,7 @@ class Dashboard extends Component {
             selectedItem:[...this.state.selectedItem,items] 
         })                         
     }
+
     render() {
         const {materialList, locationList, selectedItem, isMenuClicked } = this.state
         const showHamburgerIcon = isMenuClicked === true ? 'fi-menu-visible' : 'fi-menu-invisible'
