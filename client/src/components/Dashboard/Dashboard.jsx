@@ -3,9 +3,7 @@ import MapContainer from '../MapContainer/MapContainer';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import AccountSettings from '../AccountSettings/AccountSettings';
 import {getMaterials, getLocations} from '../../Services/ApiServices';
-
-import { getLocationsByMaterials } from '../../Services/ApiServices';
-
+// import {getLocationsByMaterials} from '../../Services/ApiServices';
 import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
 import { Route, Link  } from 'react-router-dom';
@@ -29,29 +27,22 @@ class Dashboard extends Component {
         this.fetchMaterials();
         this.fetchLocations();        
         await getUser()
+        // await getLocationsByMaterials();
     }
-
-    // fetchMaterials = async () => {
-    //     const { materialList  } = this.state
-    //     try {
-    //         const resp = await getMaterials(materialList);
-    //         this.setState({materialList:resp.data})
-    //         console.log(this.state.materialList)
-    //     } catch (error) {
-    //         throw error
-    //     }
-    // }
 
     fetchMaterials = async () => {
         const { materialList  } = this.state
         try {
-            const resp = await getLocationsByMaterials(materialList);
+            const resp = await getMaterials(materialList);
             this.setState({materialList:resp.data})
             console.log(this.state.materialList)
         } catch (error) {
             throw error
         }
     }
+
+
+ 
 
     fetchLocations = async () => {
         const { locationList  } = this.state;
@@ -96,8 +87,7 @@ class Dashboard extends Component {
     render() {
         const {materialList, locationList, selectedItem, isMenuClicked } = this.state
         const showHamburgerIcon = isMenuClicked === true ? ' icon fi-menu-visible' : 'icon fi-menu-invisible'
-        console.log(this.state.selectedItem)
-        console.log(this.state.materialList)
+        console.log(this.state.selectedItem)        
 
         return (
             <div className="dashboard">
