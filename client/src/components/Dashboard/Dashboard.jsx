@@ -3,7 +3,6 @@ import MapContainer from '../MapContainer/MapContainer';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import AccountSettings from '../AccountSettings/AccountSettings';
 import {getMaterials, getLocations} from '../../Services/ApiServices';
-// import {getLocationsByMaterials} from '../../Services/ApiServices';
 import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
 import { Route, Link  } from 'react-router-dom';
@@ -27,7 +26,6 @@ class Dashboard extends Component {
         this.fetchMaterials();
         this.fetchLocations();        
         await getUser()
-        // await getLocationsByMaterials();
     }
 
     fetchMaterials = async () => {

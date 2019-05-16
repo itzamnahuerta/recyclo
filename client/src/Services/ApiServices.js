@@ -80,20 +80,6 @@ export const getLocations = async () => {
     }
 }
 
-// COME BACK TO THIS 
-
-// export const getLocationsByMaterials = async (material, data) => {
-//     try {
-//         const material = localStorage.getItem('material')
-//         console.log(material)
-//         const res = await api.get(`/materials/${material}/locations`, data)
-//         return res.data
-//     } catch (error) {
-//         throw error
-//     }
-// }
-
-
 
 export const postLocations = async (data) => {
     try {
