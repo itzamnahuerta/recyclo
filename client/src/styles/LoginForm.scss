@@ -3,6 +3,10 @@
 .login-form {
     position: relative;
     text-align: center;
+    
+    // !!!!!!!!!!
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
 
     form {
         display: flex;

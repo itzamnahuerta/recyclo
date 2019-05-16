@@ -92,10 +92,13 @@
         .descr {
             grid-column: 1/5;
             grid-row: 1/3;
-            font-size: 1.3em;
+            font-size: 1em;
             font-weight: 900;
             color: black;
-            padding: 1em;
+            padding: 3em;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 100;
+
         }
         .plastic-overlay{
             background-color: $green;
