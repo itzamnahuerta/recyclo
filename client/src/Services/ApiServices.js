@@ -3,7 +3,8 @@ import setToken from './setToken';
 const JwtToken = 'token';
 const BASE_URL = 'http://localhost:3001';
 
-
+const maps_key = process.env.REACT_APP_MAPS_KEY 
+console.log(maps_key)
 const api = Axios.create({
     baseURL : BASE_URL,
     headers : {
@@ -82,10 +83,24 @@ export const getLocations = async () => {
 
 
 export const postLocations = async (data) => {
+    console.log('works')
     try {
         const resp = await api.post('/content/locations', data);
+        console.log(resp)
         return resp;
     } catch (error) {
+        console.log(error)
         throw error;
+    }
+}
+
+export const getGeoCode = async (name,city,state) => {
+    try {
+        const url = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${name},${city},${state}&key=${maps_key}`);
+        const resp =  await url.json()
+        console.log(resp)
+        return resp
+    } catch (error) {
+        throw error
     }
 }
