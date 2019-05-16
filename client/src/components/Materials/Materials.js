@@ -20,32 +20,32 @@ export default class Materials extends Component  {
   
   render() {
     return (
-      <div className='Materials'>
-        <div className="Plastic"> 
-            <span className="PlasticTitle"> PLASTIC </span>
+      <div className='materials'>
+        <div className="plastic"> 
+            <span className="plastic-title"> PLASTIC </span>
             <img 
-              className="PlasticBag" 
+              className="plastic-bag" 
               src={require('../../media/plastic_bag.png')} 
               alt="plastic bag"
             />
 
             <img 
-              className="PlasticBottle" 
+              className="plastic-bottle" 
               src={require('../../media/plastic_bottle.png')} 
               alt="plastic bottle" 
             />
             <span onClick={(e) => this.handleClick(e,0)}> > </span>
 
             {this.state.showContent[0] && 
-              <div className="PlasticOverlay" >
+              <div className="plastic-overlay" >
                 Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.
               <button onClick={(e) => this.handleClick(e, 0)}>X</button>
               </div>
             }
         </div>
 
-        <div className="Metals"> 
-        <span className="MetalsTitle"> METALS  </span>
+        <div className="metals"> 
+        <span className="metals-title"> METALS  </span>
         {/* <img 
             className="PlasticBag" 
             src={require('../../media/plastic_bag.png')} 
@@ -59,54 +59,54 @@ export default class Materials extends Component  {
           /> */}
         <span onClick={(e) => this.handleClick(e,1)}> > </span>
             {this.state.showContent[1] && 
-              <div className="MetalsOverlay">
+              <div className="metals-overlay">
                 Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.
                 <button onClick={(e) => this.handleClick(e, 1)}>X</button>
               </div>
             }
         </div>
 
-        <div className="Textile"> 
-        <span className="TextileTitle"> TEXTILE </span>
+        <div className="textile"> 
+        <span className="textile-title"> TEXTILE </span>
         <img 
-          className="Pants" 
+          className="pants" 
           src={require('../../media/pants.png')} 
           alt="pants"
         />
 
         <img 
-          className="Shirt" 
+          className="shirt" 
           src={require('../../media/shirt.png')} 
-          alt="shirt" 
+          alt="tshirt" 
         />
         <span onClick={(e) => this.handleClick(e,2)}> > </span>
 
             {this.state.showContent[2] && 
-              <div className="TextileOverlay">
+              <div className="textile-overlay">
                 Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.
                 <button onClick={(e) => this.handleClick(e, 2)}>X</button>
               </div>
             }
         </div>
 
-        <div className="MixPaper">
-        <span className="MixPaperTitle"> MIX-PAPER  </span>
+        <div className="mix-paper">
+        <span className="mix-paper-title"> MIX-PAPER  </span>
 
-        {/* <img 
-          className="PlasticBag" 
-          src={require('../../media/plastic_bag.png')} 
-          alt="plastic bag"
+        <img 
+          className="paper-cup" 
+          src={require('../../media/mix_paper_cup.png')} 
+          alt="paper cup"
         />
 
         <img 
-          className="PlasticBottle" 
-          src={require('../../media/plastic_bottle.png')} 
-          alt="plastic bottle" 
-        /> */}
+          className="newspaper" 
+          src={require('../../media/newspaper.png')} 
+          alt="newspaper" 
+        /> 
         <span onClick={(e) => this.handleClick(e,3)}> > </span>
             {this.state.showContent[3] && 
 
-              <div className="MixPaperOverlay">
+              <div className="mix-paper-overlay">
               <span>newspapers, magazines, catalogs </span>
               <span> receipts</span>
               <span>wrapping paper </span>
