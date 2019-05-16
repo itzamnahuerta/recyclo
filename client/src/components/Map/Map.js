@@ -33,7 +33,6 @@ class Map extends Component {
             this.setState({ popupInfo: selectedItem  })}
         />
       </Marker>
-      
     );
   }
 
@@ -52,7 +51,6 @@ class Map extends Component {
     )
   }
 
-
   render() {
     const { viewport } = this.state;
     // const locations = this.props.locationData
@@ -66,16 +64,11 @@ class Map extends Component {
           latitude={viewport.latitude}
           longitude={viewport.longitude}
           zoom={viewport.zoom}
-
           mapStyle="mapbox://styles/mapmen/cjvnw7xb901p81cn1q5ebx5vr"
-
           onViewportChange={(viewport) => this.setState({ viewport })}
           mapboxApiAccessToken={MAPBOX_TOKEN}>
-
           {selectedItem.map(this._renderMarker)}
-
           {this.state.popupInfo && this._renderPopup()}
-
         </ReactMapGL>
       </div>
 

@@ -88,7 +88,6 @@ class Dashboard extends Component {
                 </div>
                 <Link className="account-settings" to="/account-settings">Account Settings</Link>
                 <Materials/>
-
             </div>
         );
     }

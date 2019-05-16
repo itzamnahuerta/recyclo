@@ -35,25 +35,13 @@ class AddLocation extends Component {
                 longitude,
                 latitude
             })
-            console.log(resp)
         } catch (error) {
             throw error
         }
     }
-
-<<<<<<< Updated upstream
-    checkLongFunc = async () => {
-        const { latitude, longitude } = this.state;
-        console.log(this.state.latitude)
-        const lat = latitude
-        const long = longitude     
-        const latVal = (lat >= -90 && lat <= 90) && lat != '' ? true : false
-        const longVal = (long >= -180 && long <= 180) && long != '' ? true : false
-        const result = !(latVal && longVal)       
-            await this.setState({
-                disabled: result
-            })
-=======
+    // 
+    // Which handle change are we using?
+    // 
     handleFormChange = e => {
         console.log(this.checkLongFunc())
         const {name, value} = e.target;
@@ -63,35 +51,18 @@ class AddLocation extends Component {
         // this.checkLongFunc();
         e.preventDefault()
         console.log(this.checkLongFunc())
-
-
-
     }
 
-
-
-
-    checkLongFunc = () => {
+    checkLongFunc = async () => {
         const { latitude, longitude } = this.state;
-        // const lat = parseInt(latitude)        
-        // const long = parseInt(longitude)
-        const lat = parseInt(latitude)
-        const long = parseInt(longitude)
-        return(
-            console.log('~~~~~~~~~~~~',long)
-        )
-
-        // if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
-        //    await this.setState({
-        //         disabled: false
-        //     })
-        // } else {
-        //     await this.setState({
-        //         disabled: true
-        //     })
-        // }
-        
->>>>>>> Stashed changes
+        const lat = latitude
+        const long = longitude     
+        const latVal = (lat >= -90 && lat <= 90) && lat !== '' ? true : false
+        const longVal = (long >= -180 && long <= 180) && long !== '' ? true : false
+        const result = !(latVal && longVal)       
+            await this.setState({
+                disabled: result
+            })
     }
 
     handleFormChange = async (e) => {
@@ -100,8 +71,6 @@ class AddLocation extends Component {
         await this.checkLongFunc();
     }
 
-
-    
     handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -114,22 +83,7 @@ class AddLocation extends Component {
             if(error)this.setState({isError:true})
         }
     }
-
     
-
-
-    // else if ((longitude > 180 || longitude < -180) || (latitude > 90 || latitude < -90)) {
-    //     this.setState({
-    //     disabled: true
-    //     })
-    // } 
-    
-
-
-  
-
-
-
     render() {
         const { name, website,postalCode,phoneNumber,longitude,latitude, isSubmit, isError  } = this.state
         
@@ -138,9 +92,7 @@ class AddLocation extends Component {
         } else if (isError === true){            
             alert('Incorrect Values')
         }  
-console.log(this.state.latitude)
-       
-       
+
         return (
             <div>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>

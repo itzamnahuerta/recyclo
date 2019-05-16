@@ -18,7 +18,6 @@ MaterialRoute.get('/materials/:name/locations', async (req,res) => {
             where : {
                 name: req.params.name
             },
-
             include: [{
                 model: Location,
                 require: true
