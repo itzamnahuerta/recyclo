@@ -70,20 +70,16 @@ class Dashboard extends Component {
             selectedItem:[...this.state.selectedItem,items] 
         })                         
     }
-
-    handleMenuOpen = () => {
-        this.setState({isMenuClicked: !this.state.isMenuClicked})
-    }
-
     render() {
-        const {materialList, locationList, isMenuClicked } = this.state
+        const {materialList, locationList, selectedItem, isMenuClicked } = this.state
         const showHamburgerIcon = isMenuClicked === true ? 'fi-menu-visible' : 'fi-menu-invisible'
 
         return (
             <div className="dashboard">
                 <FiMenu className={showHamburgerIcon} onClick={this.handleMenuOpen}/>
                 <HamburgerMenu  isMenuClicked={isMenuClicked} materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} handleMenuOpen={this.handleMenuOpen} />
-                <MapContainer className="map-box" materialList={materialList} locationList={locationList}/>
+                <div> {this.state.isClicked === true ?  <MapContainer selectedItem={selectedItem} materialList={materialList} locationList={locationList}/> : <div></div> }
+                </div>
                 <Link className="account-settings" to="/account-settings">Account Settings</Link>
 
             </div>
