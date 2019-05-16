@@ -49,11 +49,6 @@ class Dashboard extends Component {
         }
     }
 
-    fetchLocationByMaterial = e => {
-       return console.log(e.target.value)
-    }
-
-
     handleMenuOpen= () => {
         this.setState({isMenuClicked:!this.state.isMenuClicked})
     }
@@ -101,7 +96,6 @@ class Dashboard extends Component {
                     locationList={locationList} 
                     handleItemClick={this.handleItemClick} 
                     handleMenuOpen={this.handleMenuOpen} 
-                    fetchLocationByMaterial={this.fetchLocationByMaterial}
 
                 />
                 <Link 
