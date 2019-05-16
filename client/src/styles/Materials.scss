@@ -28,30 +28,32 @@
 
     .plastic {
         background-color: #dacf00;
-       
+        margin-top: 10%;
 
         .plastic-title {
             position: relative;
+            top: 10%;
             z-index: 2;
         }
         .plastic-bag {
             position: relative;
-            margin-right: 10%;
-            bottom: 20px;
+            // border: 2px solid red;
+            top: 55%;
+            left: -40%;
             width: 460px;
             height: 310px;
             z-index: 1;
         }
         .plastic-bottle {
+            // border: 2px solid red;
             position: relative;
-            margin-top: 6%;
-            padding: 20px;
-            width: 200px;
+            left: 46%;
+            width: 210px;
             height: 300px;
             z-index: 1;
         }
         .plastic-overlay{
-            position: absolute;
+            position: relative;
             opacity: .9;
             background-color: green;
             animation: moveContent 2s ease;
