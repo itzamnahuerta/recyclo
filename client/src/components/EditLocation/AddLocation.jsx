@@ -10,8 +10,8 @@ class AddLocation extends Component {
             website: '',
             postalCode: '',
             phoneNumber: '',
-            longitude: '',
-            latitude: '',
+            longitude: 0,
+            latitude: 0,
             isSubmit : false,
             isError : false,
             disabled: true
@@ -41,40 +41,23 @@ class AddLocation extends Component {
         }
     }
 
-    checkLongFunc = () => {
+    checkLongFunc = async () => {
         const { latitude, longitude } = this.state;
         console.log(this.state.latitude)
-        // const lat = parseInt(latitude)        
-        // const long = parseInt(longitude)
-        console.log(longitude, latitude)
-        // if(latitude.length = 5){
-        // if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
-        //     this.setState({
-        //         disabled: false
-        //     })
-        // } else {
-        //      this.setState({
-        //         disabled: true
-        //     })
-        // }
-    // }
+        const lat = latitude
+        const long = longitude     
+        const latVal = (lat >= -90 && lat <= 90) && lat != '' ? true : false
+        const longVal = (long >= -180 && long <= 180) && long != '' ? true : false
+        const result = !(latVal && longVal)       
+            await this.setState({
+                disabled: result
+            })
     }
 
-    handleFormChange = e => {
-        const { name, value } = e.target;
-        console.log(name, value)
-        this.setState({ [name]: value });
-        // this.checkLongFunc();
-        if (((name === 'latitude') && (value >= -90 && value <= 90)) || (name === 'longitude') && (value >= -180 && value <= 180)) {
-            this.setState({
-                disabled: false
-            })
-        } else {
-            this.setState({
-                disabled: true
-
-            })
-        }
+    handleFormChange = async (e) => {
+        const { name, value } = e.target;    
+        await this.setState({ [name]: value });
+        await this.checkLongFunc();
     }
 
 
@@ -129,9 +112,9 @@ console.log(this.state.latitude)
                     <label>Phone Number</label>
                     <input name="phoneNumber" value={phoneNumber}/>
                     <label>Longitude</label>
-                    <input name="longitude" value={longitude}/>
+                    <input name="longitude" value={longitude} type="number"/>
                     <label>Latitude</label>
-                    <input name="latitude" value={latitude}/>
+                    <input name="latitude" value={latitude} type="number"/>
                     <button disabled={this.state.disabled} type="submit">Submit</button>
                 </form>
             </div>
