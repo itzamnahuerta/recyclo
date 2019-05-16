@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getUser } from '../../Services/ApiServices';
-import {updateUser} from '../../Services/ApiServices';
+import {pushUser} from '../../Services/ApiServices';
 import { Redirect, Link  } from 'react-router-dom';
 
 class AccountSettings extends Component {
@@ -18,17 +18,15 @@ class AccountSettings extends Component {
     }
 
     getUserFromDb = async () => {
-        
         const user = await getUser();
         this.setState({user})  
-        console.log(user)
     }
 
     async componentDidMount() {
-        this.setState({isUpdated:false, error:false});
         try {
+            this.setState({isUpdated:false, error:false});
             const user = await getUser();
-            this.setState({user})  
+            this.setState({user, updateUser:user})  
         } catch (error) {
             throw error
         }
@@ -56,9 +54,9 @@ class AccountSettings extends Component {
                 email: email,
             }
             localStorage.setItem('user', newUser.username)
-            const updatedUser = await updateUser(updateUser[0].id, newUser)
+            const createUser = await pushUser(updateUser[0].id, newUser)
             this.setState({isUpdated:true})
-            return updatedUser
+            return createUser
         } catch (error) {
             getUser()
             if(error){this.setState({isError: true, isUpdated:false})}
@@ -86,11 +84,10 @@ class AccountSettings extends Component {
                             
                                 <label>Name</label>
                                 <input type="text" name="name" id="name"  defaultValue={user.name}/>
-
                                 <label>Email</label>
-                                <input type="text" name="email" id="email"  defaultValue={user.email}/>
+                                <input  type="text" name="email" id="email"  defaultValue={user.email}/>
                                 <label>Username</label>
-                                <input type="text" name="username" id="username"  defaultValue={user.username}/>
+                                <input  type="text" name="username" id="username"  defaultValue={user.username}/>
                                 <button type="submit">Update Account</button>
                             </form>
                         )
