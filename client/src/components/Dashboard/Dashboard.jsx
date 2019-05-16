@@ -18,7 +18,9 @@ class Dashboard extends Component {
             selectedItem: [],
             materialList : [],
             locationList: [],
-            isMenuClicked: false
+            materialsLocation : [],
+            isMenuClicked: false,
+            materialData: []
         }
     }
 
@@ -33,7 +35,6 @@ class Dashboard extends Component {
         try {
             const resp = await getMaterials(materialList);
             this.setState({materialList:resp.data})
-            console.log(this.state.materialList)
         } catch (error) {
             throw error
         }
@@ -49,8 +50,12 @@ class Dashboard extends Component {
         }
     }
 
-
-
+    handleGetDataProp = e => {
+        const data = e.target.getAttribute('data');
+        const cleanData = JSON.parse(data)
+        console.log(cleanData)
+        return this.setState({materialData:cleanData})
+    }
     handleMenuOpen= () => {
         this.setState({isMenuClicked:!this.state.isMenuClicked})
     }
@@ -80,11 +85,9 @@ class Dashboard extends Component {
     }
 
     render() {
-        const {materialList, locationList, selectedItem, isMenuClicked } = this.state
-        const showHamburgerIcon = isMenuClicked === true ? ' icon fi-menu-visible' : 'icon fi-menu-invisible'
-        console.log(this.state.selectedItem) 
-        console.log(this.state.materialList)    
-
+        const {materialList, locationList, selectedItem, isMenuClicked, materialData } = this.state
+        const showHamburgerIcon = isMenuClicked === true ? ' icon fi-menu-visible' : 'icon fi-menu-invisible'   
+        // console.log(this.state.materialData)
         return (
             <div className="dashboard">
                 <FiMenu 
@@ -96,9 +99,10 @@ class Dashboard extends Component {
                     isMenuClicked={isMenuClicked} 
                     materialList={materialList} 
                     locationList={locationList} 
+                    materialData={materialData}
                     handleItemClick={this.handleItemClick} 
                     handleMenuOpen={this.handleMenuOpen} 
-
+                    getDataProp={this.handleGetDataProp}
                 />
                 <Link 
                     className="account-settings" 
@@ -109,6 +113,7 @@ class Dashboard extends Component {
                     <div> {this.state.isClicked === true ? 
                         <MapContainer 
                         className="map-container"
+                        materialData={materialData}
                         selectedItem={selectedItem} 
                         materialList={materialList} 
                         locationList={locationList}/> 

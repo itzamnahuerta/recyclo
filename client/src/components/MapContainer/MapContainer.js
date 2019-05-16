@@ -8,7 +8,7 @@ class MapContainer extends Component {
         const locationData = this.props.locationList                                   
         return (
             <div>
-                <Map component={Map} selectedItem={selectedItem} locationData={locationData} />
+                <Map component={Map} selectedItem={selectedItem} locationData={locationData} materialData={this.props.materialData}/>
             </div>
         );
     }
