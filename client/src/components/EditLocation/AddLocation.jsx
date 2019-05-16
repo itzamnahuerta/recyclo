@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { postLocations, getGeoCode  } from '../../Services/ApiServices';
-import { Redirect  } from 'react-router-dom';
+import { Redirect,Link  } from 'react-router-dom';
 
 class AddLocation extends Component {
     constructor(){
@@ -53,7 +53,6 @@ class AddLocation extends Component {
         
         // this.checkLongFunc();
         e.preventDefault()
-        console.log(this.checkLongFunc())
     }
 
     handleFormChange = async (e) => {
@@ -86,14 +85,14 @@ class AddLocation extends Component {
         const { name, website,postalCode,phoneNumber, address, city, state, isSubmit, isError  } = this.state
         
         if(isSubmit === true){ 
-            console.log('submitted')
-            return setTimeout(()=>{return <Redirect to='/dashboard'/>},1000)
+            return <Redirect to='/dashboard'/>
         } else if (isError === true){            
             alert('Incorrect Values')
         }  
 
         return (
             <div>
+                <Link to='/dashboard'>Back</Link>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
                     <label>Name</label>
                     <input name="name" value={name}/>
