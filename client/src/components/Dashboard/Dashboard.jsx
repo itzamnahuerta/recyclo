@@ -33,6 +33,7 @@ class Dashboard extends Component {
         try {
             const resp = await getMaterials(materialList);
             this.setState({materialList:resp.data})
+            console.log(this.state.materialList)
         } catch (error) {
             throw error
         }
@@ -79,6 +80,8 @@ class Dashboard extends Component {
     render() {
         const {materialList, locationList, selectedItem, isMenuClicked } = this.state
         const showHamburgerIcon = isMenuClicked === true ? ' icon fi-menu-visible' : 'icon fi-menu-invisible'
+        console.log(this.state.selectedItem) 
+        console.log(this.state.materialList)    
 
         return (
             <div className="dashboard">

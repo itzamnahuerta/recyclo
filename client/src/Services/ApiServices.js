@@ -37,7 +37,7 @@ export const signup = async (data) => {
 
 export const getUser = async (data) => {
     try {
-        const user = localStorage.getItem('user')
+        const user = localStorage.getItem('user')        
         const resp = await api.get(`/auth/users/name/${user}`, data);
         return resp.data;
     } catch (error){
@@ -73,9 +73,18 @@ export const postMaterials = async (data) => {
 }
 
 export const getLocations = async () => {
-    try {
+    try {     
         const resp = await api.get('/content/locations');
         return resp.data;
+    } catch (error) {
+        throw error
+    }
+}
+
+export const getLocationByMaterialRoute = async (id) => {
+    try {
+        const resp = await api.get('/content/materials/:id/locations');
+        console.log(resp)
     } catch (error) {
         throw error
     }
