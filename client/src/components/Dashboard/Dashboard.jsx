@@ -82,7 +82,7 @@ class Dashboard extends Component {
     render() {
         const {materialList, locationList, selectedItem, isMenuClicked } = this.state
         const showHamburgerIcon = isMenuClicked === true ? ' icon fi-menu-visible' : 'icon fi-menu-invisible'
-        console.log(this.state.selectedItem)        
+        console.log(this.state.selectedItem)     
 
         return (
             <div className="dashboard">
