@@ -24,7 +24,7 @@ class AccountSettings extends Component {
         console.log(user)
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         this.setState({isUpdated:false, error:false});
         try {
             const user = await getUser();
