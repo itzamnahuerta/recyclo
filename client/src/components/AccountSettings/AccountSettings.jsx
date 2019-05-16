@@ -21,6 +21,7 @@ class AccountSettings extends Component {
         this.setState({isUpdated:false, error:false});
         try {
             const user = await getUser();
+            console.log(user)
             this.setState({user})    
         } catch (error) {
             throw error

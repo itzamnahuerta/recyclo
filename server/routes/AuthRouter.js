@@ -53,7 +53,7 @@ AuthRouter.get('/users/:id', async(req,res) => {
     }
 })
 
-AuthRouter.get('/users/:username', async(req,res) => {
+AuthRouter.get('/users/name/:username', async(req,res) => {
     try {
         const users = await User.findAll({
             where: {
