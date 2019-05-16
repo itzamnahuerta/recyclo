@@ -34,11 +34,6 @@ class AccountSettings extends Component {
         }
     }
 
-    async componentWillUnmount() {
-        const user = await getUser();
-        this.setState({user})  
-    }
-
     handleFormChange = async (e) => {
         e.preventDefault();
         this.setState({isError:false})
