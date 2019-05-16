@@ -41,9 +41,6 @@ class Dashboard extends Component {
         }
     }
 
-
- 
-
     fetchLocations = async () => {
         const { locationList  } = this.state;
         try {
