@@ -10,8 +10,8 @@ class AddLocation extends Component {
             website: '',
             postalCode: '',
             phoneNumber: '',
-            longitude: '',
-            latitude: '',
+            longitude: 0,
+            latitude: 0,
             isSubmit : false,
             isError : false,
             disabled: true
@@ -41,27 +41,26 @@ class AddLocation extends Component {
         }
     }
 
-    handleFormChange = e => {
-        const {name, value} = e.target;
-        this.setState({[name]:value});
-        this.checkLongFunc();
-    }
-
     checkLongFunc = async () => {
         const { latitude, longitude } = this.state;
-        const lat = parseInt(latitude)        
-        const long = parseInt(longitude)
-        console.log(long, lat)
-        if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
-           await this.setState({
-                disabled: false
-            })
-        } else {
+        console.log(this.state.latitude)
+        const lat = latitude
+        const long = longitude     
+        const latVal = (lat >= -90 && lat <= 90) && lat != '' ? true : false
+        const longVal = (long >= -180 && long <= 180) && long != '' ? true : false
+        const result = !(latVal && longVal)       
             await this.setState({
-                disabled: true
+                disabled: result
             })
-        }
     }
+
+    handleFormChange = async (e) => {
+        const { name, value } = e.target;    
+        await this.setState({ [name]: value });
+        await this.checkLongFunc();
+    }
+
+
     
     handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -98,7 +97,7 @@ class AddLocation extends Component {
         } else if (isError === true){            
             alert('Incorrect Values')
         }  
-
+console.log(this.state.latitude)
        
        
         return (
@@ -113,9 +112,9 @@ class AddLocation extends Component {
                     <label>Phone Number</label>
                     <input name="phoneNumber" value={phoneNumber}/>
                     <label>Longitude</label>
-                    <input name="longitude" value={longitude}/>
+                    <input name="longitude" value={longitude} type="number"/>
                     <label>Latitude</label>
-                    <input name="latitude" value={latitude}/>
+                    <input name="latitude" value={latitude} type="number"/>
                     <button disabled={this.state.disabled} type="submit">Submit</button>
                 </form>
             </div>
