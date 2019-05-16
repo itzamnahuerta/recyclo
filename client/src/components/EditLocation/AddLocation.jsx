@@ -45,16 +45,6 @@ class AddLocation extends Component {
         }
     }
 
-    handleFormChange = e => {
-        console.log(this.checkLongFunc())
-        const {name, value} = e.target;
-        console.log(name, value)
-        this.setState({[name]:value});
-        
-        // this.checkLongFunc();
-        e.preventDefault()
-    }
-
     handleFormChange = async (e) => {
         const { name, value } = e.target;    
         await this.setState({ [name]: value });
