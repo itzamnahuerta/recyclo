@@ -9,26 +9,41 @@ class CreateUser extends Component {
             name: '',
             username: '',
             email : '',
-            password: ''
+            password: '',
+            error:false
         }
     }
 
-    handleSignUp = async () => {
+    handleSignUp = () => {
+        this.setState({
+            isValid:false,
+            name: '',
+            username: '',
+            email : '',
+            password: '',
+        });
+        this.props.handleClick();
+    }
+
+    handleFormSubmit =  (e) => {
+        e.preventDefault();
         const {name,username,email,password} = this.state;
         try {
-            const resp = signup({name,username,email,password});
-            console.log(resp);
-            this.setState({isValid:true});
+            const resp = signup({name,username,email,password})
+            .then(resp => resp)
+            .catch(e => this.setState({error:true, isValid:false}))
+            if(resp){
+                this.setState({isValid:true})
+            }
+            return resp
         } catch (error) {
             throw error
         }
+        
     }
-
-    handleFormSubmit = e => {
-        e.preventDefault();
-        this.handleSignUp();
+    handleHideError = () => {
+        this.setState({error:false})
     }
-
     handleFormChange= e => {
         const fieldName = e.target.name;
         const value = e.target.value;
@@ -36,10 +51,14 @@ class CreateUser extends Component {
     }
 
     render() {
-        const {name,password,email,username} = this.state;
+        const {name,password,email,username, error, isValid} = this.state;
+        const containErr = error === true ? <div className='signup-err' onMouseLeave={this.handleHideError}><h3>Unable to create Account</h3></div> : <div className="signup-noerr"></div>
+        const success = isValid === true ? "success":"success hide"
+        
         return (
-            <div className={this.props.toggleForm}>
-            <div className="glass"></div>
+            <div className={this.props.toggleForm} onClick={this.handleHideError}>
+            {containErr}
+            <div className={success}><h3>Account Created!</h3><button type="submit" onClick={this.handleSignUp}>Login</button></div>
             <div className="form-container">
             <button className="close" type="none" onClick={this.props.handleClick}>X</button>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>

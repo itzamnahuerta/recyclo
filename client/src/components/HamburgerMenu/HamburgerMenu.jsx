@@ -33,8 +33,13 @@ class HamburgerMenu extends Component {
                 {locationList ? locationList.map((location, index) => {
                     return <li 
                                 key={index} 
-                                name={location.latitude} 
-                                value={location.longitude}
+                                name={location.name}
+                                postcode={location.postal_code}
+                                url={location.url}
+                                number={location.phone_number}
+                                latitude={location.latitude} 
+                                longitude={location.longitude}
+                                id={location.id}
                                 onClick={this.props.handleItemClick}>
                             {location.name}
                             </li>

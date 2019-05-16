@@ -6,6 +6,7 @@ import {getMaterials, getLocations} from '../../Services/ApiServices';
 import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
 import { Route, Link  } from 'react-router-dom';
+import AddLocation from '../EditLocation/AddLocation';
 
 class Dashboard extends Component {
     constructor(){
@@ -22,7 +23,7 @@ class Dashboard extends Component {
 
     async componentDidMount() {
         this.fetchMaterials();
-        this.fetchLocations();
+        this.fetchLocations();        
         await getUser()
     }
 
@@ -48,9 +49,26 @@ class Dashboard extends Component {
 
     handleItemClick = e => {
         const target = e.target.value
+        const id = e.target.getAttribute('id');
         const name = e.target.getAttribute('name');
-        const items = {name:name, value:target}
-        this.setState({selectedItem:[...this.state.selectedItem,items] })
+        const number = e.target.getAttribute('number');
+        const latitude = e.target.getAttribute('latitude');
+        const postcode = e.target.getAttribute('postcode')
+        const url = e.target.getAttribute('url');
+        const longitude = e.target.getAttribute('longitude');    
+        const items = {
+            id,
+            latitude, 
+            longitude, 
+            number, 
+            name,
+            postcode,
+            url,
+            value:target}
+        this.setState({
+            isClicked: true,
+            selectedItem:[...this.state.selectedItem,items] 
+        })                         
     }
 
     handleMenuOpen = () => {
@@ -67,6 +85,7 @@ class Dashboard extends Component {
                 <HamburgerMenu  isMenuClicked={isMenuClicked} materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} handleMenuOpen={this.handleMenuOpen} />
                 <MapContainer className="map-box" materialList={materialList} locationList={locationList}/>
                 <Link className="account-settings" to="/account-settings">Account Settings</Link>
+
             </div>
         );
     }

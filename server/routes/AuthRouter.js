@@ -38,10 +38,20 @@ AuthRouter.post('/signup', async (req,res,next) => {
             }
             return res.json({msg: 'User Created', user:user}) 
         } catch (error) {
+            res.send()
             return next(error);
         }
     })(req,res,next)
 });
+
+AuthRouter.get('/users/:id', async(req,res) => {
+    try {
+        const users = await User.findByPk(req.params.id);
+        res.send(users)
+    } catch (error) {
+        
+    }
+})
 
 AuthRouter.get('/users/:username', async(req,res) => {
     try {
@@ -63,7 +73,7 @@ AuthRouter.put('/users/:id', async (req,res) => {
             res.json({user});
         
     } catch (error) {
-        res.status(error.status || 500)
+        res.status(error.status || 400)
         res.send({msg: error})
         // throw error
     }
