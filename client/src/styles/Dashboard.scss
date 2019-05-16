@@ -6,6 +6,8 @@
     left: 2%;
     width: 90%;
     height: 1200px;
+    border: 5px solid red;
+
     .account-settings {
         position: fixed;
         top: 4%;
@@ -23,26 +25,51 @@
         background-color: $blue;
         color: #333;
     }
+    .icon {
+        position: fixed;
+        cursor: pointer;
+        height: 4em;
+    }
+    
+    .fi-menu-visible {
+        position: absolute;
+        z-index: 2000;
+        width: 30px;
+        height: 3%;
+    }
+    
+    .fi-menu-invisible{
+        width: 30px;
+        height: 3%;
+        // border: 2px solid green;
+        // display: none
+    }
+    
+
 }
 
-.icon {
-    position: fixed;
-    cursor: pointer;
-    height: 4em;
-}
-
-.fi-menu-visible {
-    position: absolute;
-    z-index: 2000;
-    width: 30px;
-    height: 3%;
-}
-
-.fi-menu-invisible{
-    width: 30px;
-    height: 3%;
+.dash-grid-container {
+    position: relative;
+    top: 20%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 50% 50%;
     // border: 2px solid green;
-    // display: none
+    .map-container {
+        border: 3px solid peru;
+        grid-column: 2/3; 
+        grid-row: 1/2;
+    }
+    .materials {
+        // border-top: 10px solid white;
+        border: 4px solid indigo;
+        grid-column: 3/4;
+        grid-row: 1/2;
+
+        // overflow: scroll;
+    }
+
 }
+
 
 

@@ -5,8 +5,9 @@
     background-color: white;
     position: fixed;
     top: 1em;
-    z-index: 2000;
+    z-index: 4000;
     transition: all 0.4s;
+    overflow: scroll;
 
     li {
         list-style:none;

@@ -53,6 +53,9 @@ class AddLocation extends Component {
         console.log(this.checkLongFunc())
     }
 
+
+
+
     checkLongFunc = async () => {
         const { latitude, longitude } = this.state;
         const lat = latitude
