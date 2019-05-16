@@ -85,8 +85,8 @@ export const getLocations = async () => {
 
 export const getLocationsByMaterials = async (data) => {
     try {
-        const name = localStorage.getItem('name')
-        const res = await api.get(`/materials/${name}/locations`, data)
+        const material = localStorage.getItem('material')
+        const res = await api.get(`/materials/${material}/locations`, data)
         return res.data
     } catch (error) {
         throw error
