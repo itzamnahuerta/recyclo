@@ -39,6 +39,7 @@ export default class Materials extends Component  {
             {this.state.showContent[0] && 
               <div className="PlasticOverlay" >
                 Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.
+              <button onClick={(e) => this.handleClick(e, 0)}>X</button>
               </div>
             }
         </div>
@@ -60,6 +61,7 @@ export default class Materials extends Component  {
             {this.state.showContent[1] && 
               <div className="MetalsOverlay">
                 Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.
+                <button onClick={(e) => this.handleClick(e, 1)}>X</button>
               </div>
             }
         </div>
@@ -82,7 +84,7 @@ export default class Materials extends Component  {
             {this.state.showContent[2] && 
               <div className="TextileOverlay">
                 Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.Amet dolore exercitation labore proident do aliquip voluptate enim pariatur quis magna veniam aliqua. Incididunt fugiat labore proident mollit ut nostrud Lorem. Qui id reprehenderit Lorem nisi ea incididunt non Lorem qui. Elit consequat velit consequat consequat ea minim do amet.
-
+                <button onClick={(e) => this.handleClick(e, 2)}>X</button>
               </div>
             }
         </div>
