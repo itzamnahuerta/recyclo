@@ -46,7 +46,9 @@ export const getUser = async (data) => {
 
 export const updateUser = async (id, data) => {
     try {
+        console.log(id)
         const resp = api.put(`auth/users/${id}`, data);
+        console.log(resp)
         return resp
     } catch (error) {
         throw error
