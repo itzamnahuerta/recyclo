@@ -51,39 +51,13 @@ class AddLocation extends Component {
         // this.checkLongFunc();
         e.preventDefault()
         console.log(this.checkLongFunc())
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> master
     }
 
 
 
 
-    checkLongFunc = () => {
+    checkLongFunc = async () => {
         const { latitude, longitude } = this.state;
-<<<<<<< HEAD
-        // const lat = parseInt(latitude)        
-        // const long = parseInt(longitude)
-        const lat = parseInt(latitude)
-        const long = parseInt(longitude)
-        return(
-            console.log('~~~~~~~~~~~~',long)
-        )
-
-        // if ((long >= -180 && long <= 180) && (lat >= -90 && lat <= 90)) {
-        //    await this.setState({
-        //         disabled: false
-        //     })
-        // } else {
-        //     await this.setState({
-        //         disabled: true
-        //     })
-        // }
-        
-=======
         const lat = latitude
         const long = longitude     
         const latVal = (lat >= -90 && lat <= 90) && lat !== '' ? true : false
@@ -92,7 +66,6 @@ class AddLocation extends Component {
             await this.setState({
                 disabled: result
             })
->>>>>>> master
     }
 
     handleFormChange = async (e) => {
