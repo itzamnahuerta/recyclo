@@ -81,5 +81,43 @@
         background-color: $blue;
         border: 2px solid $blue;
     }
-    
+
+    .account-error{
+        margin-top: 5%;
+        position: relative;
+        border-radius: 6px;
+        padding: 2em 0;
+        left: 30%;
+        background-color: $blueBg;
+        width: 40%;
+        box-shadow: 4px 4px 10px $shadow;
+        transition: all 0.2s;
+    } .show {
+        margin-top: 0%;
+        position: relative;
+        opacity: 1;
+    }
+
+    .hide {
+        margin-top: 40%;
+        position: relative;
+        opacity: 0;
+    }
+
+    button {
+        padding: .6em 1em;
+        border-radius: 6px;
+        font-weight: 800;
+        background-color: $orange;
+        border: 2px solid $orange;
+        cursor: pointer;
+        transition: all 0.4s;
+        box-shadow: 4px 4px 10px $shadow;
+    }
+
+    button:hover {
+        background-color: $yellow;
+        border: 2px solid $yellow;
+    }
+
 }
