@@ -20,8 +20,9 @@ export default class Materials extends Component  {
   
   render() {
     return (
-      <div className='materials'>
-        <div className="plastic"> 
+      <div className='materials-container'>
+      
+        <div className="plastic materials"> 
             <span className="plastic-title"> PLASTIC </span>
             <img 
               className="plastic-bag" 
@@ -44,7 +45,7 @@ export default class Materials extends Component  {
             }
         </div>
 
-        <div className="metals"> 
+        <div className="metals materials"> 
         <span className="metals-title"> METALS  </span>
         {/* <img 
             className="PlasticBag" 
@@ -66,7 +67,7 @@ export default class Materials extends Component  {
             }
         </div>
 
-        <div className="textile"> 
+        <div className="textile materials"> 
         <span className="textile-title"> TEXTILE </span>
         <img 
           className="pants" 
@@ -89,7 +90,7 @@ export default class Materials extends Component  {
             }
         </div>
 
-        <div className="mix-paper">
+        <div className="mix-paper materials">
         <span className="mix-paper-title"> MIX-PAPER  </span>
 
         <img 

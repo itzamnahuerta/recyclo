@@ -81,7 +81,7 @@ class Dashboard extends Component {
         const showHamburgerIcon = isMenuClicked === true ? ' icon fi-menu-visible' : 'icon fi-menu-invisible'
 
         return (
-            <div className="dashboard">
+            <div className="top-dashboard">
                 <FiMenu 
                     className={`${showHamburgerIcon} fi-menu`} 
                     onClick={this.handleMenuOpen}
@@ -103,13 +103,13 @@ class Dashboard extends Component {
                 <div className="dash-grid-container"> 
                     <div> {this.state.isClicked === true ? 
                         <MapContainer 
-                        className="map-container"
+                        className="map-dash-container"
                         selectedItem={selectedItem} 
                         materialList={materialList} 
                         locationList={locationList}/> 
                         : <div></div> }
                     </div>
-                    <Materials className="materials"/>
+                    <Materials className="materials-dash-container"/>
                 </div> 
             </div>
         );

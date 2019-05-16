@@ -97,7 +97,7 @@ class AddLocation extends Component {
         }  
 
         return (
-            <div>
+            <div className="add-location">
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
                     <label>Name</label>
                     <input name="name" value={name}/>

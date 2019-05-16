@@ -1,11 +1,8 @@
-
-.center-map {
-    position: absolute;
-    left: 30%;
-    top: 25%;
-}
-
 .mapboxgl-popup {
     font-size: .75em;
 }
 
+.center-map {
+    border: 10px solid purple;
+    // transform: translate(100px, 100px);
+}
