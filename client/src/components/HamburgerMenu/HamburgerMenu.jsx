@@ -11,14 +11,21 @@ const HamburgerMenu = (props) => {
             <Link to='/add-location'>Add New Location</Link>
             <span className="materials-title"> MATERIALS </span>
             {materialList ? materialList.map((material, index) => {
-                return <li 
-                            key={material.id} 
-                            name={material.name} 
-                            value={material.id}
-                            onClick={props.handleItemClick}>
-                        {material.name}
-                        </li>
-            }) : <h3>No Data</h3>}
+                let list = material.locations.map((location, index) => {  
+                    console.log(location)                  
+                    return <li
+                    key={index} 
+                    name={location.name}
+                    postcode={location.postal_code}
+                    url={location.url}
+                    number={location.phone_number}
+                    latitude={location.latitude} 
+                    longitude={location.longitude}
+                    id={location.id}
+                    onClick={props.handleItemClick}>                        
+                    </li>           
+            }) return list
+             }): <h3>No Data</h3>}
             </div>
             <div className="bar locations">
             <span className="locations-title"> LOCATIONS </span>
