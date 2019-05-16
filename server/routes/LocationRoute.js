@@ -14,7 +14,6 @@ LocationRoute.get('/locations', async(req,res) =>{
 LocationRoute.get('/locations/:id', async (req, res) => {
     try {        
         const locationId = await Location.findByPk(req.params.id)
-        console.log(locationId)
         res.json(locationId)
     } catch(error) {
         throw error     

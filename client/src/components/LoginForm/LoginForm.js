@@ -48,7 +48,6 @@ class LoginForm extends Component {
     handleFormSubmit = (e) => {
         e.preventDefault();
         this.handleLogin();
-        console.log('handle Submit')
     }
 
     toggleErrorModal = () => {

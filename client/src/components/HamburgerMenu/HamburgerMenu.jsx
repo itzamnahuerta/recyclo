@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import { FiMenu  } from 'react-icons/fi';
+// import { FiMenu  } from 'react-icons/fi';
 
 class HamburgerMenu extends Component {
-    constructor (props) {
-        super(props);
-
-    }
-
     render() {
         const { locationList, materialList, isMenuClicked } = this.props;
 
@@ -46,11 +41,6 @@ class HamburgerMenu extends Component {
                 }) : <h3>No Data</h3>}
                 </div>
             </div>
-            
-
-            
-
-        
         );
     }
 }

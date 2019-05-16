@@ -1,17 +1,14 @@
-const {
-    Sequelize
-} = require('sequelize');
+const { Sequelize } = require('sequelize');
 const bcrypt = require('bcrypt')
 
 
-const db = new Sequelize({
+const db = new Sequelize('recycle_project_db', 'anpato', 'anpato',{
     database: 'recycle_project_db',
     dialect: 'postgres',
     define: {
         underscored: true
     },
 })
-
 
 const Location = db.define('location', {
     name: Sequelize.STRING,
@@ -25,9 +22,6 @@ const Location = db.define('location', {
 
 const Material = db.define('material', {
     name: Sequelize.STRING,
-    // material_type: [{
-    //     keyname: Sequelize.STRING
-    // }]
 })
 
 const MaterialType = db.define('material_type', {
@@ -71,16 +65,6 @@ Material.belongsTo(User)
 Material.hasMany(MaterialType)
 MaterialType.belongsTo(Material)
 
-// MaterialType.belongsToMany(Location, {
-//     through: 'material_type_location',
-//     foreignKey: 'materialTypeId'
-// })
-
-// Location.belongsToMany(MaterialType, {
-//     through: 'material_type_location',
-//     foreignKey:'locationId'
-// })
-
 Material.belongsToMany(Location, {
     through: 'material_location',
     foreignKey: 'materialId'
@@ -101,7 +85,6 @@ Location.belongsToMany(User, {
     foreignKey: 'locationId'
 })
 
-
 User.belongsToMany(Location, {
     through: 'user_location',
     foreignKey: 'userId'
@@ -111,7 +94,6 @@ Location.belongsToMany(User, {
     through: 'user_location',
     foreignKey: 'locationId'
 })
-
 
 module.exports = { 
     MaterialType,   

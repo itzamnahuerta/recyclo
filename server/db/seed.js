@@ -38,8 +38,6 @@ const main = async () => {
         name: 'plastic'
     });
 
-
-
     const wood = await Material.create({
         name: 'wood'
     })
@@ -67,8 +65,6 @@ const main = async () => {
         latitude: '40.741895',
         longitude: '-73.989308'
     })
-
-
 
     const greenChip = await Location.create({
         name: 'Green Chip Ewaste Solutions',
@@ -233,7 +229,6 @@ const main = async () => {
 
     await fabscrap.addMaterial(textile)
     await fabscrap.addMaterial(misc)
-
 
 }
 
