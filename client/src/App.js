@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import './styles/App.scss';
 import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Home/Home';
@@ -15,10 +15,12 @@ function App() {
         <span className="star-character"> *</span>
       </div>
     <main>
-      <Route exact path="/account-settings" component={AccountSettings}/>
-      <Route exact path='/add-location' component={AddLocation}/>
-      <Route exact path='/Dashboard' component={Dashboard}/>
-      <Route exact path = '/' component={Home}/>
+        <Switch>
+        <Route exact path="/account-settings" component={AccountSettings}/>
+        <Route exact path='/add-location' component={AddLocation}/>
+        <Route exact path='/Dashboard' component={Dashboard}/>
+        <Route exact path = '/' component={Home}/>
+      </Switch>
     </main>
     </div>
   );
