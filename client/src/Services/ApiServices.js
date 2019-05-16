@@ -49,7 +49,9 @@ export const getUser = async (data) => {
 
 export const updateUser = async (id, data) => {
     try {
+        console.log(id)
         const resp = api.put(`auth/users/${id}`, data);
+        console.log(resp)
         return resp
     } catch (error) {
         throw error
@@ -59,7 +61,6 @@ export const updateUser = async (id, data) => {
 export const getMaterials = async (data) => {
     try {
         const resp = await api.get('/content/materials');
-        // console.log(resp);
         return resp;
     } catch (error) {
         throw error

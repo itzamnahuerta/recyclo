@@ -11,7 +11,6 @@ class AccountSettings extends Component {
             name: '',
             username : '',
             email : '',
-            password: '',
             isUpdated : false,
             isError: false
         }
@@ -30,6 +29,7 @@ class AccountSettings extends Component {
 
     handleFormChange = async (e) => {
         e.preventDefault();
+        this.setState({isError:false})
         const {name, value} = e.target
         await this.setState(prevState => {
             let newUser = prevState.user
@@ -48,7 +48,9 @@ class AccountSettings extends Component {
                 username: username,
                 email: email,
             }
+            localStorage.setItem('user', newUser.username)
             const updatedUser = await updateUser(user[0].id, newUser)
+
             this.setState({isUpdated:true})
             return updatedUser
         } catch (error) {
@@ -64,7 +66,7 @@ class AccountSettings extends Component {
             alert('Unable to update');
         }
         return (
-            <div>
+            <div className="account-settings">
                     { user ? user.map(user => {
                         return (
                             <form onChange={this.handleFormChange} onSubmit={this.handleUpdateUser}>
