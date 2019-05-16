@@ -33,6 +33,7 @@ class Dashboard extends Component {
         try {
             const resp = await getMaterials(materialList);
             this.setState({materialList:resp.data})
+            console.log(this.state.materialList)
         } catch (error) {
             throw error
         }

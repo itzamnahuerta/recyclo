@@ -39,19 +39,7 @@ class AddLocation extends Component {
             throw error
         }
     }
-    // 
-    // Which handle change are we using?
-    // 
-    handleFormChange = e => {
-        console.log(this.checkLongFunc())
-        const {name, value} = e.target;
-        console.log(name, value)
-        this.setState({[name]:value});
-        
-        // this.checkLongFunc();
-        e.preventDefault()
-        console.log(this.checkLongFunc())
-    }
+
 
     checkLongFunc = async () => {
         const { latitude, longitude } = this.state;
