@@ -8,6 +8,7 @@ class AccountSettings extends Component {
         super(props);
         this.state = {
             user: [],
+            updateUser : [],
             name: '',
             username : '',
             email : '',
@@ -16,14 +17,26 @@ class AccountSettings extends Component {
         }
     }
 
-    async componentDidMount() {
+    getUserFromDb = async () => {
+        
+        const user = await getUser();
+        this.setState({user})  
+        console.log(user)
+    }
+
+    async componentWillMount() {
         this.setState({isUpdated:false, error:false});
         try {
             const user = await getUser();
-            this.setState({user})    
+            this.setState({user})  
         } catch (error) {
             throw error
         }
+    }
+
+    async componentWillUnmount() {
+        const user = await getUser();
+        this.setState({user})  
     }
 
     handleFormChange = async (e) => {
@@ -31,7 +44,7 @@ class AccountSettings extends Component {
         this.setState({isError:false})
         const {name, value} = e.target
         await this.setState(prevState => {
-            let newUser = prevState.user
+            let newUser = prevState.updateUser
             newUser[name] = value
             return newUser
         })
@@ -39,34 +52,39 @@ class AccountSettings extends Component {
 
     handleUpdateUser = async (e) => {
         e.preventDefault();
-        const {user, name, username, email, } = this.state;
+        const {updateUser, user, name, username, email, } = this.state;
         try {
             const newUser = {
-                id: user[0].id,
+                id: updateUser[0].id,
                 name: name,
                 username: username,
                 email: email,
             }
             localStorage.setItem('user', newUser.username)
-            const updatedUser = await updateUser(user[0].id, newUser)
-
+            const updatedUser = await updateUser(updateUser[0].id, newUser)
             this.setState({isUpdated:true})
             return updatedUser
         } catch (error) {
-            if(error){this.setState({isError: true})}
+            getUser()
+            if(error){this.setState({isError: true, isUpdated:false})}
         }
+    }
+
+    handleCloseError = () => {
+        this.setState({isError:false})
     }
 
     render() {
         const { user, isUpdated, isError } = this.state
         if(isUpdated === true){
             return  <Redirect to='/dashboard'/>
-        } else if(isError === true) {
-            alert('Unable to update');
         }
+
+        const errorDiv = isError === true ? 'account-error show' : 'account-error hide'; 
+
         return (
             <div className="account-settings">
-            <Link to ='/dashboard' className="dashboard-link">Go Back</Link>
+            <Link to ='/dashboard' className="dashboard-link" onClick={this.getUserFromDb}>Go Back</Link>
                     { user ? user.map(user => {
                         return (
                             <form onChange={this.handleFormChange} onSubmit={this.handleUpdateUser}>
@@ -82,7 +100,11 @@ class AccountSettings extends Component {
                             </form>
                         )
                     }) : <h4>Cannot retrive account settings</h4>}
-                    
+                    <div className={errorDiv}>
+                        <h3>Unable to update account settings</h3>
+                        <p>Please verify that your information is different than your current settings</p>
+                        <button onClick={this.handleCloseError}>Close</button>
+                    </div>
             </div>
         );
     }
