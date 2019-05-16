@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 const bcrypt = require('bcrypt')
 
 
-const db = new Sequelize('recycle_project_db', 'anpato', 'anpato',{
+const db = new Sequelize({
     database: 'recycle_project_db',
     dialect: 'postgres',
     define: {

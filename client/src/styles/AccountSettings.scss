@@ -2,6 +2,7 @@
 
 .account-settings {
     text-align: center;
+    
     form {
         margin: auto;
         justify-content: center;
@@ -58,6 +59,27 @@
             background-color: $orange;
             border: 2px solid $orange;
         }
+    }
+
+    .dashboard-link {
+        position: absolute;
+        top: 2em;
+        left: 2em;
+        padding: .6em 1em;
+        border-radius: 6px;
+        font-weight: 800;
+        background-color: $orange;
+        border: 2px solid $orange;
+        cursor: pointer;
+        transition: all 0.4s;
+        box-shadow: 4px 4px 10px $shadow;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .dashboard-link:hover {
+        background-color: $blue;
+        border: 2px solid $blue;
     }
     
 }

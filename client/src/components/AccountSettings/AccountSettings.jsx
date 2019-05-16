@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getUser } from '../../Services/ApiServices';
 import {updateUser} from '../../Services/ApiServices';
-import { Redirect  } from 'react-router';
+import { Redirect, Link  } from 'react-router-dom';
 
 class AccountSettings extends Component {
     constructor(props) {
@@ -66,6 +66,7 @@ class AccountSettings extends Component {
         }
         return (
             <div className="account-settings">
+            <Link to ='/dashboard' className="dashboard-link">Go Back</Link>
                     { user ? user.map(user => {
                         return (
                             <form onChange={this.handleFormChange} onSubmit={this.handleUpdateUser}>
@@ -81,6 +82,7 @@ class AccountSettings extends Component {
                             </form>
                         )
                     }) : <h4>Cannot retrive account settings</h4>}
+                    
             </div>
         );
     }

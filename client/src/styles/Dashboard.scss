@@ -1,3 +1,5 @@
+@import 'Colors';
+
 .dashboard{
     position: absolute;
     top: 2%;
@@ -6,9 +8,27 @@
     height: 1200px;
     .account-settings {
         position: fixed;
-        top: 12%;
-        left: 85%;
+        top: 4%;
+        left: 88%;
+        background-color: $orange;
+        text-decoration: none;
+        padding: .6em 1em;
+        color: $white;
+        border-radius: 6px;
+        box-shadow: 4px 4px 10px $shadow;
+        transition: all 0.4s;
     }
+
+    .account-settings:hover {
+        background-color: $blue;
+        color: #333;
+    }
+}
+
+.icon {
+    position: fixed;
+    cursor: pointer;
+    height: 4em;
 }
 
 .fi-menu-visible {
@@ -24,4 +44,5 @@
     // border: 2px solid green;
     // display: none
 }
+
 
