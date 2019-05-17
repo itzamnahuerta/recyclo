@@ -5,17 +5,22 @@ import Materials from '../Materials/Materials';
 import {getMaterials, getLocations} from '../../Services/ApiServices';
 import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
-import {  Link} from 'react-router-dom';
+import { Route, Link, Redirect  } from 'react-router-dom';
+import AddLocation from '../EditLocation/AddLocation';
+import { logout } from '../../Services/ApiServices'
+import authService from '../../Services/AuthService';
+import Home from '../Home/Home';
 
 class Dashboard extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             isClicked: false,
             isOpen : false,
             selectedItem: [],
             materialList : [],
             locationList: [],
+            // isAuthenticated : props.authenticate
             materialsLocation : [],
             isMenuClicked: false,
             materialData: [],
@@ -86,9 +91,17 @@ class Dashboard extends Component {
         })                        
     }
 
+    handleSignOut = async (e) => {
+        e.preventDefault()
+        await logout()
+    }
+
     render() {
         const {materialList, locationList, selectedItem, isMenuClicked, materialData } = this.state
-        const showHamburgerIcon = isMenuClicked === true ? ' icon fi-menu-visible' : 'icon fi-menu-invisible'   
+        const showHamburgerIcon = isMenuClicked === true ? ' icon fi-menu-visible' : 'icon fi-menu-invisible' 
+                if(authService.isAuthenticated() === false){
+            return <Redirect exact to='/'/>
+        }
         return (
             <div className="dashboard">
                 <FiMenu 
@@ -119,6 +132,7 @@ class Dashboard extends Component {
                     locationList={locationList}/> 
                     : <div></div> }
                 <Materials/>
+                <Link to='/'>Sign Out</Link>
             </div>
         );
     }

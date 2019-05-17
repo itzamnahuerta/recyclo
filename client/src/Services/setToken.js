@@ -1,12 +1,12 @@
 const setToken = {
     setToken: (token) => {
-        localStorage.setItem('token', token);
+        sessionStorage.setItem('token', token);
     },
     fetchToken: () => {
-        return localStorage.getItem('token');
+        return sessionStorage.getItem('token');
     },
     clearToken: () => {
-        localStorage.clear();
+        sessionStorage.clear();
     }
 }
 
