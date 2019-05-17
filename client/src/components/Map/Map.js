@@ -25,21 +25,39 @@ class Map extends Component {
   _renderMarker(selectedItem, i) {
     const lat = Number(selectedItem.latitude)
     const long = Number(selectedItem.longitude)
-    return (
-      <Marker key={`locations-${i}`} longitude={long} latitude={lat} >
-        <MapPin
-          size={15}          
-          onClick={() =>
-            this.setState({ popupInfo: selectedItem  })}
-        />
-      </Marker>
-    );
+    const { materialData  } = this.props
+    if(materialData){
+      return materialData.map((data,index) => {
+        return (
+        <Marker 
+          key={`locations-${index}`} 
+          longitude={Number(data.longitude)}
+          latitude={Number(data.latitude)}>
+          <MapPin
+          size={15}/>
+          </Marker>
+        )
+      })
+    }
+    else if(selectedItem){
+      return (
+        <Marker key={`locations-${i}`} longitude={long} latitude={lat} >
+          <MapPin
+            size={15}          
+            onClick={() =>
+              this.setState({ popupInfo: selectedItem  })}
+          />
+        </Marker>
+      );
+    }
+
   }
 
   _renderPopup() {
     const { popupInfo } = this.state;
     const lat = Number(popupInfo.latitude)
     const lng = Number(popupInfo.longitude)
+    
     return (
       <Popup tipSize={5}
         anchor="top"
@@ -53,9 +71,8 @@ class Map extends Component {
 
   render() {
     const { viewport } = this.state;
-    // const locations = this.props.locationData
+    const { materialData  } = this.props
     const selectedItem = this.props.selectedItem
-    
     return (
       <div className="center-map">
         <ReactMapGL
@@ -67,7 +84,7 @@ class Map extends Component {
           mapStyle="mapbox://styles/mapmen/cjvnw7xb901p81cn1q5ebx5vr"
           onViewportChange={(viewport) => this.setState({ viewport })}
           mapboxApiAccessToken={MAPBOX_TOKEN}>
-          {selectedItem.map(this._renderMarker)}
+          {selectedItem ? selectedItem.map(this._renderMarker): materialData ? materialData.map(this._renderMarker): null}
           {this.state.popupInfo && this._renderPopup()}
         </ReactMapGL>
       </div>
