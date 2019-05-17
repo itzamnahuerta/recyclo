@@ -104,6 +104,7 @@ class Dashboard extends Component {
         }
         return (
             <div className="dashboard">
+                
                 <FiMenu 
                     className={`${showHamburgerIcon} fi-menu`} 
                     onClick={this.handleMenuOpen}
