@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MapContainer from '../MapContainer/MapContainer';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
+import Materials from '../Materials/Materials';
 import {getMaterials, getLocations} from '../../Services/ApiServices';
 import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
@@ -118,7 +119,6 @@ class Dashboard extends Component {
                     locationList={locationList}/> 
                     : <div></div> }
                 <Materials/>
-
             </div>
         );
     }
