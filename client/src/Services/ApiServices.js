@@ -4,7 +4,6 @@ const JwtToken = 'token';
 const BASE_URL = 'http://localhost:3001';
 
 const maps_key = process.env.REACT_APP_MAPS_KEY 
-console.log(maps_key)
 const api = Axios.create({
     baseURL : BASE_URL,
     headers : {
