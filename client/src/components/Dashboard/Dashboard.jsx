@@ -20,7 +20,7 @@ class Dashboard extends Component {
             selectedItem: [],
             materialList : [],
             locationList: [],
-            // isAuthenticated : props.authenticate
+            isAuthenticated : props.authenticate,
             materialsLocation : [],
             isMenuClicked: false,
             materialData: [],

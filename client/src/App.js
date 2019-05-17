@@ -19,7 +19,7 @@ function App() {
         <Switch>
         <Route exact path="/account-settings" component={AccountSettings}/>
         <Route exact path='/add-location' component={AddLocation}/>
-      <Route exact path='/Dashboard' component={(props)=> <Dashboard {...props}/>}/>
+      <Route exact path='/Dashboard' component={(props)=> <Dashboard {...props} authenticate={authenticate}/>}/>
         <Route exact path = '/' component={Home}/>
       </Switch>
     </main>
