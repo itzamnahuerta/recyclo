@@ -3,15 +3,11 @@ import { Link } from 'react-router-dom'
 const HamburgerMenu = (props) => {
     const { locationList, materialList, isMenuClicked } = props;
     const showMenu = isMenuClicked === true ? 'sidebar open' : 'sidebar ';
-    
-    console.log(props.materialData)
-    
+
     const getData = (e) => {
         props.getDataProp(e)
         props.handleItemClick(e)
     }
-
-
 
     return (
         <div className={showMenu}>
@@ -20,7 +16,7 @@ const HamburgerMenu = (props) => {
             <Link to='/add-location'>Add New Location</Link>
             <span className="materials-title"> MATERIALS </span>
             {materialList ? materialList.map((material, index) => {
-                return <li key={index} data={JSON.stringify(material.locations)} onClick={getData}>{material.name}</li>
+                return <li key={index} data={JSON.stringify(material.locations)} onClick={(e)=> props.getDataProp(e)}>{material.name}</li>
                 }): <h3>No Data</h3>}
             </div>
             <div className="bar locations">
@@ -35,7 +31,7 @@ const HamburgerMenu = (props) => {
                             latitude={location.latitude} 
                             longitude={location.longitude}
                             id={location.id}
-                            onClick={props.handleItemClick}>
+                            onClick={getData}>
                         {location.name}
                         </li>
             }) : <h3>No Data</h3>}
