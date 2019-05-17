@@ -9,8 +9,8 @@ class Map extends Component {
     super()
     this.state = {
       viewport: {
-        width: 600,
-        height: 400,
+        // width: 400,
+        // height: 580,
         latitude: 40.730610,
         longitude: -73.935242,
         zoom: 11
@@ -22,25 +22,42 @@ class Map extends Component {
   };
 
 
-  _renderMarker(locations, i) {
-    const lat = Number(locations.latitude)
-    const long = Number(locations.longitude)
-    return (
-      <Marker key={`locations-${i}`} longitude={long} latitude={lat} >
-        <MapPin
-          size={15}
-          onClick={() =>
-            this.setState({ popupInfo: locations })}
-        />
-      </Marker>
-      
-    );
+  _renderMarker(selectedItem, i) {
+    const lat = Number(selectedItem.latitude)
+    const long = Number(selectedItem.longitude)
+    const { materialData  } = this.props
+    if(materialData){
+      return materialData.map((data,index) => {
+        return (
+        <Marker 
+          key={`locations-${index}`} 
+          longitude={Number(data.longitude)}
+          latitude={Number(data.latitude)}>
+          <MapPin
+          size={15}/>
+          </Marker>
+        )
+      })
+    }
+    else if(selectedItem){
+      return (
+        <Marker key={`locations-${i}`} longitude={long} latitude={lat} >
+          <MapPin
+            size={15}          
+            onClick={() =>
+              this.setState({ popupInfo: selectedItem  })}
+          />
+        </Marker>
+      );
+    }
+
   }
 
   _renderPopup() {
     const { popupInfo } = this.state;
     const lat = Number(popupInfo.latitude)
     const lng = Number(popupInfo.longitude)
+    
     return (
       <Popup tipSize={5}
         anchor="top"
@@ -52,29 +69,23 @@ class Map extends Component {
     )
   }
 
-
   render() {
     const { viewport } = this.state;
-    const locations = this.props.locationData
-    
+    const { materialData  } = this.props
+    const selectedItem = this.props.selectedItem
     return (
       <div className="center-map">
         <ReactMapGL
-          width={viewport.width}
-          height={viewport.height}
+          width={window.innerWidth}
+          height={window.innerHeight/1.5}
           latitude={viewport.latitude}
           longitude={viewport.longitude}
           zoom={viewport.zoom}
-
           mapStyle="mapbox://styles/mapmen/cjvnw7xb901p81cn1q5ebx5vr"
-
           onViewportChange={(viewport) => this.setState({ viewport })}
           mapboxApiAccessToken={MAPBOX_TOKEN}>
-
-          {locations.map(this._renderMarker)}
-
+          {selectedItem ? selectedItem.map(this._renderMarker): materialData ? materialData.map(this._renderMarker): null}
           {this.state.popupInfo && this._renderPopup()}
-
         </ReactMapGL>
       </div>
 

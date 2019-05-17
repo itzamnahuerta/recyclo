@@ -34,15 +34,12 @@ app.get('/', async(req,res) =>  {
 
 app.get('/logout', (req,res) => {
     req.logout()
-    res.redirect('/');
-    
+    res.redirect('/'); 
 })
 
-app.use((err, req, res, next) => {
-    // render the error 
-    console.log('error in error handler', err)
+app.use( '/',(err, req, res, next) => {
     res.status(err.status || 500);
-    res.json({ message: err.message });
+    res.send({ message: err.message });
 });
 
 

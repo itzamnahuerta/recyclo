@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MapContainer from '../MapContainer/MapContainer';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
-import AccountSettings from '../AccountSettings/AccountSettings';
+import Materials from '../Materials/Materials';
 import {getMaterials, getLocations} from '../../Services/ApiServices';
 import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
@@ -10,7 +10,6 @@ import AddLocation from '../EditLocation/AddLocation';
 import { logout } from '../../Services/ApiServices'
 import authService from '../../Services/AuthService';
 import Home from '../Home/Home';
-
 
 class Dashboard extends Component {
     constructor(props){
@@ -22,13 +21,17 @@ class Dashboard extends Component {
             materialList : [],
             locationList: [],
             // isAuthenticated : props.authenticate
+            materialsLocation : [],
+            isMenuClicked: false,
+            materialData: [],
         }
     }
 
     async componentDidMount() {
         this.fetchMaterials();
-        this.fetchLocations();
+        this.fetchLocations();        
         await getUser()
+        this.setState({selectedItem:[], materialData:[]})
     }
 
     fetchMaterials = async () => {
@@ -51,11 +54,41 @@ class Dashboard extends Component {
         }
     }
 
+
+    handleGetDataProp = e => {
+        const data = e.target.getAttribute('data');
+        const cleanData = JSON.parse(data)
+        this.setState({materialData:cleanData, isClicked:true})
+        
+    }
+    
+    handleMenuOpen= () => {
+        this.setState({isMenuClicked:!this.state.isMenuClicked})
+    }
+
     handleItemClick = e => {
         const target = e.target.value
+        const id = e.target.getAttribute('id');
         const name = e.target.getAttribute('name');
-        const items = {name:name, value:target}
-        this.setState({selectedItem:[...this.state.selectedItem,items] })
+        const number = e.target.getAttribute('number');
+        const latitude = e.target.getAttribute('latitude');
+        const postcode = e.target.getAttribute('postcode')
+        const url = e.target.getAttribute('url');
+        const longitude = e.target.getAttribute('longitude');    
+        const items = {
+            id,
+            latitude, 
+            longitude, 
+            number, 
+            name,
+            postcode,
+            url,
+            value:target}
+
+        this.setState({
+            isClicked: true,
+            selectedItem:[...this.state.selectedItem,items] 
+        })                        
     }
 
     handleSignOut = async (e) => {
@@ -64,22 +97,42 @@ class Dashboard extends Component {
     }
 
     render() {
-        const {materialList, locationList,} = this.state
-        if(authService.isAuthenticated() === false){
+        const {materialList, locationList, selectedItem, isMenuClicked, materialData } = this.state
+        const showHamburgerIcon = isMenuClicked === true ? ' icon fi-menu-visible' : 'icon fi-menu-invisible' 
+                if(authService.isAuthenticated() === false){
             return <Redirect exact to='/'/>
         }
-
-
         return (
             <div className="dashboard">
-            <FiMenu/>
-            <HamburgerMenu materialList={materialList} locationList={locationList} handleItemClick={this.handleItemClick} />
-                <MapContainer materialList={materialList} locationList={locationList}/>
-            <Link to="/account-settings">Account Settings</Link>
-            <Link to="/add-location">Add Location</Link>
-            <Route exact path='/add-location' component={(props)=> AddLocation}/>
-            <Route exact path='/' component={Home}/>
-            <Link to='/'>Sign Out</Link>
+                <FiMenu 
+                    className={`${showHamburgerIcon} fi-menu`} 
+                    onClick={this.handleMenuOpen}
+                />
+                <HamburgerMenu
+                    className="hamburger-menu"  
+                    isMenuClicked={isMenuClicked} 
+                    materialList={materialList} 
+                    locationList={locationList} 
+                    materialData={materialData}
+                    handleItemClick={this.handleItemClick} 
+                    handleMenuOpen={this.handleMenuOpen} 
+                    getDataProp={this.handleGetDataProp}
+                />
+                <Link 
+                    className="account-settings" 
+                    to="/account-settings"> 
+                    Account Settings
+                </Link>
+                {this.state.isClicked === true ? 
+                    <MapContainer 
+                    className="map-container"
+                    materialData={materialData}
+                    selectedItem={selectedItem} 
+                    materialList={materialList} 
+                    locationList={locationList}/> 
+                    : <div></div> }
+                <Materials/>
+                <Link to='/'>Sign Out</Link>
             </div>
         );
     }

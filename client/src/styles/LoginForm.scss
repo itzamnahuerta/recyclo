@@ -1,6 +1,10 @@
+@import 'Colors';
+
 .login-form {
     position: relative;
     text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
 
     form {
         display: flex;
@@ -17,19 +21,19 @@
         width: 100%;
         height: 2em;
         border-radius: 6px;
-        border: 2px solid #79CECA;
+        border: 2px solid $blue;
         transition: all 0.4s;
         padding: .5em .4em;
-        box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+        box-shadow: 4px 4px 10px $shadow;
     }
 
     input:active, input:focus {
         outline: none;
-        border: 2px solid #FD8934;
+        border: 2px solid $orange;
         transform: scale(1.2);
     }
     input::placeholder, input::placeholder{
-        color: #FD8934;
+        color: $orange;
         transition: all 0.4s;
         opacity: 1;
     }
@@ -40,22 +44,59 @@
 
     .sign-in-btn {
         font-family: 'Noto sans';
+        text-transform: uppercase;
         margin: 1em auto;
         width: 40%;
         height: 4em;
-        border-radius: 6px;
         font-weight: 800;
         letter-spacing: .3em;
-        background-color: #79CECA;
-        border: 2px solid #79CECA;
+        background-color: $blue;
+        border: 2px solid $blue;
         cursor: pointer;
         transition: all 0.4s;
-        box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+        box-shadow: 4px 4px 10px $shadow;
     }
 
     .sign-in-btn:hover {
-        border:2px solid #FD8934;
-        background-color: #FD8934;
+        border:2px solid $orange;
+        background-color: $orange;
+    }
+
+    .error-modal {
+        margin:auto;
+        top: 40%;
+        left: 26%;
+        height: 100%;
+        width: 50%;
+        position: absolute;
+        z-index: 100;
+        background-color: $blueBg;
+        transform: translateX(0);
+        transition: all 0.4s;
+        border-radius: 6px;
+        background: $whiteBg;
+        box-shadow: 4px 4px 10px $shadow;
+        
+        button {
+            margin-top: 5em;
+            background-color: $blue;
+            border: 2px solid $blue;
+            width: 40%;
+            height: 4em;
+            font-weight: 800;
+            letter-spacing: .3em;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        button:hover {
+            background-color: $orange;
+            border: 2px solid $orange;
+        }
+    }
+
+    .no-error {
+        transform: translateX(-92em); 
     }
 
 }

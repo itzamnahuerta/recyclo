@@ -1,0 +1,127 @@
+@import 'Colors';
+
+.account-settings {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Noto Sans', sans-serif;
+
+    form {
+        margin: auto;
+        justify-content: center;
+        align-content: center;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+
+        label {
+            text-transform: uppercase;
+            font-family: 'Noto Sans', sans-serif;
+            color: $orange;
+            margin-bottom: .5em;
+        }
+
+        input{
+            margin-bottom: .5em;
+            height: 2em;
+            border: 2px solid $blue;
+            transition: all 0.4s;
+            padding: .5em .4em;
+            box-shadow: 4px 4px 10px $shadow;
+        }
+
+        input:active, input:focus {
+            outline: none;
+            border: 2px solid $orange;
+            transform: scale(1.2);
+        }
+        input::placeholder, input::placeholder{
+            transition: all 0.4s;
+            opacity: 1;
+        }
+
+        input:focus::placeholder, input:focus::placeholder{
+            opacity: 0;
+        }
+
+        button {
+            margin: 2em auto;
+            width: 40%;
+            height: 4em;
+            font-weight: 800;
+            letter-spacing: .3em;
+            background-color: $blue;
+            border: 2px solid $blue;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 4px 4px 10px $shadow;
+        }
+
+        button:hover {
+            background-color: $orange;
+            border: 2px solid $orange;
+        }
+    }
+
+    .dashboard-link {
+        text-transform: uppercase;
+        font-family: 'Noto Sans', sans-serif;
+        position: absolute;
+        top: 2em;
+        left: 2em;
+        padding: .6em 1em;
+        font-weight: 800;
+        background-color: $orange;
+        border: 2px solid $orange;
+        cursor: pointer;
+        transition: all 0.4s;
+        box-shadow: 4px 4px 10px $shadow;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .dashboard-link:hover {
+        background-color: $blue;
+        border: 2px solid $blue;
+    }
+
+    .account-error{
+        margin-top: 5%;
+        position: relative;
+        // border-radius: 6px;
+        padding: 2em 0;
+        left: 30%;
+        background-color: $blueBg;
+        width: 40%;
+        box-shadow: 4px 4px 10px $shadow;
+        transition: all 0.2s;
+    } .show {
+        margin-top: 0%;
+        position: relative;
+        opacity: 1;
+    }
+
+    .hide {
+        margin-top: 40%;
+        position: relative;
+        opacity: 0;
+    }
+
+    button {
+        padding: .6em 1em;
+        // border-radius: 6px;
+        font-weight: 800;
+        background-color: $orange;
+        border: 2px solid $orange;
+        cursor: pointer;
+        transition: all 0.4s;
+        box-shadow: 4px 4px 10px $shadow;
+        text-transform: uppercase;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+    button:hover {
+        background-color: $yellow;
+        border: 2px solid $yellow;
+    }
+
+}

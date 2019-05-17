@@ -5,7 +5,7 @@ import authService from './AuthService';
 const JwtToken = 'token';
 const BASE_URL = 'http://localhost:3001';
 
-
+const maps_key = process.env.REACT_APP_MAPS_KEY 
 const api = Axios.create({
     baseURL : BASE_URL,
     headers : {
@@ -42,7 +42,6 @@ export const signup = async (data) => {
     try {
         const resp = await api.post('/auth/signup', data)
         const {data:{token, user}} = resp;
-        // console.log(resp)
         setToken.setToken(token);
         return user
     } catch (error) {
@@ -51,16 +50,16 @@ export const signup = async (data) => {
 }
 
 export const getUser = async (data) => {
-    const user = localStorage.getItem('user')
     try {
-        const resp = await api.get(`/auth/users/${user}`, data);
+        const user = localStorage.getItem('user')        
+        const resp = await api.get(`/auth/users/name/${user}`, data);
         return resp.data;
     } catch (error){
         throw error
     }
 }
 
-export const updateUser = async (id, data) => {
+export const pushUser = async (id, data) => {
     try {
         const resp = api.put(`auth/users/${id}`, data);
         return resp
@@ -72,7 +71,6 @@ export const updateUser = async (id, data) => {
 export const getMaterials = async (data) => {
     try {
         const resp = await api.get('/content/materials');
-        // console.log(resp);
         return resp;
     } catch (error) {
         throw error
@@ -82,7 +80,6 @@ export const getMaterials = async (data) => {
 export const postMaterials = async (data) => {
     try {
         const resp = await api.post('/content/materials', data);
-        // console.log(resp);
         return resp;
     } catch (error) {
         throw error
@@ -90,21 +87,42 @@ export const postMaterials = async (data) => {
 }
 
 export const getLocations = async () => {
-    try {
+    try {     
         const resp = await api.get('/content/locations');
-        // console.log(resp);
         return resp.data;
     } catch (error) {
         throw error
     }
 }
 
+export const getLocationByMaterialRoute = async (id) => {
+    try {
+        const resp = await api.get('/content/materials/:id/locations');
+        console.log(resp)
+    } catch (error) {
+        throw error
+    }
+}
+
 export const postLocations = async (data) => {
+    console.log('works')
     try {
         const resp = await api.post('/content/locations', data);
-        // console.log(resp);
+        console.log(resp)
         return resp;
     } catch (error) {
+        console.log(error)
         throw error;
+    }
+}
+
+export const getGeoCode = async (name,city,state) => {
+    try {
+        const url = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${name},${city},${state}&key=${maps_key}`);
+        const resp =  await url.json()
+        console.log(resp)
+        return resp
+    } catch (error) {
+        throw error
     }
 }

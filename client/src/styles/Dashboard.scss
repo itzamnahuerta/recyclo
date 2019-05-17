@@ -1,0 +1,56 @@
+@import 'Colors';
+
+.dashboard{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    .materials-container{
+        display: grid;
+        grid-gap: 6em;
+        justify-content: center;
+        align-items: center;
+    }
+    .account-settings {
+        position: fixed;
+        top: 4%;
+        left: 88%;
+        background-color: $orange;
+        text-decoration: none;
+        padding: .6em 1em;
+        color: $white;
+        box-shadow: 4px 4px 10px $shadow;
+        transition: all 0.4s;
+        z-index: 2000 ;
+    }
+    .account-settings:hover {
+        background-color: $blue;
+        color: #333;
+    }
+    .icon {
+        top: 0;
+        position: fixed;
+        cursor: pointer;
+        margin: 2em;
+    }
+    .fi-menu-visible {
+        position: absolute;
+        z-index: 2000;
+        width: 30px;
+        height: 3%;
+    }
+    .fi-menu-invisible{
+        width: 30px;
+        height: 3%;
+        z-index: 2000;
+    }
+}
+
+.dashboard .materials-container .plastic {
+    grid-column: 1;
+}
+
+.dashboard .materials-container .metals {
+    grid-column: 2;
+}

@@ -1,30 +1,17 @@
 const express = require('express');
-const { Material } = require('../db/models');
-const { Location } = require('../db/models')
+const { Material,Location, material_location } = require('../db/models');
+// const { Location } = require('../db/models')
 const MaterialRoute = express.Router();
 
 MaterialRoute.get('/materials', async(req,res) => {
     try {
-        const materials = await Material.findAll();
-        res.send(materials);
-    } catch (error) {
-        throw error;
-    }
-});
-
-MaterialRoute.get('/materials/:name/locations', async (req,res) => {
-    try {
-        const type = await Material.findAll({
-            where : {
-                name: req.params.name
-            },
-
+        const materials = await Material.findAll({
             include: [{
                 model: Location,
                 require: true
             }]
         });
-        res.send(type);
+        res.send(materials);
     } catch (error) {
         throw error;
     }

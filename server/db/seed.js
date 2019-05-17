@@ -2,18 +2,6 @@
 
 const { User, Material, Location, MaterialType } = require('./models');
 
-// const createLOCATION = (name, pN, url, pc, lat,long , mat = 'glass') =>
-// {
-//   return {  name: name,
-//     phone_number: PN,
-//     url: url,
-//     postal_code: pc,
-//     latitude: lat,
-//     longitude: long,
-//     mat: mat,
-// }
-// }
-
 const main = async () => {
     await Material.destroy({
         where: {}
@@ -37,8 +25,6 @@ const main = async () => {
     const plastic = await Material.create({
         name: 'plastic'
     });
-
-
 
     const wood = await Material.create({
         name: 'wood'
@@ -67,8 +53,6 @@ const main = async () => {
         latitude: '40.741895',
         longitude: '-73.989308'
     })
-
-
 
     const greenChip = await Location.create({
         name: 'Green Chip Ewaste Solutions',
@@ -233,7 +217,6 @@ const main = async () => {
 
     await fabscrap.addMaterial(textile)
     await fabscrap.addMaterial(misc)
-
 
 }
 
