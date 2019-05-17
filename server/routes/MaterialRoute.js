@@ -1,6 +1,6 @@
 const express = require('express');
-const { Material } = require('../db/models');
-const { Location } = require('../db/models')
+const { Material,Location, material_location } = require('../db/models');
+// const { Location } = require('../db/models')
 const MaterialRoute = express.Router();
 
 MaterialRoute.get('/materials', async(req,res) => {
@@ -16,7 +16,6 @@ MaterialRoute.get('/materials', async(req,res) => {
         throw error;
     }
 });
-
 
 MaterialRoute.post('/materials/', async (req,res) => {
     try {

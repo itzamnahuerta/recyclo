@@ -80,6 +80,14 @@ export const getLocations = async () => {
     }
 }
 
+export const getLocationByMaterialRoute = async (id) => {
+    try {
+        const resp = await api.get('/content/materials/:id/locations');
+        console.log(resp)
+    } catch (error) {
+        throw error
+    }
+}
 
 export const postLocations = async (data) => {
     console.log('works')

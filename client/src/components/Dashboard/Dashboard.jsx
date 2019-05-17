@@ -48,13 +48,14 @@ class Dashboard extends Component {
         }
     }
 
+
     handleGetDataProp = e => {
         const data = e.target.getAttribute('data');
         const cleanData = JSON.parse(data)
         this.setState({materialData:cleanData, isClicked:true})
         
     }
-
+    
     handleMenuOpen= () => {
         this.setState({isMenuClicked:!this.state.isMenuClicked})
     }

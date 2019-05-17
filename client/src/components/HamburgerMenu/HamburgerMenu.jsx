@@ -18,8 +18,8 @@ const HamburgerMenu = (props) => {
             {materialList ? materialList.map((material, index) => {
                 return <li key={index} data={JSON.stringify(material.locations)} onClick={(e)=> props.getDataProp(e)}>{material.name}</li>
                 }): <h3>No Data</h3>}
-            </div>
-            <div className="bar locations">
+                          <div className="bar locations">
+            <Link to='/add-location'>Add New Location</Link>
             <span className="locations-title"> LOCATIONS </span>
             {locationList ? locationList.map((location, index) => {
                 return <li 
@@ -37,7 +37,7 @@ const HamburgerMenu = (props) => {
             }) : <h3>No Data</h3>}
             </div>
         </div>
-    );
+            </div>
 };
 
 export default HamburgerMenu;
