@@ -5,6 +5,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: uppercase;
+    font-family: 'Noto Sans', sans-serif;
+
     
     a {
         position:absolute;
@@ -46,7 +49,8 @@
         }
 
         button {
-            font-family: 'Noto sans';
+            text-transform: uppercase;
+            font-family: 'Noto Sans', sans-serif;        
             margin: 1em auto;
             width: 40%;
             height: 4em;

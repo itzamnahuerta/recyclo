@@ -15,7 +15,8 @@
         flex-direction: column;
 
         label {
-            font-family: 'Open-Sans';
+            text-transform: uppercase;
+            font-family: 'Noto Sans', sans-serif;
             color: $orange;
             margin-bottom: .5em;
         }
@@ -45,6 +46,7 @@
         }
 
         button {
+            
             margin: 2em auto;
             width: 40%;
             height: 4em;
@@ -65,6 +67,8 @@
     }
 
     .dashboard-link {
+        text-transform: uppercase;
+        font-family: 'Noto Sans', sans-serif;
         position: absolute;
         top: 2em;
         left: 2em;
@@ -116,6 +120,8 @@
         cursor: pointer;
         transition: all 0.4s;
         box-shadow: 4px 4px 10px $shadow;
+        text-transform: uppercase;
+        font-family: 'Noto Sans', sans-serif;
     }
 
     button:hover {
