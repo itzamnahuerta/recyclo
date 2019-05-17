@@ -20,6 +20,7 @@ class AccountSettings extends Component {
     getUserFromDb = async () => {
         const user = await getUser();
         this.setState({user})  
+        return user
     }
 
     async componentDidMount() {
@@ -45,7 +46,7 @@ class AccountSettings extends Component {
 
     handleUpdateUser = async (e) => {
         e.preventDefault();
-        const {updateUser, user, name, username, email, } = this.state;
+        const {updateUser, name, username, email, } = this.state;
         try {
             const newUser = {
                 id: updateUser[0].id,

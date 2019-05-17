@@ -5,11 +5,9 @@ import Materials from '../Materials/Materials';
 import {getMaterials, getLocations} from '../../Services/ApiServices';
 import { getUser } from '../../Services/ApiServices';
 import { FiMenu  } from 'react-icons/fi';
-import { Route, Link, Redirect  } from 'react-router-dom';
-import AddLocation from '../EditLocation/AddLocation';
+import { Link, Redirect  } from 'react-router-dom';
 import { logout } from '../../Services/ApiServices'
 import authService from '../../Services/AuthService';
-import Home from '../Home/Home';
 
 class Dashboard extends Component {
     constructor(props){

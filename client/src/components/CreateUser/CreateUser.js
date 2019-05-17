@@ -62,7 +62,6 @@ class CreateUser extends Component {
             <div className="form-container">
             <button className="close" type="none" onClick={this.props.handleClick}>X</button>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
-                    
                     <label>Name</label>
                     <input type="text" name="name" value={name} placeholder="Name"/>
                     <label>Email</label>
