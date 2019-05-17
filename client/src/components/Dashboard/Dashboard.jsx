@@ -109,18 +109,16 @@ class Dashboard extends Component {
                     to="/account-settings"> 
                     Account Settings
                 </Link>
-                <div className="dash-grid-container"> 
-                    <div> {this.state.isClicked === true ? 
-                        <MapContainer 
-                        className="map-container"
-                        materialData={materialData}
-                        selectedItem={selectedItem} 
-                        materialList={materialList} 
-                        locationList={locationList}/> 
-                        : <div></div> }
-                    </div>
-                    {/* <Materials className="materials"/> */}
-                </div> 
+                {this.state.isClicked === true ? 
+                    <MapContainer 
+                    className="map-container"
+                    materialData={materialData}
+                    selectedItem={selectedItem} 
+                    materialList={materialList} 
+                    locationList={locationList}/> 
+                    : <div></div> }
+                <Materials/>
+
             </div>
         );
     }

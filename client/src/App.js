@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <div className="page-title"> 
-        <span className="font-one"> RE </span> 
+        <span className="font-one"> RE_</span> 
         <span className="font-two">CYCLO</span> 
         <span className="star-character"> *</span>
       </div>

@@ -19,8 +19,9 @@ const HamburgerMenu = (props) => {
                 return <li key={index} data={JSON.stringify(material.locations)} onClick={(e)=> props.getDataProp(e)}>{material.name}</li>
                 }): <h3>No Data</h3>}
                           <div className="bar locations">
+            <div className="bar locations">
             <Link to='/add-location'>Add New Location</Link>
-            <span className="locations-title"> LOCATIONS </span>
+            <h4 className="locations-title"> LOCATIONS </h4>
             {locationList ? locationList.map((location, index) => {
                 return <li 
                             key={index} 

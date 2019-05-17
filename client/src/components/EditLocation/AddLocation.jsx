@@ -79,7 +79,7 @@ class AddLocation extends Component {
         }  
 
         return (
-            <div>
+            <div className="add-location">
                 <Link to='/dashboard'>Back</Link>
                 <form onChange={this.handleFormChange} onSubmit={this.handleFormSubmit}>
                     <label>Name</label>

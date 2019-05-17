@@ -3,6 +3,8 @@
 .login-form {
     position: relative;
     text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
 
     form {
         display: flex;
@@ -42,10 +44,10 @@
 
     .sign-in-btn {
         font-family: 'Noto sans';
+        text-transform: uppercase;
         margin: 1em auto;
         width: 40%;
         height: 4em;
-        border-radius: 6px;
         font-weight: 800;
         letter-spacing: .3em;
         background-color: $blue;
@@ -81,7 +83,6 @@
             border: 2px solid $blue;
             width: 40%;
             height: 4em;
-            border-radius: 6px;
             font-weight: 800;
             letter-spacing: .3em;
             cursor: pointer;
