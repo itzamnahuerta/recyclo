@@ -24,11 +24,8 @@ LocationRoute.get('/locations/:id', async (req, res) => {
 LocationRoute.post('/locations/', async (req,res) => {
     try {
         const newLocation = await Location.create(req.body);
-        console.log(newLocation);
         res.send(newLocation)
-        
     }  catch (error) {
-        console.log(error)
         res.status(error.status || 400)
         res.send({msg: error})
     }

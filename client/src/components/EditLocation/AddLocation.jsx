@@ -28,7 +28,6 @@ class AddLocation extends Component {
     }
 
     handleCreateLocation = async () => {
-        console.log('wokring')
         const { name, website, postalCode,phoneNumber,longitude,latitude  } = this.state
         try {
             const resp = await postLocations({
@@ -45,16 +44,6 @@ class AddLocation extends Component {
         }
     }
 
-    handleFormChange = e => {
-        console.log(this.checkLongFunc())
-        const {name, value} = e.target;
-        console.log(name, value)
-        this.setState({[name]:value});
-        
-        // this.checkLongFunc();
-        e.preventDefault()
-    }
-
     handleFormChange = async (e) => {
         const { name, value } = e.target;    
         await this.setState({ [name]: value });
@@ -67,7 +56,6 @@ class AddLocation extends Component {
             const resp = await getGeoCode(address,city,state)
             // console.log(resp.results)
             const results = resp.results
-            console.log('resultssss', results[0].geometry.location)
             
             await this.setState({
                 longitude: results[0].geometry.location.lng,

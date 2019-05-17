@@ -3,7 +3,6 @@ import Map from '../Map/Map';
 
 class MapContainer extends Component {  
     render() {
-        console.log()
         const selectedItem = this.props.selectedItem        
         const locationData = this.props.locationList                                   
         return (
