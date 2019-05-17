@@ -10,7 +10,6 @@ export default class Materials extends Component  {
   }
 
   handleClick = (e,index) => {
-    // e.preventDefault();
     let newContent = this.state.showContent ;
     newContent[index] = !newContent[index];
     this.setState({

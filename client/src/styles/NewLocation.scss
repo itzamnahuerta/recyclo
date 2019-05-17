@@ -7,8 +7,9 @@
     align-items: center;
     text-transform: uppercase;
     font-family: 'Noto Sans', sans-serif;
+    color: $orange;
+    text-align: center;
 
-    
     a {
         position:absolute;
         top: 0em;
@@ -16,12 +17,10 @@
         margin: 2em;
         background-color: $orange;
         padding: .6em 1.5em;
-        border-radius: 6px;
         color: $white;
         text-decoration: none;
         transition: all 0.4s;
         box-shadow: 4px 4px 10px $shadow;
-        
     }
 
     a:hover {
@@ -37,11 +36,10 @@
 
         input {
             height: 2.5em;
-            border-radius: 6px;
             outline: none;
             border: 2px solid $blue;
             transition: all 0.4s;
-            margin-bottom: 1em;
+            margin-bottom: 1.2em;
         }
 
         input:focus, input:active {
@@ -54,7 +52,6 @@
             margin: 1em auto;
             width: 40%;
             height: 4em;
-            border-radius: 6px;
             font-weight: 800;
             letter-spacing: .3em;
             background-color: $blue;
