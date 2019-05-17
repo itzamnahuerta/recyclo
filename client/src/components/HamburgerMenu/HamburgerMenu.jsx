@@ -6,9 +6,10 @@ const HamburgerMenu = (props) => {
     return (
         <div className={showMenu}>
             <div  onClick={props.handleMenuOpen}> <span className="xMark"> x</span> </div>
+
             <div className="bar locations">
             <Link to='/add-location'>Add New Location</Link>
-            <span className="locations-title"> LOCATIONS </span>
+            <h4 className="locations-title"> LOCATIONS </h4>
             {locationList ? locationList.map((location, index) => {
                 return <li 
                             key={index} 

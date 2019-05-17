@@ -1,13 +1,7 @@
+@import "Colors";
 
-.materials{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid orange;
-    z-index: 0;
-    overflow:scroll;
-
+.materials-container {
+    width:100vw;
     @keyframes moveContent {
         0% {
             left: 0;
@@ -16,120 +10,123 @@
             left: 18%;
         }
     }
-
-    div{ 
-        align-content: center;
-        width: 80%;
-        height: 100%;
-        font-size: 4em;
+    .materials{ 
+        img {
+            max-width: 160%;
+            max-height: 160%;
+        }
+        width: 50em;
+        height: 400px;
         font-family: 'Roboto', sans-serif;
-        border-bottom: 20px solid white;
-    }
-
-    .plastic {
-        background-color: #dacf00;
-       
-
-        .plastic-title {
+        display:grid;
+        grid-template-columns: 16em 16em 16em;
+        grid-template-rows: 200px 200px;
+    
+        span {
+            grid-column: 3;
+            grid-row: 2;
             position: relative;
-            z-index: 2;
+            top: 50%;
+            left: 80%;
+            font-size: 4em;
+            transition: all 0.4;
+            cursor: pointer;
+            z-index: 1000;
         }
+
+        span:hover {
+            transform: scale(1.1);
+            transition: all 0.4;
+        }
+    
+        .material-title {
+            font-size: 4em;
+            text-align: left;
+            grid-column: 1/3;
+            grid-row: 1/2;
+        }
+    
         .plastic-bag {
-            position: relative;
-            margin-right: 10%;
-            bottom: 20px;
-            width: 460px;
-            height: 310px;
-            z-index: 1;
+            margin-top: 6em;
+            grid-column: 1;
+            grid-row: 1/2;            
         }
+    
         .plastic-bottle {
-            position: relative;
-            margin-top: 6%;
-            padding: 20px;
-            width: 200px;
-            height: 300px;
-            z-index: 1;
-        }
-        .plastic-overlay{
-            position: absolute;
-            opacity: .9;
-            background-color: green;
-            animation: moveContent 2s ease;
-            z-index: 20;
-            font-size: 18pt;
-            top: 12%;
-            left: 18%;
-            color: white;
-        }
-    }
-
-    .metals {
-        background-color: #fd8a34;
-
-        .metals-title {
-            position: absolute;
-            z-index: 2;
-        }
-        .metals-overlay {
-            opacity: .9;
-            background-color: #79cfca;
-            position: absolute;
-            top: 62.5%;
-            left: 18%;
-            animation: moveContent 2s ease;
-            z-index: 20;
-            font-size: 12pt;
+            margin-left: -10em;
+            margin-top: 3em;
+            grid-column: 3;
+            grid-row: 1/2;
         }
 
-    }
-    .textile {
-        background-color: #79cfca;
-        .metals-title {
-            position: absolute;
-            top:0;
-            z-index: 2;
+        .tin-can {
+            grid-column: 1;
+            grid-row: 1;
+            margin-top: 7em;
         }
-        .textile-overlay {
-            opacity: .9;
-            background-color: #61c900;
-            position: absolute;
-            top: 113%;
-            left: 18%;
-            animation: moveContent 2s ease;
-            z-index: 20;
-            font-size: 12pt;
-        }
-        .pants {
-            position: relative;
-            margin-top: 6%;
-            width: 300px;
-            height: 300px;
+        .metal-seat {
+            grid-column: 2;
+            grid-row: 1;
+            margin-left: 7em;
+
         }
         .shirt {
-            width: 200px;
-            height: 200px;
+            grid-column: 2;
+            grid-row: 1;
         }
-    }
-    .mix-paper {
-        background-color: #61c900;
-        .mix-paper-title {
-            position: absolute;
+        .pants {
+            grid-column: 1;
+            margin-top: -12em;
         }
-        .newspaper {
-            position: relative;
-            width: 400px;
-            height: 360px;
+        .paper-cup {
+            grid-column: 2;
+            grid-row: 2;
+            margin-top: -17em;
+            margin-left: -13em;
+        }
+        .newspaper{
+            grid-column: 2;
+            grid-row:2;
+        }
+        .descr {
+            transition: all 0.4s;
+            grid-column: 1/5;
+            grid-row: 1/3;
+            font-size: 1em;
+            font-weight: 900;
+            color: black;
+            padding: 3em;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 100;
+
+        }
+        .plastic-overlay{
+            transition: all 0.4s;
+            background-color: $green;
+            animation: moveContent 2s ease;
+        }
+        .metals-overlay {
+            background-color: #79cfca;
+        }
+        .textile-overlay {
+            background-color: $orange;
         }
         .mix-paper-overlay {
-            opacity: .9;
-            background-color: #fd8a34;
-            position: absolute;
-            top: 163.5%;
-            left: 18%; 
-            animation: moveContent 2s ease;
-            z-index: 20;
-            font-size: 12pt;
+            background-color: $yellow;
         }
     }
-}
+    .plastic {
+        background-color: $yellow;
+    }
+    .metals {
+        background-color: $orange;
+    }
+    .textile {
+        background-color: $blue;
+    }
+    .mix-paper {
+        background-color: $green;
 
+    }
+
+}

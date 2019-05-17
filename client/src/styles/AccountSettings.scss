@@ -2,7 +2,9 @@
 
 .account-settings {
     text-align: center;
-    
+    text-transform: uppercase;
+    font-family: 'Noto Sans', sans-serif;
+
     form {
         margin: auto;
         justify-content: center;
@@ -12,7 +14,8 @@
         flex-direction: column;
 
         label {
-            font-family: 'Open-Sans';
+            text-transform: uppercase;
+            font-family: 'Noto Sans', sans-serif;
             color: $orange;
             margin-bottom: .5em;
         }
@@ -20,7 +23,6 @@
         input{
             margin-bottom: .5em;
             height: 2em;
-            border-radius: 6px;
             border: 2px solid $blue;
             transition: all 0.4s;
             padding: .5em .4em;
@@ -45,7 +47,6 @@
             margin: 2em auto;
             width: 40%;
             height: 4em;
-            border-radius: 6px;
             font-weight: 800;
             letter-spacing: .3em;
             background-color: $blue;
@@ -62,11 +63,12 @@
     }
 
     .dashboard-link {
+        text-transform: uppercase;
+        font-family: 'Noto Sans', sans-serif;
         position: absolute;
         top: 2em;
         left: 2em;
         padding: .6em 1em;
-        border-radius: 6px;
         font-weight: 800;
         background-color: $orange;
         border: 2px solid $orange;
@@ -85,7 +87,7 @@
     .account-error{
         margin-top: 5%;
         position: relative;
-        border-radius: 6px;
+        // border-radius: 6px;
         padding: 2em 0;
         left: 30%;
         background-color: $blueBg;
@@ -106,13 +108,15 @@
 
     button {
         padding: .6em 1em;
-        border-radius: 6px;
+        // border-radius: 6px;
         font-weight: 800;
         background-color: $orange;
         border: 2px solid $orange;
         cursor: pointer;
         transition: all 0.4s;
         box-shadow: 4px 4px 10px $shadow;
+        text-transform: uppercase;
+        font-family: 'Noto Sans', sans-serif;
     }
 
     button:hover {

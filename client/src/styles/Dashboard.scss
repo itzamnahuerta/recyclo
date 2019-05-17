@@ -1,13 +1,17 @@
 @import 'Colors';
 
 .dashboard{
-    position: absolute;
-    top: 2%;
-    left: 2%;
-    width: 90%;
-    height: 1200px;
-    border: 5px solid red;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
 
+    .materials-container{
+        display: grid;
+        grid-gap: 6em;
+        justify-content: center;
+        align-items: center;
+    }
     .account-settings {
         position: fixed;
         top: 4%;
@@ -16,60 +20,37 @@
         text-decoration: none;
         padding: .6em 1em;
         color: $white;
-        border-radius: 6px;
         box-shadow: 4px 4px 10px $shadow;
         transition: all 0.4s;
+        z-index: 2000 ;
     }
-
     .account-settings:hover {
         background-color: $blue;
         color: #333;
     }
     .icon {
+        top: 0;
         position: fixed;
         cursor: pointer;
-        height: 4em;
+        margin: 2em;
     }
-    
     .fi-menu-visible {
         position: absolute;
         z-index: 2000;
         width: 30px;
         height: 3%;
     }
-    
     .fi-menu-invisible{
         width: 30px;
         height: 3%;
-        // border: 2px solid green;
-        // display: none
+        z-index: 2000;
     }
-    
-
 }
 
-.dash-grid-container {
-    position: relative;
-    top: 20%;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: 50% 50%;
-    // border: 2px solid green;
-    .map-container {
-        border: 3px solid peru;
-        grid-column: 2/3; 
-        grid-row: 1/2;
-    }
-    .materials {
-        // border-top: 10px solid white;
-        border: 4px solid indigo;
-        grid-column: 3/4;
-        grid-row: 1/2;
-
-        // overflow: scroll;
-    }
-
+.dashboard .materials-container .plastic {
+    grid-column: 1;
 }
 
-
-
+.dashboard .materials-container .metals {
+    grid-column: 2;
+}

@@ -1,12 +1,15 @@
 @import 'Colors';
 
 .create-account {
-
+    text-transform: uppercase;
+    font-family: 'Noto Sans', sans-serif;
     .create-account-btn {
+        text-transform: uppercase;
+        font-family: 'Noto Sans', sans-serif;
         top: 1em;
         left: 1em;
         position: absolute;
-        border-radius: 6px;
+        // border-radius: 6px;
         border: 2px solid $yellow;
         cursor: pointer;
         background-color: $yellow;
@@ -104,11 +107,13 @@
         }
 
         .sign-up-btn {
-            font-family: 'Noto sans';
+            // font-family: 'Noto sans';
+            text-transform: uppercase;
+            font-family: 'Noto Sans', sans-serif;
             margin: 1em auto;
             width: 40%;
             height: 4em;
-            border-radius: 6px;
+            // border-radius: 6px;
             font-weight: 800;
             letter-spacing: .3em;
             background-color: $blue;
@@ -125,6 +130,7 @@
     }
     
     .signup-err {
+        
         text-align: center;
         justify-content: center;
         align-content: center;
@@ -158,6 +164,8 @@
         transition: all 0.4s;
 
         button{
+            text-transform: uppercase;
+            font-family: 'Noto Sans', sans-serif;
             background-color: $orange;
             border: 2px solid $orange;
             border-radius: 6px;

@@ -9,8 +9,8 @@ class Map extends Component {
     super()
     this.state = {
       viewport: {
-        width: 600,
-        height: 400,
+        // width: 400,
+        // height: 580,
         latitude: 40.730610,
         longitude: -73.935242,
         zoom: 11
@@ -59,8 +59,8 @@ class Map extends Component {
     return (
       <div className="center-map">
         <ReactMapGL
-          width={viewport.width}
-          height={viewport.height}
+          width={window.innerWidth}
+          height={window.innerHeight/1.5}
           latitude={viewport.latitude}
           longitude={viewport.longitude}
           zoom={viewport.zoom}
