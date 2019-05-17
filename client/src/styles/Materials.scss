@@ -15,7 +15,7 @@
             max-width: 160%;
             max-height: 160%;
         }
-        width: 50em;
+        width: 40em;
         height: 400px;
         font-family: 'Roboto', sans-serif;
         display:grid;
@@ -26,8 +26,9 @@
             grid-column: 3;
             grid-row: 2;
             position: relative;
+            width: 20%;
             top: 50%;
-            left: 80%;
+            left: 20%;
             font-size: 4em;
             transition: all 0.4;
             cursor: pointer;
@@ -76,15 +77,16 @@
         }
         .pants {
             grid-column: 1;
-            margin-top: -12em;
+            margin-top: -6em;
         }
         .paper-cup {
             grid-column: 2;
             grid-row: 2;
-            margin-top: -17em;
+            margin-top: -8em;
             margin-left: -13em;
         }
         .newspaper{
+            margin-top: -10em;
             grid-column: 2;
             grid-row:2;
         }
@@ -98,6 +100,7 @@
             padding: 3em;
             font-family: 'Roboto Mono', monospace;
             font-weight: 100;
+            width: 72%;
 
         }
         .plastic-overlay{

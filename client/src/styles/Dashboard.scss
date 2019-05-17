@@ -47,6 +47,24 @@
     }
 }
 
+.sign-out {
+    margin-top: 2em;
+    text-align: center;
+    background-color: $orange;
+    text-decoration: none;
+    padding: .6em 1em;
+    color: $white;
+    box-shadow: 4px 4px 10px $shadow;
+    transition: all 0.4s;
+    z-index: 2000 ;
+    width: 10%;
+}
+
+.sign-out:hover {
+    background-color: $yellow;
+    color: #333;
+}
+
 .dashboard .materials-container .plastic {
     grid-column: 1;
 }

@@ -132,7 +132,7 @@ class Dashboard extends Component {
                     locationList={locationList}/> 
                     : <div></div> }
                 <Materials/>
-                <Link to='/'>Sign Out</Link>
+                <Link to='/' className="sign-out">Sign Out</Link>
             </div>
         );
     }
