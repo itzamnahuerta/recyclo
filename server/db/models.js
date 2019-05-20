@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 const bcrypt = require('bcrypt')
 
 
-const db = new Sequelize({
+const db = new Sequelize( process.env.DATABASE_URL || 'postgres://localhost:5432/recycle_project_db',  {
     database: 'recycle_project_db',
     dialect: 'postgres',
     define: {
