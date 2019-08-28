@@ -20,6 +20,29 @@ Recyclo is an application that both informs users on recycling materials and loc
 - [pg]()
 - [sequelize]()
 
+## Getting started! 
+### Inside server file: 
+A)
+1. npm install 
+
+B) 
+1. create a .env file with APP_SECRET='SAMPLE_CODE'
+
+C)
+1. npm run createDb
+2. npm run reset
+3. npm run seedDb
+4) npm run start
+
+### Inside client folder 
+A) 
+1. create a .env file and create a API KEY from www.mapbox.com 
+
+B)
+1. npm install
+2. npm run start 
+
+
 ### ERD
 ![ERD](https://user-images.githubusercontent.com/36831606/57632867-7e769b80-7570-11e9-9a26-609663eebd0c.png)
 
