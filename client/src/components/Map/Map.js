@@ -79,7 +79,7 @@ class Map extends Component {
           latitude={viewport.latitude}
           longitude={viewport.longitude}
           zoom={viewport.zoom}
-          mapStyle="mapbox://styles/mapmen/cjvnw7xb901p81cn1q5ebx5vr"
+          mapStyle="mapbox://styles/itzamnahuerta/cjzvtlcjc072v1ckfjjfcmck0"
           onViewportChange={(viewport) => this.setState({ viewport })}
           mapboxApiAccessToken={MAPBOX_TOKEN}>
           {selectedItem ? selectedItem.map(this._renderMarker): materialData ? materialData.map(this._renderMarker): null}
