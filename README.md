@@ -22,23 +22,19 @@ Recyclo is an application that both informs users on recycling materials and loc
 
 ## Getting started! 
 ### Inside server file: 
-A)
 1. npm install 
+2. create a .env file with APP_SECRET='SAMPLE_CODE'
 
-B) 
-1. create a .env file with APP_SECRET='SAMPLE_CODE'
-
-C)
+Terminal: 
 1. npm run createDb
 2. npm run reset
 3. npm run seedDb
 4) npm run start
 
 ### Inside client folder 
-A) 
 1. create a .env file and create a API KEY from www.mapbox.com 
 
-B)
+Terminal:
 1. npm install
 2. npm run start 
 
